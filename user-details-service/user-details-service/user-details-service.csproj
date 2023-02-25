@@ -29,11 +29,13 @@
     <None Remove="Infrastructure\" />
     <None Remove="Infrastructure\DBContexts\" />
     <None Remove="DTOs\" />
+    <None Remove="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
     <Folder Include="Infrastructure\" />
     <Folder Include="Infrastructure\DBContexts\" />
     <Folder Include="DTOs\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>

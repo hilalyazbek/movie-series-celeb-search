@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using user_details_service.Infrastructure.DBContexts;
+using user_details_service.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,7 +34,7 @@ var builder = WebApplication.CreateBuilder(args);
             ),
         };
     });
-
+    builder.Services.AddScoped<TokenService, TokenService>();
     // Add Postgres DB Context
     builder.Services.AddDbContext<UsersContext>();
 
