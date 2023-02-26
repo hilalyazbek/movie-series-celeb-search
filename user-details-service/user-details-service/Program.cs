@@ -15,43 +15,10 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 
+    builder.Services.AddInfrastructureServices(builder.Configuration);
+
     // Add JWT Token
-    builder.Services
-    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters()
-        {
-            ClockSkew = TimeSpan.Zero,
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = "creditSwisseAuth",
-            ValidAudience = "creditSwisseAuth",
-            IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes("!creditSwisseAuth!")
-            ),
-        };
-    });
-    builder.Services.AddScoped<TokenService, TokenService>();
-    // Add Postgres DB Context
-    builder.Services.AddDbContext<UsersContext>();
-
-    // Add Identity Core
-    builder.Services
-        .AddIdentityCore<IdentityUser>(options =>
-        {
-            options.SignIn.RequireConfirmedAccount = false;
-            options.User.RequireUniqueEmail = true;
-            options.Password.RequireDigit = false;
-            options.Password.RequiredLength = 6;
-            options.Password.RequireNonAlphanumeric = false;
-            options.Password.RequireUppercase = false;
-            options.Password.RequireLowercase = false;
-        })
-        .AddEntityFrameworkStores<UsersContext>();
-
+    builder.Services.AddJWTService(builder.Configuration);
 }
 var app = builder.Build();
 {

@@ -32,6 +32,7 @@
     <None Remove="Infrastructure\DBContexts\" />
     <None Remove="DTOs\" />
     <None Remove="Services\" />
+    <None Remove="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
@@ -39,5 +40,6 @@
     <Folder Include="Infrastructure\DBContexts\" />
     <Folder Include="DTOs\" />
     <Folder Include="Services\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
 </Project>

@@ -13,11 +13,6 @@ public class UsersContext :IdentityUserContext<IdentityUser>
 
 	}
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseNpgsql("Host=localhost;Database=user-details-service-db;Username=postgres;Password=P@ssw0rd");
-    }
-
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
