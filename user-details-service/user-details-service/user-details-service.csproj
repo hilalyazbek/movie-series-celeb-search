@@ -44,4 +44,9 @@
     <Folder Include="Services\" />
     <Folder Include="Extensions\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="docker-compose.override.yml">
+      <DependentUpon>docker-compose.yml</DependentUpon>
+    </None>
+  </ItemGroup>
 </Project>

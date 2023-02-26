@@ -1,0 +1,37 @@
+version: '3.4'
+
+networks:
+  dev:
+    driver: bridge
+
+services:
+  user-details-service:
+    image: ${DOCKER_REGISTRY-}userdetailsservice
+    depends_on:
+      - "user-details-service-db"
+    container_name: user-details-service
+    ports:
+      - "8088:80"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ConnectionStrings__DefaultConnection=User ID=postgres;Password=P@ssw0rd;Server=user-details-service-db;Port=5432;Database=user-details-service-db; IntegratedSecurity=true;Pooling=true
+      - ASPNETCORE_URLS=http://+:80
+    networks:
+      - dev
+
+  user-details-service-db:
+    image: postgres:latest
+    container_name: user-details-service-db
+    environment:
+      - POSTGRES_USER = postgres
+      - POSTGRES_PASSWORD = P@ssw0rd
+      - POSTGRES_DB = user-details-service-db
+    restart: always
+    volumes:
+      - app_data:/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/data
+    networks:
+      - dev
+volumes:
+  app_data:
