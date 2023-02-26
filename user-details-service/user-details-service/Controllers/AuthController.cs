@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using user_details_service.DTOs;
+using user_details_service.Entities;
 using user_details_service.Infrastructure.DBContexts;
 using user_details_service.Services;
 
@@ -16,11 +17,11 @@ namespace user_details_service.Controllers;
 [Route("/auth")]
 public class AuthController : Controller
 {
-    private readonly UserManager<IdentityUser> _userManager;
+    private readonly UserManager<User> _userManager;
     private readonly UsersContext _context;
     private readonly TokenService _tokenService;
 
-    public AuthController(UserManager<IdentityUser> userManager, UsersContext context, TokenService tokenService)
+    public AuthController(UserManager<User> userManager, UsersContext context, TokenService tokenService)
     {
         _userManager = userManager;
         _context = context;
@@ -35,21 +36,32 @@ public class AuthController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Register(RegistrationRequestDTO request)
+    [Route("register")]
+    public async Task<IActionResult> Register(UserDTO request)
     {
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
 
+        var userToBeCreated = new User
+        {
+            FirstName = request.FirstName,
+            LastName = request.LastName,
+            QidNumber = request.QidNumber,
+            Email = request.Email,
+            UserName = request.Username
+        };
+
         var result = await _userManager.CreateAsync(
-            new IdentityUser { UserName = request.Username, Email = request.Email },
+            userToBeCreated,
             request.Password
         );
 
         if (result.Succeeded)
         {
             request.Password = "";
+            await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(Register), new { email = request.Email }, request);
         }
 

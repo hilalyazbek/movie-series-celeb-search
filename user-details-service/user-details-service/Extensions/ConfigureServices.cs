@@ -6,11 +6,20 @@ using user_details_service.Infrastructure.DBContexts;
 using user_details_service.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+using user_details_service.Entities;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ConfigureServices
 {
+    public static IServiceCollection AddApiServices(this IServiceCollection services)
+    {
+        services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+        return services;
+    }
+
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
         var conn = configuration.GetConnectionString("DefaultConnection");
@@ -20,7 +29,7 @@ public static class ConfigureServices
 
         // Add Identity Core
         services
-            .AddIdentityCore<IdentityUser>(options =>
+            .AddIdentityCore<User>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = false;
                 options.User.RequireUniqueEmail = true;

@@ -1,15 +1,18 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-
 namespace user_details_service.DTOs;
 
-public class RegistrationRequestDTO
+public class UserDTO
 {
-    [Required]
+    public string QidNumber { get; set; } = null!;
+
+    public string FirstName { get; set; } = null!;
+
+    public string LastName { get; set; } = null!;
+
     public string Email { get; set; } = null!;
-    [Required]
+
     public string Username { get; set; } = null!;
-    [Required]
+
     public string Password { get; set; } = null!;
 }
 

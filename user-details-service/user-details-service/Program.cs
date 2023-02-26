@@ -4,6 +4,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using user_details_service.Infrastructure.DBContexts;
 using user_details_service.Services;
+using AutoMapper;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,11 +17,14 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 
+    builder.Services.AddApiServices();
+
     builder.Services.AddInfrastructureServices(builder.Configuration);
 
     // Add JWT Token
     builder.Services.AddJWTService(builder.Configuration);
 }
+
 var app = builder.Build();
 {
     // Configure the HTTP request pipeline.

@@ -25,6 +25,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.3" />
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +37,7 @@
     <None Remove="DTOs\" />
     <None Remove="Services\" />
     <None Remove="Extensions\" />
+    <None Remove="MappingProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
@@ -43,6 +46,7 @@
     <Folder Include="DTOs\" />
     <Folder Include="Services\" />
     <Folder Include="Extensions\" />
+    <Folder Include="MappingProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="docker-compose.override.yml">
