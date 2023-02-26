@@ -27,6 +27,13 @@ public class AuthController : Controller
         _tokenService = tokenService;
     }
 
+    [HttpGet]
+    [Route("/test")]
+    public IActionResult Test()
+    {
+        return Ok("service online");
+    }
+
     [HttpPost]
     public async Task<IActionResult> Register(RegistrationRequestDTO request)
     {
