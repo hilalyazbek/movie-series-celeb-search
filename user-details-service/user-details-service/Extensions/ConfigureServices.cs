@@ -37,6 +37,9 @@ public static class ConfigureServices
 
     public static IServiceCollection AddJWTService(this IServiceCollection services, IConfiguration configuration)
     {
+        var validIssuer = configuration.GetSection("JWT").GetValue<string>("ValidIssuer");
+        var ValidAudience = configuration.GetSection("JWT").GetValue<string>("ValidAudience");
+        var Secret = configuration.GetSection("JWT").GetValue<string>("Secret");
         services
             .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
@@ -48,10 +51,10 @@ public static class ConfigureServices
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = "creditSwisseAuth",
-                    ValidAudience = "creditSwisseAuth",
+                    ValidIssuer = validIssuer,
+                    ValidAudience = ValidAudience,
                     IssuerSigningKey = new SymmetricSecurityKey(
-                        Encoding.UTF8.GetBytes("!creditSwisseAuth!")
+                        Encoding.UTF8.GetBytes(Secret)
                     ),
                 };
             });

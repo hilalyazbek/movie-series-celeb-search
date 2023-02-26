@@ -18,7 +18,7 @@ public class AuthController : Controller
 {
     private readonly UserManager<IdentityUser> _userManager;
     private readonly UsersContext _context;
-    private readonly TokenService _tokenService; 
+    private readonly TokenService _tokenService;
 
     public AuthController(UserManager<IdentityUser> userManager, UsersContext context, TokenService tokenService)
     {
