@@ -18,10 +18,10 @@ namespace user_details_service.Controllers;
 public class AuthController : Controller
 {
     private readonly UserManager<User> _userManager;
-    private readonly UsersContext _context;
+    private readonly ApplicationDbContext _context;
     private readonly TokenService _tokenService;
 
-    public AuthController(UserManager<User> userManager, UsersContext context, TokenService tokenService)
+    public AuthController(UserManager<User> userManager, ApplicationDbContext context, TokenService tokenService)
     {
         _userManager = userManager;
         _context = context;
@@ -37,7 +37,7 @@ public class AuthController : Controller
 
     [HttpPost]
     [Route("register")]
-    public async Task<IActionResult> Register(UserDTO request)
+    public async Task<IActionResult> Register(CreateUserDTO request)
     {
         if (!ModelState.IsValid)
         {

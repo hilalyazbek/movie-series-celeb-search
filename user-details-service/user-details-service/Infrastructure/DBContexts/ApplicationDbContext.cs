@@ -7,11 +7,11 @@ using user_details_service.Entities;
 
 namespace user_details_service.Infrastructure.DBContexts;
 
-public class UsersContext :IdentityUserContext<IdentityUser>
+public class ApplicationDbContext : IdentityUserContext<IdentityUser>
 {
     public DbSet<User> Users { get; set; }
 
-    public UsersContext(DbContextOptions<UsersContext> options)
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
 		:base(options)
 	{
 

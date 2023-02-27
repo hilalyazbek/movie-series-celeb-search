@@ -11,7 +11,7 @@ using user_details_service.Infrastructure.DBContexts;
 
 namespace user_details_service.Migrations
 {
-    [DbContext(typeof(UsersContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20230226190207_customuserproperties")]
     partial class customuserproperties
     {

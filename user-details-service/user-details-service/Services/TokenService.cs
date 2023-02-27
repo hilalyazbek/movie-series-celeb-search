@@ -8,7 +8,7 @@ using System.Text;
 
 namespace user_details_service.Services;
 
-public class TokenService
+public class TokenService: ITokenService
 {
     private const int ExpirationMinutes = 30;
     public string CreateToken(IdentityUser user)
@@ -23,7 +23,7 @@ public class TokenService
         return tokenHandler.WriteToken(token);
     }
 
-    private JwtSecurityToken CreateJwtToken(List<Claim> claims, SigningCredentials credentials,
+    public JwtSecurityToken CreateJwtToken(List<Claim> claims, SigningCredentials credentials,
         DateTime expiration) =>
         new(
             "creditSwisseAuth",
@@ -33,7 +33,7 @@ public class TokenService
             signingCredentials: credentials
         );
 
-    private List<Claim> CreateClaims(IdentityUser user)
+    public List<Claim> CreateClaims(IdentityUser user)
     {
         try
         {
@@ -54,7 +54,7 @@ public class TokenService
             throw;
         }
     }
-    private SigningCredentials CreateSigningCredentials()
+    public SigningCredentials CreateSigningCredentials()
     {
         return new SigningCredentials(
             new SymmetricSecurityKey(

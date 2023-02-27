@@ -1,7 +1,7 @@
 ﻿using System;
 namespace user_details_service.DTOs;
 
-public class UserDTO
+public class ViewUserDTO
 {
     public string QidNumber { get; set; } = null!;
 
@@ -12,7 +12,5 @@ public class UserDTO
     public string Email { get; set; } = null!;
 
     public string Username { get; set; } = null!;
-
-    public string Password { get; set; } = null!;
 }
 

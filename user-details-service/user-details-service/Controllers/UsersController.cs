@@ -20,13 +20,13 @@ namespace user_details_service.Controllers;
 public class UsersController : Controller
 {
     private readonly UserManager<User> _userManager;
-    private readonly UsersContext _context;
+    private readonly ApplicationDbContext _context;
     private readonly TokenService _tokenService;
     private readonly IMapper _mapper;
 
     public UsersController(
         UserManager<User> userManager,
-        UsersContext context,
+        ApplicationDbContext context,
         TokenService tokenService,
         IMapper mapper)
     {
@@ -37,22 +37,22 @@ public class UsersController : Controller
     }
 
     [HttpGet]
-    public async Task<IEnumerable<UserDTO>> Users()
+    public async Task<IEnumerable<ViewUserDTO>> Users()
     {
         var users = await _context.Users.ToListAsync();
 
-        var result = _mapper.Map<IEnumerable<UserDTO>>(users);
+        var result = _mapper.Map<IEnumerable<ViewUserDTO>>(users);
 
         return result;
     }
 
     [HttpGet]
     [Route("/users/{id}")]
-    public async Task<UserDTO> UserDetails(string id)
+    public async Task<ViewUserDTO> UserDetails(string id)
     {
         var user = await _userManager.FindByIdAsync(id);
 
-        var result = _mapper.Map<UserDTO>(user);
+        var result = _mapper.Map<ViewUserDTO>(user);
 
         return result;
     }

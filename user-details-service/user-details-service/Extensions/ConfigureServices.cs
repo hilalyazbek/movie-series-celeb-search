@@ -24,7 +24,7 @@ public static class ConfigureServices
     {
         var conn = configuration.GetConnectionString("DefaultConnection");
         // Add Postgres DB Context
-        services.AddDbContext<UsersContext>(options =>
+        services.AddDbContext<ApplicationDbContext>(options =>
             options.UseNpgsql(conn));
 
         // Add Identity Core
@@ -39,7 +39,7 @@ public static class ConfigureServices
                 options.Password.RequireUppercase = false;
                 options.Password.RequireLowercase = false;
             })
-            .AddEntityFrameworkStores<UsersContext>();
+            .AddEntityFrameworkStores<ApplicationDbContext>();
 
         return services;
     }
