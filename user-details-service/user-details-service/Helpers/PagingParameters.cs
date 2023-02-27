@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.AspNetCore.Identity;
 
-namespace user_details_service.Entities;
+namespace user_details_service.Helpers;
 
-public class UserParameters
+public class PagingParameters
 {
     const int maxPageSize = 10;
     public int PageNumber { get; set; } = 1;
@@ -20,4 +20,3 @@ public class UserParameters
         }
     }
 }
-

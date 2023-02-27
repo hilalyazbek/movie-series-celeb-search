@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using user_details_service.DTOs;
 using user_details_service.Entities;
+using user_details_service.Helpers;
 using user_details_service.Infrastructure.DBContexts;
 using user_details_service.Infrastructure.Repositories;
 using user_details_service.Services;
@@ -20,30 +21,25 @@ namespace user_details_service.Controllers;
 [Route("/users")]
 public class UsersController : Controller
 {
-    //private readonly UserManager<User> _userManager;
-    //private readonly ApplicationDbContext _context;
     private readonly IUserRepository _userRepository;
     private readonly TokenService _tokenService;
     private readonly IMapper _mapper;
 
     public UsersController(
-        UserManager<User> userManager,
-        ApplicationDbContext context,
         IUserRepository userRepository,
         TokenService tokenService,
         IMapper mapper)
     {
-        //_userManager = userManager;
-        //_context = context;
         _userRepository = userRepository;
         _tokenService = tokenService;
         _mapper = mapper;
     }
 
     [HttpGet]
-    public async Task<IEnumerable<ViewUserDTO>> GetUsers([FromQuery] UserParameters userParameters)
+    public async Task<IEnumerable<ViewUserDTO>> GetUsers([FromQuery] PagingParameters userParameters,
+        [FromQuery] SortingParameters sortingParameters)
     {
-        var users = _userRepository.GetUsersAsync(userParameters);
+        var users = await _userRepository.GetUsersAsync(userParameters, sortingParameters);
         var result = _mapper.Map<IEnumerable<ViewUserDTO>>(users);
         return result;
     }
