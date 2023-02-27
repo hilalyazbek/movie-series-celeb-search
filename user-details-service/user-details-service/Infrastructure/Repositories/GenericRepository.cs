@@ -26,22 +26,21 @@ public abstract class GenericRepository<T> : IGenericRepository<T> where T : cla
             .AsNoTracking();
     }
 
-    public void Create(T entity)
+    public T Create(T entity)
     {
-        context.Set<T>().Add(entity);
-        Save();
+        var result = context.Set<T>().Add(entity);
+        return result.Entity;
     }
 
-    public void Update(T entity)
+    public T Update(T entity)
     {
-        context.Set<T>().Update(entity);
-        Save();
+        var result = context.Set<T>().Update(entity);
+        return result.Entity;
     }
 
     public void Delete(T entity)
     {
         context.Set<T>().Remove(entity);
-        Save();
     }
 
     public void Save()

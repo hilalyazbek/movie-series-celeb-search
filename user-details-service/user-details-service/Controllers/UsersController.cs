@@ -20,8 +20,8 @@ namespace user_details_service.Controllers;
 [Route("/users")]
 public class UsersController : Controller
 {
-    private readonly UserManager<User> _userManager;
-    private readonly ApplicationDbContext _context;
+    //private readonly UserManager<User> _userManager;
+    //private readonly ApplicationDbContext _context;
     private readonly IUserRepository _userRepository;
     private readonly TokenService _tokenService;
     private readonly IMapper _mapper;
@@ -33,17 +33,17 @@ public class UsersController : Controller
         TokenService tokenService,
         IMapper mapper)
     {
-        _userManager = userManager;
-        _context = context;
+        //_userManager = userManager;
+        //_context = context;
         _userRepository = userRepository;
         _tokenService = tokenService;
         _mapper = mapper;
     }
 
     [HttpGet]
-    public IEnumerable<ViewUserDTO> GetUsers([FromQuery] UserParameters userParameters)
+    public async Task<IEnumerable<ViewUserDTO>> GetUsers([FromQuery] UserParameters userParameters)
     {
-        var users = _userRepository.GetUsers(userParameters);
+        var users = _userRepository.GetUsersAsync(userParameters);
         var result = _mapper.Map<IEnumerable<ViewUserDTO>>(users);
         return result;
     }
@@ -52,29 +52,26 @@ public class UsersController : Controller
     [Route("/users/{id}")]
     public async Task<ViewUserDTO> UserDetails(string id)
     {
-        var user = await _userManager.FindByIdAsync(id);
+        var user =  await _userRepository.GetUserByIdAsync(id);
 
         var result = _mapper.Map<ViewUserDTO>(user);
 
         return result;
     }
 
-    [HttpPost("{id:guid}")]
+    [HttpDelete("{id:guid}")]
     public async Task<IActionResult> DeleteUser(string id)
     {
-        var userToBeDeleted = await _userManager.FindByIdAsync(id);
+        var userToBeDeleted = await _userRepository.GetUserByIdAsync(id);
         if(userToBeDeleted is null)
         {
             return NotFound("Invalid User");
         }
 
-        var result = await _userManager.DeleteAsync(userToBeDeleted);
-        if (result.Succeeded)
-        {
-            await _context.SaveChangesAsync();
-            return Ok($"User with id {id} was deleted successfully");
-        }
-        return BadRequest("something went wrong");
+        _userRepository.Delete(userToBeDeleted);
+
+        return Ok($"User with id {id} was deleted successfully");
+        
     }
 
     [HttpPut("{id:guid}")]
@@ -85,7 +82,8 @@ public class UsersController : Controller
             return BadRequest(ModelState);
         }
 
-        var userToBeUpdated = await _userManager.FindByIdAsync(id);
+        var userToBeUpdated = await _userRepository.GetUserByIdAsync(id);
+
         if(userToBeUpdated is null)
         {
             return BadRequest("Invalid User");
@@ -100,12 +98,7 @@ public class UsersController : Controller
         if (!string.IsNullOrEmpty(user.QidNumber))
             userToBeUpdated.QidNumber = user.QidNumber;
 
-        var result = await _userManager.UpdateAsync(userToBeUpdated);
-
-        if (!result.Succeeded)
-        {
-            return BadRequest(result);
-        }
+        var result = _userRepository.Update(userToBeUpdated);
 
         return Ok(result);
     }

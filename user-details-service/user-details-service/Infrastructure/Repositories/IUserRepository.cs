@@ -1,9 +1,9 @@
-﻿using System.Fabric.Query;
-using user_details_service.Entities;
+﻿using user_details_service.Entities;
 
 namespace user_details_service.Infrastructure.Repositories;
 
 public interface IUserRepository:IGenericRepository<User>
 {
-    IEnumerable<User> GetUsers(UserParameters userParameters);
+    Task<IEnumerable<User>> GetUsersAsync(UserParameters userParameters);
+    Task<User> GetUserByIdAsync(string id);
 }

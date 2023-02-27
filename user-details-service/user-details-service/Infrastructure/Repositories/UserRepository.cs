@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Fabric.Query;
 using System.Linq.Expressions;
 using user_details_service.Entities;
 using user_details_service.Infrastructure.DBContexts;
@@ -13,12 +12,17 @@ public class UserRepository : GenericRepository<User>, IUserRepository
     {
     }
 
-    public IEnumerable<User> GetUsers(UserParameters userParameters)
+    public async Task<User> GetUserByIdAsync(string id)
     {
-        return FindAll()
+        return await FindByCondition(itm => itm.Id == id).FirstOrDefaultAsync();
+    }
+
+    public async Task<IEnumerable<User>> GetUsersAsync(UserParameters userParameters)
+    {
+        return await FindAll()
             .OrderBy(o => o.FirstName)
             .Skip((userParameters.PageNumber - 1) * userParameters.PageSize)
             .Take(userParameters.PageSize)
-            .ToList();
+            .ToListAsync();
     }
 }
