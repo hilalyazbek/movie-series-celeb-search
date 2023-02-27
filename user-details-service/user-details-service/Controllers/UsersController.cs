@@ -36,23 +36,24 @@ public class UsersController : Controller
     }
 
     [HttpGet]
-    public async Task<IEnumerable<ViewUserDTO>> GetUsers([FromQuery] PagingParameters userParameters,
+    public async Task<IActionResult> GetUsers([FromQuery] PagingParameters userParameters,
         [FromQuery] SortingParameters sortingParameters)
     {
         var users = await _userRepository.GetUsersAsync(userParameters, sortingParameters);
         var result = _mapper.Map<IEnumerable<ViewUserDTO>>(users);
-        return result;
+
+        return Ok(result);
     }
 
     [HttpGet]
     [Route("/users/{id}")]
-    public async Task<ViewUserDTO> UserDetails(string id)
+    public async Task<IActionResult> UserDetails(string id)
     {
         var user =  await _userRepository.GetUserByIdAsync(id);
 
         var result = _mapper.Map<ViewUserDTO>(user);
 
-        return result;
+        return Ok(result);
     }
 
     [HttpDelete("{id:guid}")]

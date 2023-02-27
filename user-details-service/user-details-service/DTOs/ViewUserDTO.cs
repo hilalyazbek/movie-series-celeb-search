@@ -3,6 +3,8 @@ namespace user_details_service.DTOs;
 
 public class ViewUserDTO
 {
+    public string Id { get; set; } = null!;
+
     public string QidNumber { get; set; } = null!;
 
     public string FirstName { get; set; } = null!;
