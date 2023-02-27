@@ -6,6 +6,9 @@ using user_details_service.Infrastructure.DBContexts;
 using user_details_service.Services;
 using AutoMapper;
 using System;
+using System.Fabric.Query;
+using user_details_service.Infrastructure.Repositories;
+using user_details_service.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 

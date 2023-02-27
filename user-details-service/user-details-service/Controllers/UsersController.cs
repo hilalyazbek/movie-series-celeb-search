@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using user_details_service.DTOs;
 using user_details_service.Entities;
 using user_details_service.Infrastructure.DBContexts;
+using user_details_service.Infrastructure.Repositories;
 using user_details_service.Services;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -21,28 +22,29 @@ public class UsersController : Controller
 {
     private readonly UserManager<User> _userManager;
     private readonly ApplicationDbContext _context;
+    private readonly IUserRepository _userRepository;
     private readonly TokenService _tokenService;
     private readonly IMapper _mapper;
 
     public UsersController(
         UserManager<User> userManager,
         ApplicationDbContext context,
+        IUserRepository userRepository,
         TokenService tokenService,
         IMapper mapper)
     {
         _userManager = userManager;
         _context = context;
+        _userRepository = userRepository;
         _tokenService = tokenService;
         _mapper = mapper;
     }
 
     [HttpGet]
-    public async Task<IEnumerable<ViewUserDTO>> Users()
+    public IEnumerable<ViewUserDTO> GetUsers([FromQuery] UserParameters userParameters)
     {
-        var users = await _context.Users.ToListAsync();
-
+        var users = _userRepository.GetUsers(userParameters);
         var result = _mapper.Map<IEnumerable<ViewUserDTO>>(users);
-
         return result;
     }
 

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using user_details_service.Entities;
+using user_details_service.Infrastructure.Repositories;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -40,6 +41,8 @@ public static class ConfigureServices
                 options.Password.RequireLowercase = false;
             })
             .AddEntityFrameworkStores<ApplicationDbContext>();
+
+        services.AddScoped<IUserRepository, UserRepository>();
 
         return services;
     }
