@@ -72,7 +72,7 @@ public class AuthController : Controller
 
             foreach (var error in result.Errors)
             {
-                _logger.LogError($"Error while creating the user {request.Username}, error details: {error}");
+                _logger.LogError($"Error while creating the user {request.Username}, error details: {error.Code}|{error.Description}");
                 ModelState.AddModelError(error.Code, error.Description);
             }
             return StatusCode(StatusCodes.Status500InternalServerError);
