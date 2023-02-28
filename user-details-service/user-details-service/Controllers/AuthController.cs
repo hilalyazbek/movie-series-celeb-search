@@ -45,6 +45,7 @@ public class AuthController : Controller
     {
         if (!ModelState.IsValid)
         {
+            _logger.LogError("Invalid model state");
             return BadRequest(ModelState);
         }
 
@@ -57,6 +58,7 @@ public class AuthController : Controller
             UserName = request.Username
         };
 
+        _logger.LogInfo($"Creating a new user with username {request.Username}");
         var result = await _userManager.CreateAsync(
             userToBeCreated,
             request.Password
@@ -66,14 +68,16 @@ public class AuthController : Controller
         {
             request.Password = "";
             await _context.SaveChangesAsync();
+            _logger.LogInfo($"New user Created {request.Username}");
             return CreatedAtAction(nameof(Register), new { email = request.Email }, request);
         }
 
         foreach (var error in result.Errors)
         {
+            _logger.LogError($"Error while creating the user {request.Username}, error details: {error}");
             ModelState.AddModelError(error.Code, error.Description);
         }
-        return BadRequest(ModelState);
+        return StatusCode(StatusCodes.Status500InternalServerError);
     }
 
     [HttpPost]
@@ -82,18 +86,21 @@ public class AuthController : Controller
     {
         if (!ModelState.IsValid)
         {
+            _logger.LogError("Invalid model state");
             return BadRequest(ModelState);
         }
 
         var managedUser = await _userManager.FindByEmailAsync(request.Email);
         if(managedUser is null)
         {
-            return BadRequest("Invalid Credentials");
+            _logger.LogInfo($"User {request.Email} not found");
+            return NotFound("Not Found");
         }
 
         var isPasswordValid = await _userManager.CheckPasswordAsync(managedUser, request.Password);
         if (!isPasswordValid)
         {
+            _logger.LogInfo($"Invalid credentials for {request.Email}");
             return BadRequest("Invalid Credentials");
         }
 

@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using user_details_service.DTOs;
 using user_details_service.Entities;
 using user_details_service.Helpers;
+using user_details_service.Helpers.Logging;
 using user_details_service.Infrastructure.DBContexts;
 using user_details_service.Infrastructure.Repositories;
 using user_details_service.Services;
@@ -24,15 +25,18 @@ public class UsersController : Controller
     private readonly IUserRepository _userRepository;
     private readonly TokenService _tokenService;
     private readonly IMapper _mapper;
+    private readonly ILoggerManager _logger;
 
     public UsersController(
         IUserRepository userRepository,
         TokenService tokenService,
-        IMapper mapper)
+        IMapper mapper,
+        ILoggerManager logger)
     {
         _userRepository = userRepository;
         _tokenService = tokenService;
         _mapper = mapper;
+        _logger = logger;
     }
 
     [HttpGet]
@@ -51,6 +55,10 @@ public class UsersController : Controller
     {
         var user =  await _userRepository.GetUserByIdAsync(id);
 
+        if(user is null)
+        {
+            return NotFound($"user with id {id} does not exist");
+        }
         var result = _mapper.Map<ViewUserDTO>(user);
 
         return Ok(result);
@@ -62,7 +70,8 @@ public class UsersController : Controller
         var userToBeDeleted = await _userRepository.GetUserByIdAsync(id);
         if(userToBeDeleted is null)
         {
-            return NotFound("Invalid User");
+            _logger.LogInfo($"user with id {id} does not exist");
+            return NotFound($"user with id {id} does not exist");
         }
 
         _userRepository.Delete(userToBeDeleted);
@@ -76,6 +85,7 @@ public class UsersController : Controller
     {
         if (!ModelState.IsValid)
         {
+            _logger.LogError($"invalid model state");
             return BadRequest(ModelState);
         }
 
@@ -83,7 +93,8 @@ public class UsersController : Controller
 
         if(userToBeUpdated is null)
         {
-            return BadRequest("Invalid User");
+            _logger.LogInfo($"user with id {id} does not exist");
+            return NotFound($"Invalid User with id {id}");
         }
 
         if(!string.IsNullOrEmpty(user.FirstName))
@@ -97,6 +108,11 @@ public class UsersController : Controller
 
         var result = _userRepository.Update(userToBeUpdated);
 
+        if(result is null)
+        {
+            _logger.LogError($"user with id {id} cannot be updated.");
+            return StatusCode(StatusCodes.Status500InternalServerError);
+        }
         return Ok(result);
     }
 
