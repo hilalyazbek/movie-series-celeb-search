@@ -1,7 +1,7 @@
 ﻿using System;
+using application_infrastructure.Entities;
 using AutoMapper;
 using user_details_service.DTOs;
-using user_details_service.Entities;
 
 namespace user_details_service.MappingProfiles;
 

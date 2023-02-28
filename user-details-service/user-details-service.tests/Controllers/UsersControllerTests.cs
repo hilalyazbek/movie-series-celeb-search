@@ -1,14 +1,14 @@
 ﻿using System;
+using application_infrastructure.Entities;
+using application_infrastructure.PagingAndSorting;
+using application_infrastructure.Repositories;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using user_details_service.Controllers;
 using user_details_service.DTOs;
-using user_details_service.Entities;
 using user_details_service.Helpers.Logging;
-using user_details_service.Helpers.PagingAndSorting;
-using user_details_service.Infrastructure.Repositories;
 using user_details_service.Services;
 
 namespace user_details_service.tests.Controllers;

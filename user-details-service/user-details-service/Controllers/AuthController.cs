@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using application_infrastructure.DBContexts;
+using application_infrastructure.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using user_details_service.DTOs;
-using user_details_service.Entities;
 using user_details_service.Helpers.Logging;
-using user_details_service.Infrastructure.DBContexts;
 using user_details_service.Services;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

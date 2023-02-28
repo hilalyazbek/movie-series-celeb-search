@@ -2,14 +2,15 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using user_details_service.Infrastructure.DBContexts;
 using user_details_service.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
-using user_details_service.Entities;
-using user_details_service.Infrastructure.Repositories;
 using user_details_service.Helpers.Logging;
+using Microsoft.Extensions.Configuration;
+using application_infrastructure.DBContexts;
+using application_infrastructure.Repositories;
+using application_infrastructure.Entities;
 
 namespace Microsoft.Extensions.DependencyInjection;
 

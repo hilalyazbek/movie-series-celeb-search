@@ -2,13 +2,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using user_details_service.Infrastructure.DBContexts;
 using user_details_service.Services;
 using AutoMapper;
 using System;
-using user_details_service.Infrastructure.Repositories;
-using user_details_service.Entities;
 using NLog;
+using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
 

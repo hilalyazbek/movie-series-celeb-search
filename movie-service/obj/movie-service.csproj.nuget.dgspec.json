@@ -1,0 +1,159 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/movie-service/movie-service.csproj": {}
+  },
+  "projects": {
+    "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/application-infrastructure/application-infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/application-infrastructure/application-infrastructure.csproj",
+        "projectName": "application-infrastructure",
+        "projectPath": "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/application-infrastructure/application-infrastructure.csproj",
+        "packagesPath": "/Users/hilalyazbek/.nuget/packages/",
+        "outputPath": "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/application-infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/hilalyazbek/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "System.Linq.Dynamic.Core": {
+              "target": "Package",
+              "version": "[1.2.25, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.200/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/movie-service/movie-service.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/movie-service/movie-service.csproj",
+        "projectName": "movie-service",
+        "projectPath": "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/movie-service/movie-service.csproj",
+        "packagesPath": "/Users/hilalyazbek/.nuget/packages/",
+        "outputPath": "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/movie-service/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/hilalyazbek/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/application-infrastructure/application-infrastructure.csproj": {
+                "projectPath": "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/application-infrastructure/application-infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.200/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
