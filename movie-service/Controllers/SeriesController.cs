@@ -9,13 +9,13 @@ using TMDbLib.Objects.Search;
 namespace movie_service.Controllers;
 
 [ApiController]
-[Route("movies")]
+[Route("series")]
 //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-public class MoviesController : ControllerBase
+public class SeriesController : ControllerBase
 {
-    private readonly ILogger<MoviesController> _logger;
+    private readonly ILogger<SeriesController> _logger;
 
-    public MoviesController(ILogger<MoviesController> logger)
+    public SeriesController(ILogger<SeriesController> logger)
     {
         _logger = logger;
     }
@@ -23,10 +23,10 @@ public class MoviesController : ControllerBase
     [HttpGet("{query}")]
     public ActionResult Get(string query)
     {
-        List<SearchMovie> movies = TmdbService.SearchMovies(query);
+        List<SearchTv> movies = TmdbService.SearchTvSeason(query);
         if(movies is null)
         {
-            return NotFound($"No movies with {query} in their title were found");
+            return NotFound($"No series with {query} in their title were found");
         }
         return Ok(movies);
     }
