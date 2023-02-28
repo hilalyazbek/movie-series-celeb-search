@@ -1,5 +1,5 @@
 ﻿using user_details_service.Entities;
-using user_details_service.Helpers;
+using user_details_service.Helpers.PagingAndSorting;
 
 namespace user_details_service.Infrastructure.Repositories;
 

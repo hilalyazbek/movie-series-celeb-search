@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Identity;
 
-namespace user_details_service.Helpers;
+namespace user_details_service.Helpers.PagingAndSorting;
 
 public class PagingParameters
 {
@@ -16,7 +16,7 @@ public class PagingParameters
         }
         set
         {
-            _pageSize = (value > maxPageSize) ? maxPageSize : value;
+            _pageSize = value > maxPageSize ? maxPageSize : value;
         }
     }
 }
