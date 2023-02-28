@@ -351,5 +351,5 @@ MigrationBackup/
 
 # Added manually
 nlog.config
-.DS_STORE
-.txt
+*.DS_STORE
+*.txt
