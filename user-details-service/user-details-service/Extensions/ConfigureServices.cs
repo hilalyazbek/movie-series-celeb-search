@@ -71,7 +71,7 @@ public static class ConfigureServices
                     ),
                 };
             });
-        services.AddScoped<TokenService, TokenService>();
+        services.AddScoped<ITokenService, TokenService>();
 
         return services;
 
