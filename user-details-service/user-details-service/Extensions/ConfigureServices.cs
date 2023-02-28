@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using user_details_service.Entities;
 using user_details_service.Infrastructure.Repositories;
+using user_details_service.Helpers.Logging;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -74,6 +75,11 @@ public static class ConfigureServices
 
         return services;
 
+    }
+
+    public static void ConfigureLoggerService(this IServiceCollection services)
+    {
+        services.AddSingleton<ILoggerManager, LoggerManager>();
     }
 }
 
