@@ -16,10 +16,10 @@ public class AuthController : Controller
 {
     private readonly UserManager<User> _userManager;
     private readonly ApplicationDbContext _context;
-    private readonly TokenService _tokenService;
+    private readonly ITokenService _tokenService;
     private readonly ILoggerManager _logger;
 
-    public AuthController(UserManager<User> userManager, ApplicationDbContext context, TokenService tokenService, ILoggerManager logger)
+    public AuthController(UserManager<User> userManager, ApplicationDbContext context, ITokenService tokenService, ILoggerManager logger)
     {
         _userManager = userManager;
         _context = context;
