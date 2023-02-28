@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using user_details_service.Services;
 using AutoMapper;
 using System;
 using NLog;

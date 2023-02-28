@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using application_infrastructure.Logging;
 using application_infrastructure.PagingAndSorting;
 using application_infrastructure.Repositories;
+using application_infrastructure.TokenService;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -12,8 +14,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using user_details_service.DTOs;
-using user_details_service.Helpers.Logging;
-using user_details_service.Services;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,7 +21,7 @@ namespace user_details_service.Controllers;
 
 [ApiController]
 [Route("/users")]
-//[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 public class UsersController : Controller
 {
     private readonly IUserRepository _userRepository;

@@ -7,7 +7,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Collections.Generic;
 
-namespace user_details_service.Services;
+namespace application_infrastructure.TokenService;
 
 public class TokenService: ITokenService
 {

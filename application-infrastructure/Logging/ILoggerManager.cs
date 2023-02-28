@@ -1,4 +1,4 @@
-﻿namespace user_details_service.Helpers.Logging;
+﻿namespace application_infrastructure.Logging;
 
 public interface ILoggerManager
 {

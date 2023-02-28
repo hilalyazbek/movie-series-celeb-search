@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "application-infrastructure", "..\application-infrastructure\application-infrastructure.csproj", "{3F3FB33F-11F8-430B-BB09-5A6576F115C5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{BE226C90-3C84-4A5D-8060-59B8C0CC5E5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,8 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BAC36B7A-AC23-4B21-B7D8-A05AF5B02D72}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{29B4D651-E0C2-4F39-99B3-A4F3AB9F7A08} = {BE226C90-3C84-4A5D-8060-59B8C0CC5E5E}
 	EndGlobalSection
 EndGlobal

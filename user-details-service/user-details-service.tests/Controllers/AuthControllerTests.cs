@@ -1,7 +1,5 @@
 using user_details_service.Controllers;
 using user_details_service.DTOs;
-using user_details_service.Helpers.Logging;
-using user_details_service.Services;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
@@ -9,6 +7,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using application_infrastructure.Entities;
 using application_infrastructure.DBContexts;
+using application_infrastructure.TokenService;
+using application_infrastructure.Logging;
 
 namespace user_details_service.tests.Controllers;
 
