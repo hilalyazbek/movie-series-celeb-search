@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using user_details_service.DTOs;
 using user_details_service.Entities;
@@ -86,7 +82,7 @@ public class AuthController : Controller
             _logger.LogError($"An error occured {ex.Message}");
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
-        }
+    }
 
     [HttpPost]
     [Route("login")]
@@ -135,7 +131,5 @@ public class AuthController : Controller
             _logger.LogError($"An error occured {ex.Message}");
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
-        }
-
+    }
 }
-
