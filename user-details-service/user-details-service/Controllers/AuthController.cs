@@ -43,83 +43,99 @@ public class AuthController : Controller
     [Route("register")]
     public async Task<IActionResult> Register(CreateUserDTO request)
     {
-        if (!ModelState.IsValid)
+        try
         {
-            _logger.LogError("Invalid model state");
-            return BadRequest(ModelState);
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state");
+                return BadRequest(ModelState);
+            }
+
+            var userToBeCreated = new User
+            {
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                QidNumber = request.QidNumber,
+                Email = request.Email,
+                UserName = request.Username
+            };
+
+            _logger.LogInfo($"Creating a new user with username {request.Username}");
+            var result = await _userManager.CreateAsync(
+                userToBeCreated,
+                request.Password
+            );
+
+            if (result.Succeeded)
+            {
+                request.Password = "";
+                await _context.SaveChangesAsync();
+                _logger.LogInfo($"New user Created {request.Username}");
+                return CreatedAtAction(nameof(Register), new { email = request.Email }, request);
+            }
+
+            foreach (var error in result.Errors)
+            {
+                _logger.LogError($"Error while creating the user {request.Username}, error details: {error}");
+                ModelState.AddModelError(error.Code, error.Description);
+            }
+            return StatusCode(StatusCodes.Status500InternalServerError);
         }
-
-        var userToBeCreated = new User
+        catch (Exception ex)
         {
-            FirstName = request.FirstName,
-            LastName = request.LastName,
-            QidNumber = request.QidNumber,
-            Email = request.Email,
-            UserName = request.Username
-        };
-
-        _logger.LogInfo($"Creating a new user with username {request.Username}");
-        var result = await _userManager.CreateAsync(
-            userToBeCreated,
-            request.Password
-        );
-
-        if (result.Succeeded)
-        {
-            request.Password = "";
-            await _context.SaveChangesAsync();
-            _logger.LogInfo($"New user Created {request.Username}");
-            return CreatedAtAction(nameof(Register), new { email = request.Email }, request);
+            _logger.LogError($"An error occured {ex.Message}");
+            return StatusCode(StatusCodes.Status500InternalServerError);
         }
-
-        foreach (var error in result.Errors)
-        {
-            _logger.LogError($"Error while creating the user {request.Username}, error details: {error}");
-            ModelState.AddModelError(error.Code, error.Description);
         }
-        return StatusCode(StatusCodes.Status500InternalServerError);
-    }
 
     [HttpPost]
     [Route("login")]
     public async Task<ActionResult<AuthResponseDTO>> Authenticate([FromBody] AuthRequestDTO request)
     {
-        if (!ModelState.IsValid)
+        try
         {
-            _logger.LogError("Invalid model state");
-            return BadRequest(ModelState);
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state");
+                return BadRequest(ModelState);
+            }
+
+            var managedUser = await _userManager.FindByEmailAsync(request.Email);
+            if (managedUser is null)
+            {
+                _logger.LogInfo($"User {request.Email} not found");
+                return NotFound("Not Found");
+            }
+
+            var isPasswordValid = await _userManager.CheckPasswordAsync(managedUser, request.Password);
+            if (!isPasswordValid)
+            {
+                _logger.LogInfo($"Invalid credentials for {request.Email}");
+                return BadRequest("Invalid Credentials");
+            }
+
+            var validUser = _context.Users.FirstOrDefault(usr => usr.Email == request.Email);
+            if (validUser is null)
+            {
+                return Unauthorized();
+            }
+
+            var token = _tokenService.CreateToken(validUser);
+            await _context.SaveChangesAsync();
+
+            return Ok(new AuthResponseDTO
+            {
+                UserName = validUser.UserName,
+                Email = validUser.Email,
+                Token = token
+            });
         }
-
-        var managedUser = await _userManager.FindByEmailAsync(request.Email);
-        if(managedUser is null)
+        catch (Exception ex)
         {
-            _logger.LogInfo($"User {request.Email} not found");
-            return NotFound("Not Found");
+            _logger.LogError($"An error occured {ex.Message}");
+            return StatusCode(StatusCodes.Status500InternalServerError);
         }
-
-        var isPasswordValid = await _userManager.CheckPasswordAsync(managedUser, request.Password);
-        if (!isPasswordValid)
-        {
-            _logger.LogInfo($"Invalid credentials for {request.Email}");
-            return BadRequest("Invalid Credentials");
         }
-
-        var validUser = _context.Users.FirstOrDefault(usr => usr.Email == request.Email);
-        if (validUser is null)
-        {
-            return Unauthorized();
-        }
-
-        var token = _tokenService.CreateToken(validUser);
-        await _context.SaveChangesAsync();
-
-        return Ok(new AuthResponseDTO
-        {
-            UserName = validUser.UserName,
-            Email = validUser.Email,
-            Token = token
-        });
-    }
 
 }
 

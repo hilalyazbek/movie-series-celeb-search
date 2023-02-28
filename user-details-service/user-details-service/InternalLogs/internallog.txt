@@ -1511,3 +1511,339 @@
 2023-02-28 12:47:40.8758 Debug FileTarget(Name=allfile): Creating file appender: 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-2023-02-28-Development.log'
 2023-02-28 12:47:40.8758 Trace FileTarget(Name=allfile): Opening F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-2023-02-28-Development.log with allowFileSharedWriting=False
 2023-02-28 12:47:40.8758 Trace AsyncWrapper_FileTarget(Name=AllAsyncWrapper): Timer not scheduled, since queue empty
+2023-02-28 13:12:40.5942 Info Message Template Auto Format enabled
+2023-02-28 13:12:40.7382 Debug ScanAssembly('NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2023-02-28 13:12:40.7560 Debug Setting 'NLog.Targets.Wrappers.AsyncTargetWrapper.Name' to 'AllAsyncWrapper'
+2023-02-28 13:12:40.7616 Debug Setting 'NLog.Targets.Wrappers.AsyncTargetWrapper.QueueLimit' to '10000'
+2023-02-28 13:12:40.7616 Debug Setting 'NLog.Targets.Wrappers.AsyncTargetWrapper.BatchSize' to '1000'
+2023-02-28 13:12:40.7616 Debug Setting 'NLog.Targets.FileTarget.Name' to 'allfile'
+2023-02-28 13:12:40.7812 Debug Setting 'NLog.Targets.FileTarget.FileName' to 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.log'
+2023-02-28 13:12:40.7812 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:12:40.7967 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-02-28 13:12:40.7967 Debug Setting 'NLog.LayoutRenderers.EnvironmentLayoutRenderer.Variable' to 'ASPNETCORE_ENVIRONMENT'
+2023-02-28 13:12:40.7967 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:12:40.8080 Trace Scanning EnvironmentLayoutRenderer 'Layout Renderer: ${environment}'
+2023-02-28 13:12:40.8080 Debug Setting 'NLog.Targets.FileTarget.ArchiveFileName' to 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\archives\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.archive-{#}.zip'
+2023-02-28 13:12:40.8080 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:12:40.8080 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-02-28 13:12:40.8080 Debug Setting 'NLog.LayoutRenderers.EnvironmentLayoutRenderer.Variable' to 'ASPNETCORE_ENVIRONMENT'
+2023-02-28 13:12:40.8261 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:12:40.8261 Trace Scanning EnvironmentLayoutRenderer 'Layout Renderer: ${environment}'
+2023-02-28 13:12:40.8261 Debug Setting 'NLog.Targets.FileTarget.ArchiveEvery' to 'Day'
+2023-02-28 13:12:40.8390 Debug Setting 'NLog.Targets.FileTarget.MaxArchiveDays' to '7'
+2023-02-28 13:12:40.8390 Debug Setting 'NLog.Targets.FileTarget.ArchiveNumbering' to 'DateAndSequence'
+2023-02-28 13:12:40.8390 Debug Setting 'NLog.Targets.FileTarget.EnableArchiveFileCompression' to 'True'
+2023-02-28 13:12:40.8390 Debug Setting 'NLog.Targets.FileTarget.Layout' to '${longdate} ${level:uppercase=true} ${message}'
+2023-02-28 13:12:40.8573 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:12:40.8573 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-02-28 13:12:40.8573 Debug Setting 'NLog.LayoutRenderers.LevelLayoutRenderer.Uppercase' to 'true'
+2023-02-28 13:12:40.8705 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:12:40.8705 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-02-28 13:12:40.8705 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:12:40.8705 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-02-28 13:12:40.8874 Debug Adding target NLog.Targets.FileTarget(Name=allfile)
+2023-02-28 13:12:40.8874 Info Registered target NLog.Targets.FileTarget(Name=allfile)
+2023-02-28 13:12:40.8874 Debug Adding target NLog.Targets.Wrappers.AsyncTargetWrapper(Name=AllAsyncWrapper)
+2023-02-28 13:12:40.8874 Info Registered target NLog.Targets.Wrappers.AsyncTargetWrapper(Name=AllAsyncWrapper)
+2023-02-28 13:12:40.9048 Trace ParseRulesElement
+2023-02-28 13:12:40.9225 Debug Watching file-filter 'nlog.config' in directory: F:\Github\credit-suisse\user-details-service\user-details-service
+2023-02-28 13:12:40.9225 Debug --- NLog configuration dump ---
+2023-02-28 13:12:40.9225 Debug Targets:
+2023-02-28 13:12:40.9336 Debug FileTarget(Name=allfile)
+2023-02-28 13:12:40.9336 Debug AsyncWrapper_FileTarget(Name=AllAsyncWrapper)
+2023-02-28 13:12:40.9336 Debug Rules:
+2023-02-28 13:12:40.9336 Debug logNamePattern: (:All) levels: [ Info Warn Error Fatal ] writeTo: [ AllAsyncWrapper ]
+2023-02-28 13:12:40.9336 Debug --- End of NLog configuration dump ---
+2023-02-28 13:12:40.9526 Trace FindReachableObject<System.Object>:
+2023-02-28 13:12:40.9526 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Info Warn Error Fatal ] writeTo: [ AllAsyncWrapper ]'
+2023-02-28 13:12:40.9526 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2023-02-28 13:12:40.9683 Trace  Scanning AsyncTargetWrapper 'AsyncWrapper_FileTarget(Name=AllAsyncWrapper)'
+2023-02-28 13:12:40.9683 Trace   Scanning Property WrappedTarget 'FileTarget(Name=allfile)' NLog.Targets
+2023-02-28 13:12:40.9683 Trace   Scanning FileTarget 'FileTarget(Name=allfile)'
+2023-02-28 13:12:40.9683 Trace    Scanning Property FileName 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.log' NLog.Layouts
+2023-02-28 13:12:40.9811 Trace    Scanning SimpleLayout 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.log'
+2023-02-28 13:12:40.9811 Trace     Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2023-02-28 13:12:40.9811 Trace     Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:12:40.9811 Trace     Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-02-28 13:12:40.9811 Trace     Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:12:40.9988 Trace     Scanning EnvironmentLayoutRenderer 'Layout Renderer: ${environment}'
+2023-02-28 13:12:40.9988 Trace     Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:12:40.9988 Trace    Scanning Property LineEnding 'Default' NLog.Targets
+2023-02-28 13:12:41.0134 Trace    Scanning Property ArchiveFileName 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\archives\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.archive-{#}.zip' NLog.Layouts
+2023-02-28 13:12:41.0134 Trace    Scanning SimpleLayout 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\archives\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.archive-{#}.zip'
+2023-02-28 13:12:41.0134 Trace     Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2023-02-28 13:12:41.0134 Trace     Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:12:41.0305 Trace     Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-02-28 13:12:41.0305 Trace     Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:12:41.0305 Trace     Scanning EnvironmentLayoutRenderer 'Layout Renderer: ${environment}'
+2023-02-28 13:12:41.0427 Trace     Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:12:41.0427 Trace    Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2023-02-28 13:12:41.0427 Trace    Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-02-28 13:12:41.0427 Trace     Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2023-02-28 13:12:41.0587 Trace     Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-02-28 13:12:41.0587 Trace     Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:12:41.0587 Trace     Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-02-28 13:12:41.0587 Trace     Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:12:41.0587 Trace     Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-02-28 13:12:41.0772 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2023-02-28 13:12:41.0772 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2023-02-28 13:12:41.0889 Info Validating config: TargetNames=AllAsyncWrapper, ConfigItems=21, FilePath=F:\Github\credit-suisse\user-details-service\user-details-service\nlog.config
+2023-02-28 13:12:41.0889 Debug Unused target checking is started... Rule Count: 1, Target Count: 2
+2023-02-28 13:12:41.1050 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 2, Unused Target Count: 0
+2023-02-28 13:12:41.1050 Trace Initializing Layout Renderer: ${message}
+2023-02-28 13:12:41.1050 Trace Initializing Layout Renderer: ${literal}
+2023-02-28 13:12:41.1247 Trace Initializing Layout Renderer: ${level}
+2023-02-28 13:12:41.1247 Trace Initializing Layout Renderer: ${literal}
+2023-02-28 13:12:41.1401 Trace Initializing Layout Renderer: ${longdate}
+2023-02-28 13:12:41.1401 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2023-02-28 13:12:41.1558 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:12:41.1558 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-02-28 13:12:41.1558 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2023-02-28 13:12:41.1706 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-02-28 13:12:41.1706 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:12:41.1706 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-02-28 13:12:41.1840 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:12:41.1840 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-02-28 13:12:41.1840 Trace Initializing Layout Renderer: ${literal}
+2023-02-28 13:12:41.2004 Trace Initializing Layout Renderer: ${environment}
+2023-02-28 13:12:41.2004 Trace Initializing Layout Renderer: ${literal}
+2023-02-28 13:12:41.2004 Trace Initializing Layout Renderer: ${shortdate}
+2023-02-28 13:12:41.2004 Trace Initializing Layout Renderer: ${literal}
+2023-02-28 13:12:41.2166 Trace Initializing F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\archives\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.archive-{#}.zip
+2023-02-28 13:12:41.2166 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:12:41.2166 Trace Scanning SimpleLayout 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\archives\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.archive-{#}.zip'
+2023-02-28 13:12:41.2166 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2023-02-28 13:12:41.2344 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:12:41.2344 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-02-28 13:12:41.2344 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:12:41.2480 Trace  Scanning EnvironmentLayoutRenderer 'Layout Renderer: ${environment}'
+2023-02-28 13:12:41.2480 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:12:41.2480 Trace Initializing Layout Renderer: ${literal}
+2023-02-28 13:12:41.2480 Trace Initializing Layout Renderer: ${environment}
+2023-02-28 13:12:41.2621 Trace Initializing Layout Renderer: ${literal}
+2023-02-28 13:12:41.2621 Trace Initializing Layout Renderer: ${shortdate}
+2023-02-28 13:12:41.2621 Trace Initializing Layout Renderer: ${literal}
+2023-02-28 13:12:41.2621 Trace Initializing F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.log
+2023-02-28 13:12:41.2767 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:12:41.2767 Trace Scanning SimpleLayout 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.log'
+2023-02-28 13:12:41.2767 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2023-02-28 13:12:41.2767 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:12:41.2767 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-02-28 13:12:41.2930 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:12:41.2930 Trace  Scanning EnvironmentLayoutRenderer 'Layout Renderer: ${environment}'
+2023-02-28 13:12:41.2930 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:12:41.2930 Trace Initializing FileTarget(Name=allfile)
+2023-02-28 13:12:41.3099 Trace FindReachableObject<NLog.Layouts.Layout>:
+2023-02-28 13:12:41.3099 Trace Scanning FileTarget 'FileTarget(Name=allfile)'
+2023-02-28 13:12:41.3099 Trace  Scanning Property FileName 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.log' NLog.Layouts
+2023-02-28 13:12:41.3099 Trace  Scanning SimpleLayout 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.log'
+2023-02-28 13:12:41.3259 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2023-02-28 13:12:41.3259 Trace  Scanning Property ArchiveFileName 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\archives\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.archive-{#}.zip' NLog.Layouts
+2023-02-28 13:12:41.3259 Trace  Scanning SimpleLayout 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\archives\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.archive-{#}.zip'
+2023-02-28 13:12:41.3386 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2023-02-28 13:12:41.3386 Trace  Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-02-28 13:12:41.3386 Trace FileTarget(Name=allfile) has 3 layouts
+2023-02-28 13:12:41.3551 Trace FileTarget(Name=allfile): Using appenderFactory: NLog.Internal.FileAppenders.CountingSingleProcessFileAppender+Factory
+2023-02-28 13:12:41.3551 Trace Initializing AsyncWrapper_FileTarget(Name=AllAsyncWrapper)
+2023-02-28 13:12:41.3551 Trace FindReachableObject<NLog.Layouts.Layout>:
+2023-02-28 13:12:41.3551 Trace Scanning AsyncTargetWrapper 'AsyncWrapper_FileTarget(Name=AllAsyncWrapper)'
+2023-02-28 13:12:41.3551 Trace  Scanning Property WrappedTarget 'FileTarget(Name=allfile)' NLog.Targets
+2023-02-28 13:12:41.3728 Trace  Scanning FileTarget 'FileTarget(Name=allfile)'
+2023-02-28 13:12:41.3728 Trace   Scanning Property FileName 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.log' NLog.Layouts
+2023-02-28 13:12:41.3728 Trace   Scanning SimpleLayout 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.log'
+2023-02-28 13:12:41.3728 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2023-02-28 13:12:41.3858 Trace   Scanning Property ArchiveFileName 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\archives\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.archive-{#}.zip' NLog.Layouts
+2023-02-28 13:12:41.3858 Trace   Scanning SimpleLayout 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\archives\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.archive-{#}.zip'
+2023-02-28 13:12:41.3858 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2023-02-28 13:12:41.3858 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-02-28 13:12:41.3858 Trace AsyncWrapper_FileTarget(Name=AllAsyncWrapper) has 3 layouts
+2023-02-28 13:12:41.4018 Trace AsyncWrapper_FileTarget(Name=AllAsyncWrapper): Start Timer
+2023-02-28 13:12:41.4018 Trace AsyncWrapper_FileTarget(Name=AllAsyncWrapper): Timer scheduled throttled
+2023-02-28 13:12:41.4018 Trace AsyncWrapper_FileTarget(Name=AllAsyncWrapper): Timer not scheduled, since queue empty
+2023-02-28 13:12:51.9418 Debug Targets configured when LogLevel >= Info for Logger: user_details_service.Helpers.Logging.LoggerManager
+2023-02-28 13:12:51.9477 Debug Logger user_details_service.Helpers.Logging.LoggerManager [Info] => AllAsyncWrapper
+2023-02-28 13:12:51.9477 Debug Logger user_details_service.Helpers.Logging.LoggerManager [Warn] => AllAsyncWrapper
+2023-02-28 13:12:51.9477 Debug Logger user_details_service.Helpers.Logging.LoggerManager [Error] => AllAsyncWrapper
+2023-02-28 13:12:51.9477 Debug Logger user_details_service.Helpers.Logging.LoggerManager [Fatal] => AllAsyncWrapper
+2023-02-28 13:12:51.9663 Trace AsyncWrapper_FileTarget(Name=AllAsyncWrapper): Timer scheduled throttled
+2023-02-28 13:12:51.9806 Trace AsyncWrapper_FileTarget(Name=AllAsyncWrapper): Writing 1 events (Timer)
+2023-02-28 13:12:52.0012 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:12:52.0012 Trace Scanning SimpleLayout 'Development'
+2023-02-28 13:12:52.0163 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2023-02-28 13:12:52.0163 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:12:52.0411 Debug FileTarget(Name=allfile): Preparing for new file: 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-2023-02-28-Development.log'
+2023-02-28 13:12:52.0487 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:12:52.0487 Trace Scanning SimpleLayout 'Development'
+2023-02-28 13:12:52.0575 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2023-02-28 13:12:52.0575 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:12:52.0764 Debug FileTarget(Name=allfile): Creating file appender: 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-2023-02-28-Development.log'
+2023-02-28 13:12:52.0764 Trace FileTarget(Name=allfile): Opening F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-2023-02-28-Development.log with allowFileSharedWriting=False
+2023-02-28 13:12:52.0915 Trace AsyncWrapper_FileTarget(Name=AllAsyncWrapper): Timer not scheduled, since queue empty
+2023-02-28 13:14:59.5093 Info Message Template Auto Format enabled
+2023-02-28 13:14:59.5260 Debug ScanAssembly('NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2023-02-28 13:14:59.5482 Debug Setting 'NLog.Targets.Wrappers.AsyncTargetWrapper.Name' to 'AllAsyncWrapper'
+2023-02-28 13:14:59.5544 Debug Setting 'NLog.Targets.Wrappers.AsyncTargetWrapper.QueueLimit' to '10000'
+2023-02-28 13:14:59.5544 Debug Setting 'NLog.Targets.Wrappers.AsyncTargetWrapper.BatchSize' to '1000'
+2023-02-28 13:14:59.5544 Debug Setting 'NLog.Targets.FileTarget.Name' to 'allfile'
+2023-02-28 13:14:59.5704 Debug Setting 'NLog.Targets.FileTarget.FileName' to 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.log'
+2023-02-28 13:14:59.5704 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:14:59.5704 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-02-28 13:14:59.5874 Debug Setting 'NLog.LayoutRenderers.EnvironmentLayoutRenderer.Variable' to 'ASPNETCORE_ENVIRONMENT'
+2023-02-28 13:14:59.5874 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:14:59.5874 Trace Scanning EnvironmentLayoutRenderer 'Layout Renderer: ${environment}'
+2023-02-28 13:14:59.5996 Debug Setting 'NLog.Targets.FileTarget.ArchiveFileName' to 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\archives\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.archive-{#}.zip'
+2023-02-28 13:14:59.5996 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:14:59.5996 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-02-28 13:14:59.5996 Debug Setting 'NLog.LayoutRenderers.EnvironmentLayoutRenderer.Variable' to 'ASPNETCORE_ENVIRONMENT'
+2023-02-28 13:14:59.6164 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:14:59.6164 Trace Scanning EnvironmentLayoutRenderer 'Layout Renderer: ${environment}'
+2023-02-28 13:14:59.6164 Debug Setting 'NLog.Targets.FileTarget.ArchiveEvery' to 'Day'
+2023-02-28 13:14:59.6164 Debug Setting 'NLog.Targets.FileTarget.MaxArchiveDays' to '7'
+2023-02-28 13:14:59.6164 Debug Setting 'NLog.Targets.FileTarget.ArchiveNumbering' to 'DateAndSequence'
+2023-02-28 13:14:59.6324 Debug Setting 'NLog.Targets.FileTarget.EnableArchiveFileCompression' to 'True'
+2023-02-28 13:14:59.6324 Debug Setting 'NLog.Targets.FileTarget.Layout' to '${longdate} ${level:uppercase=true} ${message}'
+2023-02-28 13:14:59.6324 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:14:59.6324 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-02-28 13:14:59.6495 Debug Setting 'NLog.LayoutRenderers.LevelLayoutRenderer.Uppercase' to 'true'
+2023-02-28 13:14:59.6495 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:14:59.6495 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-02-28 13:14:59.6678 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:14:59.6678 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-02-28 13:14:59.6815 Debug Adding target NLog.Targets.FileTarget(Name=allfile)
+2023-02-28 13:14:59.6815 Info Registered target NLog.Targets.FileTarget(Name=allfile)
+2023-02-28 13:14:59.6934 Debug Adding target NLog.Targets.Wrappers.AsyncTargetWrapper(Name=AllAsyncWrapper)
+2023-02-28 13:14:59.6934 Info Registered target NLog.Targets.Wrappers.AsyncTargetWrapper(Name=AllAsyncWrapper)
+2023-02-28 13:14:59.6934 Trace ParseRulesElement
+2023-02-28 13:14:59.7187 Debug Watching file-filter 'nlog.config' in directory: F:\Github\credit-suisse\user-details-service\user-details-service
+2023-02-28 13:14:59.7187 Debug --- NLog configuration dump ---
+2023-02-28 13:14:59.7261 Debug Targets:
+2023-02-28 13:14:59.7261 Debug FileTarget(Name=allfile)
+2023-02-28 13:14:59.7261 Debug AsyncWrapper_FileTarget(Name=AllAsyncWrapper)
+2023-02-28 13:14:59.7261 Debug Rules:
+2023-02-28 13:14:59.7412 Debug logNamePattern: (:All) levels: [ Info Warn Error Fatal ] writeTo: [ AllAsyncWrapper ]
+2023-02-28 13:14:59.7412 Debug --- End of NLog configuration dump ---
+2023-02-28 13:14:59.7412 Trace FindReachableObject<System.Object>:
+2023-02-28 13:14:59.7412 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Info Warn Error Fatal ] writeTo: [ AllAsyncWrapper ]'
+2023-02-28 13:14:59.7603 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2023-02-28 13:14:59.7603 Trace  Scanning AsyncTargetWrapper 'AsyncWrapper_FileTarget(Name=AllAsyncWrapper)'
+2023-02-28 13:14:59.7603 Trace   Scanning Property WrappedTarget 'FileTarget(Name=allfile)' NLog.Targets
+2023-02-28 13:14:59.7713 Trace   Scanning FileTarget 'FileTarget(Name=allfile)'
+2023-02-28 13:14:59.7713 Trace    Scanning Property FileName 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.log' NLog.Layouts
+2023-02-28 13:14:59.7713 Trace    Scanning SimpleLayout 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.log'
+2023-02-28 13:14:59.7713 Trace     Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2023-02-28 13:14:59.7713 Trace     Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:14:59.7897 Trace     Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-02-28 13:14:59.7897 Trace     Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:14:59.7897 Trace     Scanning EnvironmentLayoutRenderer 'Layout Renderer: ${environment}'
+2023-02-28 13:14:59.7897 Trace     Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:14:59.7897 Trace    Scanning Property LineEnding 'Default' NLog.Targets
+2023-02-28 13:14:59.8056 Trace    Scanning Property ArchiveFileName 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\archives\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.archive-{#}.zip' NLog.Layouts
+2023-02-28 13:14:59.8056 Trace    Scanning SimpleLayout 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\archives\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.archive-{#}.zip'
+2023-02-28 13:14:59.8056 Trace     Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2023-02-28 13:14:59.8056 Trace     Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:14:59.8183 Trace     Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-02-28 13:14:59.8183 Trace     Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:14:59.8183 Trace     Scanning EnvironmentLayoutRenderer 'Layout Renderer: ${environment}'
+2023-02-28 13:14:59.8183 Trace     Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:14:59.8183 Trace    Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2023-02-28 13:14:59.8343 Trace    Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-02-28 13:14:59.8343 Trace     Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2023-02-28 13:14:59.8343 Trace     Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-02-28 13:14:59.8343 Trace     Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:14:59.8499 Trace     Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-02-28 13:14:59.8499 Trace     Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:14:59.8499 Trace     Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-02-28 13:14:59.8499 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2023-02-28 13:14:59.8499 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2023-02-28 13:14:59.8728 Info Validating config: TargetNames=AllAsyncWrapper, ConfigItems=21, FilePath=F:\Github\credit-suisse\user-details-service\user-details-service\nlog.config
+2023-02-28 13:14:59.8728 Debug Unused target checking is started... Rule Count: 1, Target Count: 2
+2023-02-28 13:14:59.8895 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 2, Unused Target Count: 0
+2023-02-28 13:14:59.8895 Trace Initializing Layout Renderer: ${message}
+2023-02-28 13:14:59.8977 Trace Initializing Layout Renderer: ${literal}
+2023-02-28 13:14:59.8977 Trace Initializing Layout Renderer: ${level}
+2023-02-28 13:14:59.8977 Trace Initializing Layout Renderer: ${literal}
+2023-02-28 13:14:59.8977 Trace Initializing Layout Renderer: ${longdate}
+2023-02-28 13:14:59.8977 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2023-02-28 13:14:59.9152 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:14:59.9152 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-02-28 13:14:59.9152 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2023-02-28 13:14:59.9152 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-02-28 13:14:59.9272 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:14:59.9272 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-02-28 13:14:59.9272 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:14:59.9272 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-02-28 13:14:59.9272 Trace Initializing Layout Renderer: ${literal}
+2023-02-28 13:14:59.9445 Trace Initializing Layout Renderer: ${environment}
+2023-02-28 13:14:59.9445 Trace Initializing Layout Renderer: ${literal}
+2023-02-28 13:14:59.9445 Trace Initializing Layout Renderer: ${shortdate}
+2023-02-28 13:14:59.9445 Trace Initializing Layout Renderer: ${literal}
+2023-02-28 13:14:59.9445 Trace Initializing F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\archives\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.archive-{#}.zip
+2023-02-28 13:14:59.9595 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:14:59.9595 Trace Scanning SimpleLayout 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\archives\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.archive-{#}.zip'
+2023-02-28 13:14:59.9595 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2023-02-28 13:14:59.9595 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:14:59.9595 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-02-28 13:14:59.9756 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:14:59.9756 Trace  Scanning EnvironmentLayoutRenderer 'Layout Renderer: ${environment}'
+2023-02-28 13:14:59.9756 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:14:59.9756 Trace Initializing Layout Renderer: ${literal}
+2023-02-28 13:14:59.9756 Trace Initializing Layout Renderer: ${environment}
+2023-02-28 13:14:59.9913 Trace Initializing Layout Renderer: ${literal}
+2023-02-28 13:14:59.9913 Trace Initializing Layout Renderer: ${shortdate}
+2023-02-28 13:14:59.9913 Trace Initializing Layout Renderer: ${literal}
+2023-02-28 13:14:59.9913 Trace Initializing F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.log
+2023-02-28 13:15:00.0073 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:15:00.0073 Trace Scanning SimpleLayout 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.log'
+2023-02-28 13:15:00.0073 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2023-02-28 13:15:00.0307 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:15:00.0369 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-02-28 13:15:00.0369 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:15:00.0369 Trace  Scanning EnvironmentLayoutRenderer 'Layout Renderer: ${environment}'
+2023-02-28 13:15:00.0565 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:15:00.0565 Trace Initializing FileTarget(Name=allfile)
+2023-02-28 13:15:00.0780 Trace FindReachableObject<NLog.Layouts.Layout>:
+2023-02-28 13:15:00.0940 Trace Scanning FileTarget 'FileTarget(Name=allfile)'
+2023-02-28 13:15:00.0940 Trace  Scanning Property FileName 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.log' NLog.Layouts
+2023-02-28 13:15:00.1025 Trace  Scanning SimpleLayout 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.log'
+2023-02-28 13:15:00.1025 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2023-02-28 13:15:00.1025 Trace  Scanning Property ArchiveFileName 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\archives\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.archive-{#}.zip' NLog.Layouts
+2023-02-28 13:15:00.1175 Trace  Scanning SimpleLayout 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\archives\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.archive-{#}.zip'
+2023-02-28 13:15:00.1175 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2023-02-28 13:15:00.1175 Trace  Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-02-28 13:15:00.1332 Trace FileTarget(Name=allfile) has 3 layouts
+2023-02-28 13:15:00.1332 Trace FileTarget(Name=allfile): Using appenderFactory: NLog.Internal.FileAppenders.CountingSingleProcessFileAppender+Factory
+2023-02-28 13:15:00.1471 Trace Initializing AsyncWrapper_FileTarget(Name=AllAsyncWrapper)
+2023-02-28 13:15:00.1471 Trace FindReachableObject<NLog.Layouts.Layout>:
+2023-02-28 13:15:00.1471 Trace Scanning AsyncTargetWrapper 'AsyncWrapper_FileTarget(Name=AllAsyncWrapper)'
+2023-02-28 13:15:00.1642 Trace  Scanning Property WrappedTarget 'FileTarget(Name=allfile)' NLog.Targets
+2023-02-28 13:15:00.1642 Trace  Scanning FileTarget 'FileTarget(Name=allfile)'
+2023-02-28 13:15:00.1642 Trace   Scanning Property FileName 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.log' NLog.Layouts
+2023-02-28 13:15:00.1789 Trace   Scanning SimpleLayout 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.log'
+2023-02-28 13:15:00.1789 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2023-02-28 13:15:00.1789 Trace   Scanning Property ArchiveFileName 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\archives\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.archive-{#}.zip' NLog.Layouts
+2023-02-28 13:15:00.1789 Trace   Scanning SimpleLayout 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\archives\nlog-all-${shortdate}-${environment:ASPNETCORE_ENVIRONMENT}.archive-{#}.zip'
+2023-02-28 13:15:00.1949 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2023-02-28 13:15:00.1949 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-02-28 13:15:00.1949 Trace AsyncWrapper_FileTarget(Name=AllAsyncWrapper) has 3 layouts
+2023-02-28 13:15:00.1949 Trace AsyncWrapper_FileTarget(Name=AllAsyncWrapper): Start Timer
+2023-02-28 13:15:00.2121 Trace AsyncWrapper_FileTarget(Name=AllAsyncWrapper): Timer scheduled throttled
+2023-02-28 13:15:00.2330 Trace AsyncWrapper_FileTarget(Name=AllAsyncWrapper): Timer not scheduled, since queue empty
+2023-02-28 13:15:10.7631 Debug Targets configured when LogLevel >= Info for Logger: user_details_service.Helpers.Logging.LoggerManager
+2023-02-28 13:15:10.7631 Debug Logger user_details_service.Helpers.Logging.LoggerManager [Info] => AllAsyncWrapper
+2023-02-28 13:15:10.7712 Debug Logger user_details_service.Helpers.Logging.LoggerManager [Warn] => AllAsyncWrapper
+2023-02-28 13:15:10.7712 Debug Logger user_details_service.Helpers.Logging.LoggerManager [Error] => AllAsyncWrapper
+2023-02-28 13:15:10.7712 Debug Logger user_details_service.Helpers.Logging.LoggerManager [Fatal] => AllAsyncWrapper
+2023-02-28 13:15:10.8048 Trace AsyncWrapper_FileTarget(Name=AllAsyncWrapper): Timer scheduled throttled
+2023-02-28 13:15:10.8048 Trace AsyncWrapper_FileTarget(Name=AllAsyncWrapper): Writing 1 events (Timer)
+2023-02-28 13:15:10.8337 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:15:10.8337 Trace Scanning SimpleLayout 'Development'
+2023-02-28 13:15:10.8337 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2023-02-28 13:15:10.8503 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:15:10.8682 Debug FileTarget(Name=allfile): Preparing for new file: 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-2023-02-28-Development.log'
+2023-02-28 13:15:10.8682 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-02-28 13:15:10.8682 Trace Scanning SimpleLayout 'Development'
+2023-02-28 13:15:10.8829 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2023-02-28 13:15:10.8829 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-02-28 13:15:10.8983 Debug FileTarget(Name=allfile): Creating file appender: 'F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-2023-02-28-Development.log'
+2023-02-28 13:15:10.8983 Trace FileTarget(Name=allfile): Opening F:\Github\credit-suisse\user-details-service\user-details-service\InternalLogs\nlog-all-2023-02-28-Development.log with allowFileSharedWriting=False
+2023-02-28 13:15:10.9126 Trace AsyncWrapper_FileTarget(Name=AllAsyncWrapper): Timer not scheduled, since queue empty
