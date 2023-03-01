@@ -349,7 +349,7 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-# Added manually
+# Added manually by Developers
 nlog.config
 *.DS_STORE
 *.txt
