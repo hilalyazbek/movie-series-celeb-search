@@ -7,7 +7,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddMoviesApiServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddJWTService(builder.Configuration);
 

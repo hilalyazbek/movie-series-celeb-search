@@ -1,35 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Github\\credit-suisse\\movie-service\\movie-service.csproj": {}
+    "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/movie-service/movie-service.csproj": {}
   },
   "projects": {
-    "F:\\Github\\credit-suisse\\application-infrastructure\\application-infrastructure.csproj": {
+    "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/application-infrastructure/application-infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Github\\credit-suisse\\application-infrastructure\\application-infrastructure.csproj",
+        "projectUniqueName": "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/application-infrastructure/application-infrastructure.csproj",
         "projectName": "application-infrastructure",
-        "projectPath": "F:\\Github\\credit-suisse\\application-infrastructure\\application-infrastructure.csproj",
-        "packagesPath": "C:\\Users\\hyazbek\\.nuget\\packages\\",
-        "outputPath": "F:\\Github\\credit-suisse\\application-infrastructure\\obj\\",
+        "projectPath": "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/application-infrastructure/application-infrastructure.csproj",
+        "packagesPath": "/Users/hilalyazbek/.nuget/packages/",
+        "outputPath": "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/application-infrastructure/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\hyazbek\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/Users/hilalyazbek/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://www.nuget.org/api/v2": {}
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -47,10 +39,6 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Authentication.JwtBearer": {
-              "target": "Package",
-              "version": "[7.0.3, )"
-            },
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
               "version": "[2.2.0, )"
@@ -63,17 +51,9 @@
               "target": "Package",
               "version": "[7.0.3, )"
             },
-            "NLog.Extensions.Logging": {
-              "target": "Package",
-              "version": "[5.2.2, )"
-            },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[7.0.3, )"
-            },
-            "System.IdentityModel.Tokens.Jwt": {
-              "target": "Package",
-              "version": "[6.27.0, )"
             },
             "System.Linq.Dynamic.Core": {
               "target": "Package",
@@ -96,43 +76,35 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.200/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Github\\credit-suisse\\movie-service\\movie-service.csproj": {
+    "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/movie-service/movie-service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Github\\credit-suisse\\movie-service\\movie-service.csproj",
+        "projectUniqueName": "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/movie-service/movie-service.csproj",
         "projectName": "movie-service",
-        "projectPath": "F:\\Github\\credit-suisse\\movie-service\\movie-service.csproj",
-        "packagesPath": "C:\\Users\\hyazbek\\.nuget\\packages\\",
-        "outputPath": "F:\\Github\\credit-suisse\\movie-service\\obj\\",
+        "projectPath": "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/movie-service/movie-service.csproj",
+        "packagesPath": "/Users/hilalyazbek/.nuget/packages/",
+        "outputPath": "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/movie-service/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\hyazbek\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/Users/hilalyazbek/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://www.nuget.org/api/v2": {}
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "F:\\Github\\credit-suisse\\application-infrastructure\\application-infrastructure.csproj": {
-                "projectPath": "F:\\Github\\credit-suisse\\application-infrastructure\\application-infrastructure.csproj"
+              "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/application-infrastructure/application-infrastructure.csproj": {
+                "projectPath": "/Users/hilalyazbek/Software-Development/Github/repos/credit-suisse/application-infrastructure/application-infrastructure.csproj"
               }
             }
           }
@@ -147,14 +119,6 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "AutoMapper": {
-              "target": "Package",
-              "version": "[12.0.1, )"
-            },
-            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
-              "target": "Package",
-              "version": "[12.0.0, )"
-            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[7.0.3, )"
@@ -163,17 +127,9 @@
               "target": "Package",
               "version": "[7.0.3, )"
             },
-            "Microsoft.Extensions.Http": {
-              "target": "Package",
-              "version": "[7.0.0, )"
-            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
-            },
-            "TMDbLib": {
-              "target": "Package",
-              "version": "[2.0.0, )"
             }
           },
           "imports": [
@@ -195,7 +151,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.200/RuntimeIdentifierGraph.json"
         }
       }
     }
