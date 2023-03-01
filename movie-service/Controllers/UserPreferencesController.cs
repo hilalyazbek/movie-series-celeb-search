@@ -15,16 +15,16 @@ using application_infrastructure.Entities;
 namespace movie_service.Controllers;
 
 [ApiController]
-[Route("watchlater")]
+[Route("userpref")]
 //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-public class WatchLaterController : ControllerBase
+public class UserPreferencesController : ControllerBase
 {
     private readonly IWatchLaterRepository _watchLaterRepository;
     private readonly IUserRepository _userRepository;
     private readonly ILoggerManager _logger;
     private readonly IMapper _mapper;
 
-    public WatchLaterController(IWatchLaterRepository watchLaterRepository, IUserRepository userRepository, ILoggerManager logger, IMapper mapper)
+    public UserPreferencesController(IWatchLaterRepository watchLaterRepository, IUserRepository userRepository, ILoggerManager logger, IMapper mapper)
     {
         _watchLaterRepository = watchLaterRepository;
         _userRepository = userRepository;
@@ -32,7 +32,7 @@ public class WatchLaterController : ControllerBase
         _mapper = mapper;
     }
 
-    [HttpGet("{userId}")]
+    [HttpGet("/watchlater/{userId}")]
     public async Task<IActionResult> GetWatchList(string userId)
     {
         try
@@ -62,7 +62,7 @@ public class WatchLaterController : ControllerBase
         }
     }
 
-    [HttpPost]
+    [HttpPost("/watchlater/")]
     public async Task<ActionResult<WatchLaterDTO>> AddToWatchLater([FromBody] WatchLaterDTO request)
     {
         try
@@ -85,6 +85,43 @@ public class WatchLaterController : ControllerBase
             var result = _watchLaterRepository.AddToWatchLater(requestToBeCreated);
 
             if(result is null)
+            {
+                _logger.LogError($"cannot add program with id {request.ProgramId} to the user {request.UserId} watch list");
+                return BadRequest("Something went wrong");
+            }
+
+            return Ok(request);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"An error occured {ex.Message}");
+            return StatusCode(StatusCodes.Status500InternalServerError);
+        }
+    }
+
+    [HttpPost("/rate/")]
+    public async Task<ActionResult<RatingDTO>> RateProgram([FromBody] RatingDTO request)
+    {
+        try
+        {
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state");
+                return BadRequest(ModelState);
+            }
+
+            var user = await _userRepository.GetUserByIdAsync(request.UserId);
+            if (user is null)
+            {
+                _logger.LogError($"user with id {request.UserId} does not exist.");
+                return NotFound("User not found");
+            }
+
+            var requestToBeCreated = _mapper.Map<WatchLater>(request);
+
+            var result = _watchLaterRepository.AddToWatchLater(requestToBeCreated);
+
+            if (result is null)
             {
                 _logger.LogError($"cannot add program with id {request.ProgramId} to the user {request.UserId} watch list");
                 return BadRequest("Something went wrong");
