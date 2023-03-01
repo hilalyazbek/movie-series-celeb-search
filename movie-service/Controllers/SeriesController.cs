@@ -7,6 +7,7 @@ using TMDbLib.Objects.Movies;
 using TMDbLib.Objects.Search;
 using AutoMapper;
 using movie_service.DTOs;
+using application_infrastructure.PagingAndSorting;
 
 namespace movie_service.Controllers;
 
@@ -24,14 +25,15 @@ public class SeriesController : ControllerBase
         _mapper = mapper;
     }
 
-    [HttpGet("{query}")]
-    public ActionResult Get(string query)
+    [HttpGet]
+    public ActionResult Get([FromQuery] string searchQuery, [FromQuery] PagingParameters pagingParameters,
+        [FromQuery] SortingParameters sortingParameters)
     {
-        var series = TmdbService.SearchTvSeason(query);
+        var series = TmdbService.SearchTvSeason(searchQuery, pagingParameters, sortingParameters);
         
         if (series is null)
         {
-            return NotFound($"No series with {query} in their title were found");
+            return NotFound($"No series with {searchQuery} in their title were found");
         }
 
         var result = _mapper.Map<IEnumerable<TVShowDTO>>(series);

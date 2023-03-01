@@ -1,4 +1,5 @@
-﻿using System;
+﻿using application_infrastructure.PagingAndSorting;
+using System;
 using System.Linq;
 using TMDbLib.Client;
 using TMDbLib.Objects.General;
@@ -11,13 +12,13 @@ namespace movie_service.HttpClients;
 
 public static class TmdbService
 {
-    public static List<Movie> SearchMovies(string query)
+    public static List<Movie> SearchMovies(string query, PagingParameters pagingParameters, SortingParameters sortingParameters)
     {
         var result = new List<Movie>();
         var client = new TMDbClient("b4deb664afe3d5005f9f04f34dbb32fa");
-        var searchContainer = client.SearchMovieAsync(query).Result;
+        var searchResults = client.SearchMovieAsync(query).Result.Results.Skip(pagingParameters.PageSize * pagingParameters.PageNumber).Take(pagingParameters.PageSize);
 
-        foreach(var movie in searchContainer.Results)
+        foreach (var movie in searchResults)
         {
             
             result.Add(client.GetMovieAsync(movie.Id).Result);
@@ -26,13 +27,13 @@ public static class TmdbService
         return result;
     }
 
-    public static List<TvShow> SearchTvSeason(string query)
+    public static List<TvShow> SearchTvSeason(string query, PagingParameters pagingParameters, SortingParameters sortingParameters)
     {
         var result = new List<TvShow>();
         var client = new TMDbClient("b4deb664afe3d5005f9f04f34dbb32fa");
-        var searchContainer = client.SearchTvShowAsync(query).Result;
+        var searchResults = client.SearchTvShowAsync(query).Result.Results.Skip(pagingParameters.PageSize * pagingParameters.PageNumber).Take(pagingParameters.PageSize);
 
-        foreach (var tvShow in searchContainer.Results)
+        foreach (var tvShow in searchResults)
         {
             result.Add(client.GetTvShowAsync(tvShow.Id).Result);
         }
@@ -40,14 +41,14 @@ public static class TmdbService
         return result;
     }
 
-    public static List<Person> SearchCelebrity(string query)
+    public static List<Person> SearchCelebrity(string query, PagingParameters pagingParameters, SortingParameters sortingParameters)
     {
         var result = new List<Person>();
         
         var client = new TMDbClient("b4deb664afe3d5005f9f04f34dbb32fa");
-        var searchContainer = client.SearchPersonAsync(query).Result;
+        var searchResults = client.SearchPersonAsync(query).Result.Results.Skip(pagingParameters.PageSize * pagingParameters.PageNumber).Take(pagingParameters.PageSize);
 
-        foreach (var celebrity in searchContainer.Results)
+        foreach (var celebrity in searchResults)
         {
             result.Add(client.GetPersonAsync(celebrity.Id).Result);
         }

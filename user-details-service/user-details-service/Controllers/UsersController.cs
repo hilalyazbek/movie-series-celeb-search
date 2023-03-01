@@ -42,12 +42,12 @@ public class UsersController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetUsers([FromQuery] PagingParameters userParameters,
+    public async Task<IActionResult> GetUsers([FromQuery] PagingParameters pagingParameters,
         [FromQuery] SortingParameters sortingParameters)
     {
         try
         {
-            var users = await _userRepository.GetUsersAsync(userParameters, sortingParameters);
+            var users = await _userRepository.GetUsersAsync(pagingParameters, sortingParameters);
             var result = _mapper.Map<IEnumerable<ViewUserDTO>>(users);
 
             return Ok(result);

@@ -7,6 +7,7 @@ using TMDbLib.Objects.Movies;
 using TMDbLib.Objects.Search;
 using AutoMapper;
 using movie_service.DTOs;
+using application_infrastructure.PagingAndSorting;
 
 namespace movie_service.Controllers;
 
@@ -24,13 +25,14 @@ public class CelebrityController : ControllerBase
         _mapper = mapper;
     }
 
-    [HttpGet("{query}")]
-    public ActionResult GetCelebrity(string query)
+    [HttpGet]
+    public ActionResult GetCelebrity([FromQuery] string searchQuery, [FromQuery] PagingParameters pagingParameters,
+        [FromQuery] SortingParameters sortingParameters)
     {
-        var celebrities = TmdbService.SearchCelebrity(query);
+        var celebrities = TmdbService.SearchCelebrity(searchQuery, pagingParameters, sortingParameters);
         if (celebrities is null)
         {
-            return NotFound($"No celebrity with {query} in their title were found");
+            return NotFound($"No celebrity with {searchQuery} in their title were found");
         }
 
         var result = _mapper.Map<IEnumerable<CelebrityDTO>>(celebrities);
