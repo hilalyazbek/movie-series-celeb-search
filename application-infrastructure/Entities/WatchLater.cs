@@ -5,9 +5,14 @@ namespace application_infrastructure.Entities;
 
 public class WatchLater
 {
-    public string? Id { get; set; }
-    public string? UserName { get; set; }
-    public string? ProgramId { get; set; }
+    public Guid Id { get; set; }
+
+    public User? User { get; set; }
+
+    public string? UserId { get; set; }
+
+    public int ProgramId { get; set; }
+
     public string? ProgramName { get; set; }
 }
 
