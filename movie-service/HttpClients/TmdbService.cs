@@ -3,49 +3,53 @@ using System.Linq;
 using TMDbLib.Client;
 using TMDbLib.Objects.General;
 using TMDbLib.Objects.Movies;
+using TMDbLib.Objects.People;
 using TMDbLib.Objects.Search;
+using TMDbLib.Objects.TvShows;
 
 namespace movie_service.HttpClients;
 
 public static class TmdbService
 {
-    public static List<SearchMovie> SearchMovies(string query)
+    public static List<Movie> SearchMovies(string query)
     {
-        List<SearchMovie> result = new();
-        TMDbClient client = new TMDbClient("b4deb664afe3d5005f9f04f34dbb32fa");
-        SearchContainer<SearchMovie> searchContainer = client.SearchMovieAsync(query).Result;
+        var result = new List<Movie>();
+        var client = new TMDbClient("b4deb664afe3d5005f9f04f34dbb32fa");
+        var searchContainer = client.SearchMovieAsync(query).Result;
 
-        foreach(SearchMovie movie in searchContainer.Results.Take(1))
+        foreach(var movie in searchContainer.Results)
         {
-            result.Add(movie);
+            
+            result.Add(client.GetMovieAsync(movie.Id).Result);
         }
 
         return result;
     }
 
-    public static List<SearchTv> SearchTvSeason(string query)
+    public static List<TvShow> SearchTvSeason(string query)
     {
-        List<SearchTv> result = new();
-        TMDbClient client = new TMDbClient("b4deb664afe3d5005f9f04f34dbb32fa");
-        SearchContainer<SearchTv> searchContainer = client.SearchTvShowAsync(query).Result;
+        var result = new List<TvShow>();
+        var client = new TMDbClient("b4deb664afe3d5005f9f04f34dbb32fa");
+        var searchContainer = client.SearchTvShowAsync(query).Result;
 
-        foreach (SearchTv series in searchContainer.Results)
+        foreach (var tvShow in searchContainer.Results)
         {
-            result.Add(series);
+            result.Add(client.GetTvShowAsync(tvShow.Id).Result);
         }
 
         return result;
     }
 
-    public static List<SearchPerson> SearchCelebrity(string query)
+    public static List<Person> SearchCelebrity(string query)
     {
-        List<SearchPerson> result = new();
-        TMDbClient client = new TMDbClient("b4deb664afe3d5005f9f04f34dbb32fa");
-        SearchContainer<SearchPerson> searchContainer = client.SearchPersonAsync(query).Result;
+        var result = new List<Person>();
+        
+        var client = new TMDbClient("b4deb664afe3d5005f9f04f34dbb32fa");
+        var searchContainer = client.SearchPersonAsync(query).Result;
 
-        foreach (SearchPerson celebrity in searchContainer.Results)
+        foreach (var celebrity in searchContainer.Results)
         {
-            result.Add(celebrity);
+            result.Add(client.GetPersonAsync(celebrity.Id).Result);
         }
 
         return result;

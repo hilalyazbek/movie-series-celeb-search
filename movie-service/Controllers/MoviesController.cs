@@ -5,6 +5,8 @@ using System.Net.Http;
 using movie_service.HttpClients;
 using TMDbLib.Objects.Movies;
 using TMDbLib.Objects.Search;
+using AutoMapper;
+using movie_service.DTOs;
 
 namespace movie_service.Controllers;
 
@@ -14,21 +16,27 @@ namespace movie_service.Controllers;
 public class MoviesController : ControllerBase
 {
     private readonly ILogger<MoviesController> _logger;
+    private readonly IMapper _mapper;
 
-    public MoviesController(ILogger<MoviesController> logger)
+    public MoviesController(ILogger<MoviesController> logger, IMapper mapper)
     {
         _logger = logger;
+        _mapper = mapper;
     }
 
     [HttpGet("{query}")]
     public ActionResult Get(string query)
     {
-        List<SearchMovie> movies = TmdbService.SearchMovies(query);
-        if(movies is null)
+        var movies = TmdbService.SearchMovies(query);
+
+        if (movies is null)
         {
             return NotFound($"No movies with {query} in their title were found");
         }
-        return Ok(movies);
+
+        var result = _mapper.Map<IEnumerable<MovieDTO>>(movies);
+        
+        return Ok(result);
     }
 }
 

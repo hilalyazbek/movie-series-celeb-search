@@ -5,6 +5,8 @@ using System.Net.Http;
 using movie_service.HttpClients;
 using TMDbLib.Objects.Movies;
 using TMDbLib.Objects.Search;
+using AutoMapper;
+using movie_service.DTOs;
 
 namespace movie_service.Controllers;
 
@@ -14,20 +16,26 @@ namespace movie_service.Controllers;
 public class SeriesController : ControllerBase
 {
     private readonly ILogger<SeriesController> _logger;
+    private readonly IMapper _mapper;
 
-    public SeriesController(ILogger<SeriesController> logger)
+    public SeriesController(ILogger<SeriesController> logger, IMapper mapper)
     {
         _logger = logger;
+        _mapper = mapper;
     }
 
     [HttpGet("{query}")]
     public ActionResult Get(string query)
     {
-        List<SearchTv> movies = TmdbService.SearchTvSeason(query);
-        if(movies is null)
+        var series = TmdbService.SearchTvSeason(query);
+        
+        if (series is null)
         {
             return NotFound($"No series with {query} in their title were found");
         }
-        return Ok(movies);
+
+        var result = _mapper.Map<IEnumerable<TVShowDTO>>(series);
+       
+        return Ok(result);
     }
 }
