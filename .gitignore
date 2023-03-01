@@ -351,3 +351,5 @@ MigrationBackup/
 /movie-service/bin/Debug/net7.0/movie-service.pdb
 /movie-service/bin/Debug/net7.0/movie-service.dll
 /movie-service/bin/Debug/net7.0/appsettings.json
+/movie-service/obj/Debug/net7.0/refint/movie-service.dll
+/movie-service/obj/Debug/net7.0/ref/movie-service.dll
