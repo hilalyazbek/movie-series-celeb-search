@@ -11,6 +11,7 @@ using application_infrastructure.Repositories;
 using application_infrastructure.Entities;
 using application_infrastructure.TokenService;
 using application_infrastructure.Logging;
+using NLog;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -72,6 +73,8 @@ public static class ConfigureServices
 
     public static void ConfigureLoggerService(this IServiceCollection services)
     {
+        // Setup NLog
+        LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
         services.AddSingleton<ILoggerManager, LoggerManager>();
     }
 }

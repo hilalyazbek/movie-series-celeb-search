@@ -12,13 +12,12 @@ namespace movie_service.HttpClients;
 
 public static class TmdbService
 {
-
     public static List<Movie> SearchMovies(string query, PagingParameters pagingParameters, SortingParameters sortingParameters)
     {
         var result = new List<Movie>();
         var client = new TMDbClient("b4deb664afe3d5005f9f04f34dbb32fa");
         var searchResults = client.SearchMovieAsync(query, pagingParameters.PageNumber).Result.Results;
-        
+
         foreach (var movie in searchResults)
         {            
             result.Add(client.GetMovieAsync(movie.Id).Result);
