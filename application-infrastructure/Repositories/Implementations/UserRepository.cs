@@ -6,8 +6,9 @@ using System.Linq.Dynamic.Core;
 using application_infrastructure.DBContexts;
 using application_infrastructure.Entities;
 using application_infrastructure.PagingAndSorting;
+using application_infrastructure.Repositories.Interfaces;
 
-namespace application_infrastructure.Repositories;
+namespace application_infrastructure.Repositories.Implementations;
 
 public class UserRepository : GenericRepository<User>, IUserRepository
 {

@@ -1,7 +1,7 @@
 ﻿using application_infrastructure.Entities;
 using application_infrastructure.PagingAndSorting;
 
-namespace application_infrastructure.Repositories;
+namespace application_infrastructure.Repositories.Interfaces;
 
 public interface IUserRepository:IGenericRepository<User>
 {

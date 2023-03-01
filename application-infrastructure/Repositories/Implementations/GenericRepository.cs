@@ -1,8 +1,9 @@
 ﻿using application_infrastructure.DBContexts;
+using application_infrastructure.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace application_infrastructure.Repositories;
+namespace application_infrastructure.Repositories.Implementations;
 
 public abstract class GenericRepository<T> : IGenericRepository<T> where T : class
 {
