@@ -19,9 +19,11 @@ public class WatchLaterRepository : GenericRepository<WatchLater>, IWatchLaterRe
 
     public WatchLater AddToWatchLater(WatchLater watchLater)
     {
-        var created = Create(watchLater);
-        Save();
-        return created;
-        
+        return Create(watchLater);
+    }
+
+    public IEnumerable<WatchLater> GetWatchListByUserId(string userId)
+    {
+        return FindByCondition(itm => itm.UserId == userId);
     }
 }

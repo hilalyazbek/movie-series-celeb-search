@@ -32,8 +32,37 @@ public class WatchLaterController : ControllerBase
         _mapper = mapper;
     }
 
+    [HttpGet("{userId}")]
+    public async Task<IActionResult> GetWatchList(string userId)
+    {
+        try
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                return BadRequest("Empty User Id");
+            }
+
+            var user = await _userRepository.GetUserByIdAsync(userId);
+            if(user is null)
+            {
+                _logger.LogError($"User with id {userId} does not exist");
+                return NotFound("User does not exist");
+            }
+
+            var watchList = _watchLaterRepository.GetWatchListByUserId(userId);
+
+            var result = _mapper.Map<IEnumerable<WatchLaterDTO>>(watchList);
+
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"An error occured {ex.Message}");
+            return StatusCode(StatusCodes.Status500InternalServerError);
+        }
+    }
+
     [HttpPost]
-    [Route("/")]
     public async Task<ActionResult<WatchLaterDTO>> AddToWatchLater([FromBody] WatchLaterDTO request)
     {
         try

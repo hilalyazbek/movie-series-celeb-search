@@ -30,6 +30,9 @@ public abstract class GenericRepository<T> : IGenericRepository<T> where T : cla
     public T Create(T entity)
     {
         var result = context.Set<T>().Add(entity);
+
+        Save();
+
         return result.Entity;
     }
 
@@ -46,6 +49,7 @@ public abstract class GenericRepository<T> : IGenericRepository<T> where T : cla
     public void Delete(T entity)
     {
         context.Set<T>().Remove(entity);
+
         Save();
     }
 
