@@ -18,12 +18,8 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddSwaggerGen();
 
     builder.Services.AddUsersApiServices();
-
     builder.Services.AddInfrastructureServices(builder.Configuration);
-
     builder.Services.ConfigureLoggerService();
-    
-    // Add JWT Token
     builder.Services.AddJWTService(builder.Configuration);
 }
 

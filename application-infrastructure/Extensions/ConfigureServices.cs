@@ -12,6 +12,8 @@ using application_infrastructure.Entities;
 using application_infrastructure.TokenService;
 using application_infrastructure.Logging;
 using NLog;
+using application_infrastructure.Repositories.Interfaces;
+using application_infrastructure.Repositories.Implementations;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -39,6 +41,7 @@ public static class ConfigureServices
             .AddEntityFrameworkStores<ApplicationDbContext>();
 
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IWatchLaterRepository, WatchLaterRepository>();
 
         return services;
     }

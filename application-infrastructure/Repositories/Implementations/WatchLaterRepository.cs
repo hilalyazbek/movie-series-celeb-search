@@ -16,4 +16,12 @@ public class WatchLaterRepository : GenericRepository<WatchLater>, IWatchLaterRe
         : base(repositoryContext)
     {
     }
+
+    public WatchLater AddToWatchLater(WatchLater watchLater)
+    {
+        var created = Create(watchLater);
+        Save();
+        return created;
+        
+    }
 }

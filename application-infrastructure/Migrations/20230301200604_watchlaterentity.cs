@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace application_infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class AddedWatchLater : Migration
+    public partial class watchlaterentity : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -23,27 +23,17 @@ namespace application_infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_WatchLaters", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_WatchLaters_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "QidNumber", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "4146a38c-9f4e-4cf9-acff-175d745f0e54", 0, "1f39800f-91d4-4ccd-a1bc-e30e979394c5", "User", "batman@gotham.com", false, "Bruce", "Wayne", false, null, null, null, "0b58fb7e73e1402d43e6263a58e0d3db7f237935", null, false, "432432432", "ba3e1efb-3ac6-4818-9660-4052608f9c4c", false, "batman" });
+                values: new object[] { "4146a38c-9f4e-4cf9-acff-175d745f0e54", 0, "030d0647-647f-456e-ae84-48e5648d652a", "User", "batman@gotham.com", false, "Bruce", "Wayne", false, null, null, null, "0b58fb7e73e1402d43e6263a58e0d3db7f237935", null, false, "432432432", "39f08b15-cc03-4135-ac30-cd4c7ed81c99", false, "batman" });
 
             migrationBuilder.InsertData(
                 table: "WatchLaters",
                 columns: new[] { "Id", "ProgramId", "ProgramName", "UserId" },
-                values: new object[] { new Guid("93ab8fe8-4633-4916-94fc-3cd2d4aa8791"), 1000, "Avatar", "4146a38c-9f4e-4cf9-acff-175d745f0e54" });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_WatchLaters_UserId",
-                table: "WatchLaters",
-                column: "UserId");
+                values: new object[] { new Guid("b25a433b-1c0d-46e6-b288-8b7863229810"), 1000, "Avatar", "4146a38c-9f4e-4cf9-acff-175d745f0e54" });
         }
 
         /// <inheritdoc />

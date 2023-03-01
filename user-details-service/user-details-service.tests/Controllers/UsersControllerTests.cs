@@ -3,6 +3,7 @@ using application_infrastructure.Entities;
 using application_infrastructure.Logging;
 using application_infrastructure.PagingAndSorting;
 using application_infrastructure.Repositories;
+using application_infrastructure.Repositories.Interfaces;
 using application_infrastructure.TokenService;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;

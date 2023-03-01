@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.AspNetCore.Identity;
 
-namespace application_infrastructure.Entities;
+namespace movie_service.DTOs;
 
-public class WatchLater
+public class WatchLaterDTO
 {
     public Guid Id { get; set; }
 

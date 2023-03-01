@@ -177,14 +177,12 @@ namespace application_infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("WatchLaters");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("93ab8fe8-4633-4916-94fc-3cd2d4aa8791"),
+                            Id = new Guid("b25a433b-1c0d-46e6-b288-8b7863229810"),
                             ProgramId = 1000,
                             ProgramName = "Avatar",
                             UserId = "4146a38c-9f4e-4cf9-acff-175d745f0e54"
@@ -214,13 +212,13 @@ namespace application_infrastructure.Migrations
                         {
                             Id = "4146a38c-9f4e-4cf9-acff-175d745f0e54",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1f39800f-91d4-4ccd-a1bc-e30e979394c5",
+                            ConcurrencyStamp = "030d0647-647f-456e-ae84-48e5648d652a",
                             Email = "batman@gotham.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PasswordHash = "0b58fb7e73e1402d43e6263a58e0d3db7f237935",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ba3e1efb-3ac6-4818-9660-4052608f9c4c",
+                            SecurityStamp = "39f08b15-cc03-4135-ac30-cd4c7ed81c99",
                             TwoFactorEnabled = false,
                             UserName = "batman",
                             FirstName = "Bruce",
@@ -254,15 +252,6 @@ namespace application_infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("application_infrastructure.Entities.WatchLater", b =>
-                {
-                    b.HasOne("application_infrastructure.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

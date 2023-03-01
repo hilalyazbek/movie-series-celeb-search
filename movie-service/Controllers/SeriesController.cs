@@ -8,6 +8,7 @@ using TMDbLib.Objects.Search;
 using AutoMapper;
 using movie_service.DTOs;
 using application_infrastructure.PagingAndSorting;
+using application_infrastructure.Logging;
 
 namespace movie_service.Controllers;
 
@@ -16,10 +17,10 @@ namespace movie_service.Controllers;
 //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 public class SeriesController : ControllerBase
 {
-    private readonly ILogger<SeriesController> _logger;
+    private readonly ILoggerManager _logger;
     private readonly IMapper _mapper;
 
-    public SeriesController(ILogger<SeriesController> logger, IMapper mapper)
+    public SeriesController(ILoggerManager logger, IMapper mapper)
     {
         _logger = logger;
         _mapper = mapper;
