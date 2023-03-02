@@ -5,7 +5,7 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-COPY /user-details-service/user-details-service/*.csproj ./
+COPY user-details-service/user-details-service/*.csproj ./
 RUN dotnet restore
 
 COPY . ./

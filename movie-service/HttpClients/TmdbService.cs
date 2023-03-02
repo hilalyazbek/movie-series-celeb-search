@@ -10,10 +10,9 @@ using TMDbLib.Objects.TvShows;
 
 namespace movie_service.HttpClients;
 
-public static class TmdbService
-{
-
-    public static List<Movie> SearchMovies(string query, PagingParameters pagingParameters, SortingParameters sortingParameters)
+public class TmdbService
+{ 
+    public static List<Movie> SearchMovies(string query, PagingParameters pagingParameters)
     {
         var result = new List<Movie>();
         var client = new TMDbClient("b4deb664afe3d5005f9f04f34dbb32fa");
@@ -27,7 +26,7 @@ public static class TmdbService
         return result;
     }
 
-    public static List<TvShow> SearchTvSeason(string query, PagingParameters pagingParameters, SortingParameters sortingParameters)
+    public static List<TvShow> SearchTvSeason(string query, PagingParameters pagingParameters)
     {
         var result = new List<TvShow>();
         var client = new TMDbClient("b4deb664afe3d5005f9f04f34dbb32fa");
@@ -41,7 +40,7 @@ public static class TmdbService
         return result;
     }
 
-    public static List<Person> SearchCelebrity(string query, PagingParameters pagingParameters, SortingParameters sortingParameters)
+    public static List<Person> SearchCelebrity(string query, PagingParameters pagingParameters)
     {
         var result = new List<Person>();
         var client = new TMDbClient("b4deb664afe3d5005f9f04f34dbb32fa");
@@ -53,5 +52,13 @@ public static class TmdbService
         }
 
         return result;
+    }
+
+    public static bool RateMovie(int movieId, double rating)
+    {
+        var client = new TMDbClient("b4deb664afe3d5005f9f04f34dbb32fa");
+        var ratingResult = client.MovieSetRatingAsync(movieId, rating);
+
+        return ratingResult.Result;
     }
 }

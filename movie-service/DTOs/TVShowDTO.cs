@@ -2,7 +2,7 @@
 
 public class TVShowDTO
 {
-    public string Name { get; set; } = null!;
+    public string? Name { get; set; }
 
     public DateTime? FirstAirDate { get; set; }
 

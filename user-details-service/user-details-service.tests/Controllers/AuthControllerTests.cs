@@ -103,6 +103,7 @@ public class AuthControllerTests
         _mockTokenService.Setup(x => x.CreateToken(user)).Returns(expectedToken);
 
         // Act
+        //var registered = await _authController.Register(createUserDTO);
         var result = await _authController.Authenticate(authRequestDTO);
 
         // Assert

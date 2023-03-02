@@ -5,7 +5,7 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-COPY /user-details-service/user-details-service/*.csproj ./
+COPY /application-infrastructure/*.csproj ./
 RUN dotnet restore
 
 COPY . ./
@@ -14,4 +14,4 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS final
 WORKDIR /app
 COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "user-details-service.dll"]
+ENTRYPOINT ["dotnet", "application-infrastructure.dll"]
