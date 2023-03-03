@@ -17,6 +17,8 @@ public class MappingProfile : Profile
         CreateMap<TVShowDTO, TvShow>().ReverseMap();
         CreateMap<CelebrityDTO, Person>().ReverseMap();
         CreateMap<WatchLaterDTO, WatchLater>().ReverseMap();
+        CreateMap<ViewRatingDTO, Rating>().ReverseMap();
+        CreateMap<UpdateRatingDTO, Rating>().ReverseMap();
     }
 }
 

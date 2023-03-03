@@ -13,6 +13,7 @@ public class ApplicationDbContext : IdentityUserContext<IdentityUser>
 {
     public DbSet<User> Users { get; set; }
     public DbSet<WatchLater> WatchLaters { get; set; }
+    public DbSet<Rating> Ratings { get; set; }
 
     public ApplicationDbContext() : base()
     {

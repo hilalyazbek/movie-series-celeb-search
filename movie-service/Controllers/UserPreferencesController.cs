@@ -21,13 +21,20 @@ public class UserPreferencesController : ControllerBase
 {
     private readonly IWatchLaterRepository _watchLaterRepository;
     private readonly IUserRepository _userRepository;
+    private readonly IRatingRepository _ratingRepository;
     private readonly ILoggerManager _logger;
     private readonly IMapper _mapper;
 
-    public UserPreferencesController(IWatchLaterRepository watchLaterRepository, IUserRepository userRepository, ILoggerManager logger, IMapper mapper)
+    public UserPreferencesController(
+        IWatchLaterRepository watchLaterRepository,
+        IUserRepository userRepository,
+        IRatingRepository ratingRepository,
+        ILoggerManager logger,
+        IMapper mapper)
     {
         _watchLaterRepository = watchLaterRepository;
         _userRepository = userRepository;
+        _ratingRepository = ratingRepository;
         _logger = logger;
         _mapper = mapper;
     }
@@ -99,8 +106,8 @@ public class UserPreferencesController : ControllerBase
         }
     }
 
-    [HttpPost("/rate/")]
-    public async Task<ActionResult<RatingDTO>> RateProgram([FromBody] RatingDTO request)
+    [HttpPost("/ratings/")]
+    public async Task<ActionResult<ViewRatingDTO>> RateProgram([FromBody] UpdateRatingDTO request)
     {
         try
         {
@@ -110,24 +117,74 @@ public class UserPreferencesController : ControllerBase
                 return BadRequest(ModelState);
             }
 
-            var user = await _userRepository.GetUserByIdAsync(request.UserId);
-            if (user is null)
+            var requestToBeCreated = _mapper.Map<Rating>(request);
+
+            var updatedRating = _ratingRepository.RateMovie(requestToBeCreated);
+            if (updatedRating is null)
             {
-                _logger.LogError($"user with id {request.UserId} does not exist.");
-                return NotFound("User not found");
+                _logger.LogError($"cannot rate program with id {request.ProgramId}");
+                return BadRequest("Something went wrong");
+            }
+            var result = _mapper.Map<ViewRatingDTO>(updatedRating);
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"An error occured {ex.Message}");
+            return StatusCode(StatusCodes.Status500InternalServerError);
+        }
+    }
+
+    [HttpGet("/ratings/")]
+    public ActionResult<IEnumerable<ViewRatingDTO>> GetRatings()
+    {
+        try
+        {
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state");
+                return BadRequest(ModelState);
             }
 
-            var requestToBeCreated = _mapper.Map<WatchLater>(request);
-
-            var result = _watchLaterRepository.AddToWatchLater(requestToBeCreated);
-
-            if (result is null)
+            var ratings = _ratingRepository.GetRatings();
+            if (ratings is null)
             {
-                _logger.LogError($"cannot add program with id {request.ProgramId} to the user {request.UserId} watch list");
+                _logger.LogError($"This program is not rated yet");
                 return BadRequest("Something went wrong");
             }
 
-            return Ok(request);
+            var result = _mapper.Map<IEnumerable<ViewRatingDTO>>(ratings);
+
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"An error occured {ex.Message}");
+            return StatusCode(StatusCodes.Status500InternalServerError);
+        }
+    }
+
+    [HttpGet("/ratings/{programId}")]
+    public ActionResult<ViewRatingDTO> GetRatings(int programId)
+    {
+        try
+        {
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state");
+                return BadRequest(ModelState);
+            }
+
+            var rating = _ratingRepository.GetRatingByProgramID(programId);
+            if (rating is null)
+            {
+                _logger.LogError($"This program is not rated yet");
+                return BadRequest("Something went wrong");
+            }
+
+            var result = _mapper.Map<ViewRatingDTO>(rating);
+
+            return Ok(result);
         }
         catch (Exception ex)
         {

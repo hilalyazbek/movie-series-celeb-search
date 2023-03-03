@@ -42,6 +42,7 @@ public static class ConfigureServices
 
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IWatchLaterRepository, WatchLaterRepository>();
+        services.AddScoped<IRatingRepository, RatingRepository>();
 
         return services;
     }
