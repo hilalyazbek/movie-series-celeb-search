@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Identity;
 
-namespace application_infrastructure.Entities;
+namespace movie_service.DTOs;
 
 public class SearchHistoryDTO
 {

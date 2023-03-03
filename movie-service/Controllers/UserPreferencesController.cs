@@ -22,6 +22,7 @@ public class UserPreferencesController : ControllerBase
     private readonly IWatchLaterRepository _watchLaterRepository;
     private readonly IUserRepository _userRepository;
     private readonly IRatingRepository _ratingRepository;
+    private readonly ISearchHistoryRepository _searchHistoryRepository;
     private readonly ILoggerManager _logger;
     private readonly IMapper _mapper;
 
@@ -29,12 +30,14 @@ public class UserPreferencesController : ControllerBase
         IWatchLaterRepository watchLaterRepository,
         IUserRepository userRepository,
         IRatingRepository ratingRepository,
+        ISearchHistoryRepository searchHistoryRepository,
         ILoggerManager logger,
         IMapper mapper)
     {
         _watchLaterRepository = watchLaterRepository;
         _userRepository = userRepository;
         _ratingRepository = ratingRepository;
+        _searchHistoryRepository = searchHistoryRepository;
         _logger = logger;
         _mapper = mapper;
     }
@@ -183,6 +186,36 @@ public class UserPreferencesController : ControllerBase
             }
 
             var result = _mapper.Map<ViewRatingDTO>(rating);
+
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"An error occured {ex.Message}");
+            return StatusCode(StatusCodes.Status500InternalServerError);
+        }
+    }
+
+    [HttpGet("/searchhistory")]
+    public async Task<ActionResult<SearchHistoryDTO>> GetSearchHistory([FromQuery] PagingParameters pagingParameters,
+        [FromQuery] SortingParameters sortingParameters)
+    {
+        try
+        {
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state");
+                return BadRequest(ModelState);
+            }
+
+            var searchHistory = await _searchHistoryRepository.GetAllAsync(pagingParameters, sortingParameters);
+            if (searchHistory is null)
+            {
+                _logger.LogError($"No search History");
+                return NotFound("No Search History");
+            }
+
+            var result = _mapper.Map<List<SearchHistoryDTO>>(searchHistory);
 
             return Ok(result);
         }

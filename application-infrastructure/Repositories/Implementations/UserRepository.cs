@@ -22,7 +22,7 @@ public class UserRepository : GenericRepository<User>, IUserRepository
         return await FindByCondition(itm => itm.Id == id).FirstOrDefaultAsync();
     }
 
-    public async Task<IEnumerable<User>> GetUsersAsync(PagingParameters userParameters,
+    public async Task<IEnumerable<User>> GetUsersAsync(PagingParameters pagingParameters,
          SortingParameters sortingParameters)
     {
         var users = FindAll();
@@ -30,8 +30,8 @@ public class UserRepository : GenericRepository<User>, IUserRepository
         ApplySort(ref users, sortingParameters.SortBy);
 
         return await users
-            .Skip((userParameters.PageNumber - 1) * userParameters.PageSize)
-            .Take(userParameters.PageSize)
+            .Skip((pagingParameters.PageNumber - 1) * pagingParameters.PageSize)
+            .Take(pagingParameters.PageSize)
             .ToListAsync();
     }
 
