@@ -9,6 +9,8 @@ using AutoMapper;
 using movie_service.DTOs;
 using application_infrastructure.PagingAndSorting;
 using application_infrastructure.Logging;
+using application_infrastructure.Repositories.Interfaces;
+using application_infrastructure.Entities;
 
 namespace movie_service.Controllers;
 
@@ -17,11 +19,13 @@ namespace movie_service.Controllers;
 //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 public class SearchController : ControllerBase
 {
+    private readonly ISearchHistoryRepository _searchHistoryRepository;
     private readonly ILoggerManager _logger;
     private readonly IMapper _mapper;
 
-    public SearchController(ILoggerManager logger, IMapper mapper)
+    public SearchController(ISearchHistoryRepository searchHistoryRepository, ILoggerManager logger, IMapper mapper)
     {
+        _searchHistoryRepository = searchHistoryRepository;
         _logger = logger;
         _mapper = mapper;
     }
@@ -38,7 +42,15 @@ public class SearchController : ControllerBase
         }
 
         var result = _mapper.Map<IEnumerable<MovieDTO>>(movies);
-        
+
+        var searchHistoryToBeAdded = new SearchHistory()
+        {
+            Query = searchQuery,
+            Results = result.Select(itm => itm.Title).ToList()
+        };
+
+        _ = _searchHistoryRepository.Save(searchHistoryToBeAdded);
+
         return Ok(result);
     }
 
@@ -55,6 +67,14 @@ public class SearchController : ControllerBase
 
         var result = _mapper.Map<IEnumerable<TVShowDTO>>(series);
 
+        var searchHistoryToBeAdded = new SearchHistory()
+        {
+            Query = searchQuery,
+            Results = result.Select(itm => itm.Name).ToList()
+        };
+
+        _ = _searchHistoryRepository.Save(searchHistoryToBeAdded);
+
         return Ok(result);
     }
 
@@ -69,6 +89,14 @@ public class SearchController : ControllerBase
         }
 
         var result = _mapper.Map<IEnumerable<CelebrityDTO>>(celebrities);
+
+        var searchHistoryToBeAdded = new SearchHistory()
+        {
+            Query = searchQuery,
+            Results = result.Select(itm => itm.Name).ToList()
+        };
+
+        _ = _searchHistoryRepository.Save(searchHistoryToBeAdded);
 
         return Ok(result);
     }

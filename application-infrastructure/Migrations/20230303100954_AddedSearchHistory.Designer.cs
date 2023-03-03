@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using application_infrastructure.DBContexts;
@@ -12,9 +13,11 @@ using application_infrastructure.DBContexts;
 namespace application_infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class UsersContextModelSnapshot : ModelSnapshot
+    [Migration("20230303100954_AddedSearchHistory")]
+    partial class AddedSearchHistory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -19,6 +19,7 @@ public class MappingProfile : Profile
         CreateMap<WatchLaterDTO, WatchLater>().ReverseMap();
         CreateMap<ViewRatingDTO, Rating>().ReverseMap();
         CreateMap<UpdateRatingDTO, Rating>().ReverseMap();
+        CreateMap<SearchHistoryDTO, SearchHistory>().ReverseMap();
     }
 }
 
