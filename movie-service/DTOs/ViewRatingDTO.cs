@@ -1,4 +1,6 @@
-﻿namespace movie_service.DTOs;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace movie_service.DTOs;
 
 public class ViewRatingDTO
 {

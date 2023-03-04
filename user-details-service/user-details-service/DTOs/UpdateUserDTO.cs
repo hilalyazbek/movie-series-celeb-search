@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace user_details_service.DTOs;
 
 public class UpdateUserDTO
