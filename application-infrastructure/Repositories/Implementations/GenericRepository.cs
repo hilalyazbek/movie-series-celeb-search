@@ -39,7 +39,7 @@ public abstract class GenericRepository<T> : IGenericRepository<T> where T : cla
     public T Update(T entity)
     {
         var result = context.Set<T>().Update(entity);
-
+        
         Save();
 
         return result.Entity;

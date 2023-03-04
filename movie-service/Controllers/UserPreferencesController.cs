@@ -61,7 +61,7 @@ public class UserPreferencesController : ControllerBase
 
             var watchList = _watchLaterRepository.GetWatchListByUserId(userId);
 
-            var result = _mapper.Map<IEnumerable<WatchLaterDTO>>(watchList);
+            var result = _mapper.Map<IEnumerable<CreateWatchLaterDTO>>(watchList);
 
             return Ok(result);
         }
@@ -73,7 +73,7 @@ public class UserPreferencesController : ControllerBase
     }
 
     [HttpPost("/watchlater/")]
-    public async Task<ActionResult<WatchLaterDTO>> AddToWatchLater([FromBody] WatchLaterDTO request)
+    public async Task<ActionResult<CreateWatchLaterDTO>> AddToWatchLater([FromBody] CreateWatchLaterDTO request)
     {
         try
         {
@@ -91,6 +91,7 @@ public class UserPreferencesController : ControllerBase
             }
 
             var requestToBeCreated = _mapper.Map<WatchLater>(request);
+            requestToBeCreated.UserId = user.Id;
 
             var result = _watchLaterRepository.AddToWatchLater(requestToBeCreated);
 
@@ -101,6 +102,54 @@ public class UserPreferencesController : ControllerBase
             }
 
             return Ok(request);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"An error occured {ex.Message}");
+            return StatusCode(StatusCodes.Status500InternalServerError);
+        }
+    }
+
+    [HttpDelete("/watchlater/")]
+    public async Task<ActionResult<CreateWatchLaterDTO>> DeleteFromWatchLater([FromBody] DeleteWatchLaterDTO request)
+    {
+        try
+        {
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state");
+                return BadRequest(ModelState);
+            }
+
+            var user = await _userRepository.GetUserByIdAsync(request.UserId);
+            if (user is null)
+            {
+                _logger.LogError($"user with id {request.UserId} does not exist.");
+                return NotFound("User not found");
+            }
+
+            var userHasWatchList = _watchLaterRepository.UserHasWatchList(request.UserId);
+            if (!userHasWatchList)
+            {
+                _logger.LogError($"user {request.UserId} does not have a watch list");
+                return NotFound("User does not have a watch list");
+            }
+
+            var itemToBeDeleted = _watchLaterRepository.FindItemInWatchList(request.UserId, request.ProgramId);
+            if(itemToBeDeleted is null)
+            {
+                _logger.LogError($"program with id {request.ProgramId} does not exist in user {request.UserId} watch list");
+                return NotFound("Program is not in watch list");
+            }
+
+            var deleted = _watchLaterRepository.DeleteFromWatchLater(itemToBeDeleted);
+            if (!deleted)
+            {
+                _logger.LogError($"cannot remove program with id {request.ProgramId} from the user {request.UserId} watch list");
+                return BadRequest("Something went wrong");
+            }
+
+            return Ok(deleted);
         }
         catch (Exception ex)
         {

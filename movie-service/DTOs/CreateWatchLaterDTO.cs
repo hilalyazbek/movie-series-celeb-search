@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace movie_service.DTOs;
 
-public class WatchLaterDTO
+public class CreateWatchLaterDTO
 {
     public Guid Id { get; set; }
 

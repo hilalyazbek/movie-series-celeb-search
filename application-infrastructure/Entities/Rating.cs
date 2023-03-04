@@ -3,10 +3,8 @@ using Microsoft.AspNetCore.Identity;
 
 namespace application_infrastructure.Entities;
 
-public class Rating
+public class Rating:BaseEntity
 {
-    public Guid Id { get; set; }
-
     public int ProgramId { get; set; }
 
     public double RatingValue { get; set; }

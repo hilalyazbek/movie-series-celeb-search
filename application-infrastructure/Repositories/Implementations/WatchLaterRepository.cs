@@ -22,8 +22,27 @@ public class WatchLaterRepository : GenericRepository<WatchLater>, IWatchLaterRe
         return Create(watchLater);
     }
 
+    public bool DeleteFromWatchLater(WatchLater watchLater)
+    {
+        Delete(watchLater);
+
+        return true;
+    }
+
     public IEnumerable<WatchLater> GetWatchListByUserId(string userId)
     {
         return FindByCondition(itm => itm.UserId == userId);
+    }
+
+    public WatchLater? FindItemInWatchList(string userId, int programId)
+    {
+        return FindByCondition(itm => itm.UserId == userId && itm.ProgramId == programId).FirstOrDefault();
+    }
+
+    public bool UserHasWatchList(string userId)
+    {
+        var result = FindByCondition(itm => itm.UserId == userId).FirstOrDefault();
+
+        return result is not null ? true : false;
     }
 }
