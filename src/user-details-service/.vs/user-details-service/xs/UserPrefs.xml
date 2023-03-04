@@ -1,0 +1,41 @@
+﻿<Properties StartupConfiguration="{EDFF1146-8FBC-45FD-BD2D-91051B6032F8}|https">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.movie-service PreferredExecutionTarget="/Applications/Brave Browser.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.user-details-service PreferredExecutionTarget="/Applications/Brave Browser.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="user-details-service/user-details-service/DTOs/AuthRequestDTO.cs">
+    <Files>
+      <File FileName="movie-service/DTOs/CelebrityDTO.cs" Line="6" Column="2" />
+      <File FileName="movie-service/DTOs/CreateWatchLaterDTO.cs" Line="11" Column="137" />
+      <File FileName="movie-service/DTOs/DeleteWatchLaterDTO.cs" Line="17" Column="1" />
+      <File FileName="user-details-service/user-details-service/DTOs/AuthRequestDTO.cs" Line="17" Column="133" />
+      <File FileName="user-details-service/user-details-service/DTOs/CreateUserDTO.cs" Line="32" Column="235" />
+      <File FileName="application-infrastructure/DBContexts/ApplicationDbContext.cs" Line="63" Column="30" />
+      <File FileName="user-details-service/user-details-service/DTOs/UpdateUserDTO.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="user-details-service" expanded="True" selected="True">
+            <Node name="application-infrastructure" expanded="True">
+              <Node name="DBContexts" expanded="True" />
+              <Node name="Entities" expanded="True" />
+            </Node>
+            <Node name="movie-service" expanded="True">
+              <Node name="DTOs" expanded="True" />
+            </Node>
+            <Node name="user-details-service" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="DTOs" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <Debugger.DebugSourceFolders />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

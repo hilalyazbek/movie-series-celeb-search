@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "sECOyMlOJRSEx46HrBTon9hoyQdWYK8GR5i5aPu3EQU=",
+  "Source": "user-details-service",
+  "BasePath": "_content/user-details-service",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

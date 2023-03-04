@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Ra1wqm1gC9V1/srKpzCEu4bNT6TRlSnzYmyaImcSxN4=",
+  "Source": "movie-service",
+  "BasePath": "_content/movie-service",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
