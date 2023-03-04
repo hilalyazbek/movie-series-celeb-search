@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{12C06A1F-FC92-48F6-9512-555825E45CFE}"
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
+		src\Dockerfile = src\Dockerfile
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{BE226C90-3C84-4A5D-8060-59B8C0CC5E5E}"
@@ -16,9 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movie-service", "src\movie-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "user-details-service", "src\user-details-service\user-details-service.csproj", "{E01781D2-A787-4175-91EA-02150F11A997}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "user-details-service.tests", "tests\user-details-service.tests\user-details-service.tests.csproj", "{0AEFF54D-1337-4847-A033-E445CD72BBF8}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CAB54F0E-45C3-4C1F-BA52-16AD2C56EBE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "user-details-service.tests", "tests\user-details-service.tests\user-details-service.tests.csproj", "{AC99CA71-53FC-4AC0-804C-C68B29DC15B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,14 +39,14 @@ Global
 		{E01781D2-A787-4175-91EA-02150F11A997}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E01781D2-A787-4175-91EA-02150F11A997}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E01781D2-A787-4175-91EA-02150F11A997}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0AEFF54D-1337-4847-A033-E445CD72BBF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0AEFF54D-1337-4847-A033-E445CD72BBF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0AEFF54D-1337-4847-A033-E445CD72BBF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0AEFF54D-1337-4847-A033-E445CD72BBF8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EACF163B-0CA9-431F-94B4-A32C9E9F92A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EACF163B-0CA9-431F-94B4-A32C9E9F92A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EACF163B-0CA9-431F-94B4-A32C9E9F92A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EACF163B-0CA9-431F-94B4-A32C9E9F92A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC99CA71-53FC-4AC0-804C-C68B29DC15B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC99CA71-53FC-4AC0-804C-C68B29DC15B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC99CA71-53FC-4AC0-804C-C68B29DC15B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC99CA71-53FC-4AC0-804C-C68B29DC15B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,9 +55,9 @@ Global
 		SolutionGuid = {BAC36B7A-AC23-4B21-B7D8-A05AF5B02D72}
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{0AEFF54D-1337-4847-A033-E445CD72BBF8} = {BE226C90-3C84-4A5D-8060-59B8C0CC5E5E}
 		{EC90B86A-BE6B-45ED-897A-AF717CFE41BA} = {CAB54F0E-45C3-4C1F-BA52-16AD2C56EBE3}
 		{6FBBDC98-E983-4BCE-A86E-AA718016F682} = {CAB54F0E-45C3-4C1F-BA52-16AD2C56EBE3}
 		{E01781D2-A787-4175-91EA-02150F11A997} = {CAB54F0E-45C3-4C1F-BA52-16AD2C56EBE3}
+		{AC99CA71-53FC-4AC0-804C-C68B29DC15B4} = {BE226C90-3C84-4A5D-8060-59B8C0CC5E5E}
 	EndGlobalSection
 EndGlobal

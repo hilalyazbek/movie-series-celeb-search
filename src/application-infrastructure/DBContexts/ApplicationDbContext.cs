@@ -55,7 +55,7 @@ public class ApplicationDbContext : IdentityUserContext<IdentityUser>
         {
             return;
         }
-
+        //modelBuilder.Entity<User>().HasNoKey();
         modelBuilder.Entity<User>().HasData(
             new User
             {

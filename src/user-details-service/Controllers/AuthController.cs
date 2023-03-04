@@ -27,14 +27,6 @@ public class AuthController : Controller
         _logger = logger;
     }
 
-    [HttpGet]
-    [Route("/test")]
-    public IActionResult Test()
-    {
-        _logger.LogInfo("test function called");
-        return Ok("service online");
-    }
-
     [HttpPost]
     [Route("register")]
     public async Task<IActionResult> Register(CreateUserDTO request)
@@ -67,7 +59,7 @@ public class AuthController : Controller
                 request.Password = "";
                 await _context.SaveChangesAsync();
                 _logger.LogInfo($"New user Created {request.Username}");
-                return CreatedAtAction(nameof(Register), new { email = request.Email }, request);
+                return Ok(request);
             }
 
             foreach (var error in result.Errors)

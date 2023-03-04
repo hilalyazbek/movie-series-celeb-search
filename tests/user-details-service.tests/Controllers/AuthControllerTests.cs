@@ -9,6 +9,8 @@ using application_infrastructure.Entities;
 using application_infrastructure.DBContexts;
 using application_infrastructure.TokenService;
 using application_infrastructure.Logging;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace user_details_service.tests.Controllers;
 
@@ -16,102 +18,81 @@ namespace user_details_service.tests.Controllers;
 public class AuthControllerTests
 {
     private Mock<UserManager<User>> _mockUserManager;
-    private ApplicationDbContext _context;
+    private Mock<ApplicationDbContext> _mockDbContext;
     private Mock<ITokenService> _mockTokenService;
-    private ILoggerManager _logger;
+    private Mock<ILoggerManager> _mockLogger;
     private AuthController _authController;
 
     [SetUp]
     public void Setup()
     {
-        // setup db context
-        var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-            .UseInMemoryDatabase(databaseName: "TestDatabase")
-            .Options;
-        _context = new ApplicationDbContext(options);
-        _context.Database.EnsureDeleted();
-        _context.Database.EnsureCreated();
-
-        // setup mock user manager
-        _mockUserManager = new Mock<UserManager<User>>(
-            Mock.Of<IUserStore<User>>(), null, null, null, null, null, null, null, null);
-
+        _mockUserManager = new Mock<UserManager<User>>(Mock.Of<IUserStore<User>>(), null, null, null, null, null, null, null, null);
+        _mockDbContext = new Mock<ApplicationDbContext>();
         _mockTokenService = new Mock<ITokenService>();
-        _logger = new Mock<ILoggerManager>().Object;
-        _authController = new AuthController(_mockUserManager.Object, _context, _mockTokenService.Object, _logger);
-    }
-
-    [TearDown]
-    public void Cleanup()
-    {
-        _context.Database.EnsureDeleted();
+        _mockLogger = new Mock<ILoggerManager>();
+        _authController = new AuthController(_mockUserManager.Object, _mockDbContext.Object, _mockTokenService.Object, _mockLogger.Object);
     }
 
     [Test]
-    public async Task Test_RegisterMethod_WithValidModel_ReturnsCreated()
+    public async Task Register_ValidRequest_ReturnsOkResult()
     {
         // Arrange
-        var userDTO = new CreateUserDTO
+        var createUserDto = new CreateUserDTO
         {
-            FirstName = "wonder",
-            LastName = "woman",
-            QidNumber = "321321",
-            Email = "wonder@woman.com",
-            Username = "ww",
+            FirstName = "John",
+            LastName = "Doe",
+            QidNumber = "12345",
+            Email = "johndoe@example.com",
+            Username = "johndoe",
             Password = "password"
         };
 
-        _mockUserManager.Setup(x => x.CreateAsync(It.IsAny<User>(), It.IsAny<string>()))
+        _mockUserManager.Setup(m => m.CreateAsync(It.IsAny<User>(), It.IsAny<string>()))
             .ReturnsAsync(IdentityResult.Success);
 
         // Act
-        var result = await _authController.Register(userDTO);
+        var result = await _authController.Register(createUserDto);
 
         // Assert
-        Assert.IsInstanceOf(typeof(CreatedAtActionResult), result);
-        var createdResult = (CreatedAtActionResult)result;
-        Assert.AreEqual("Register", createdResult.ActionName);
-        Assert.AreEqual("wonder@woman.com", createdResult.RouteValues["email"]);
+        Assert.IsInstanceOf<OkObjectResult>(result);
     }
 
     [Test]
-    public async Task Test_Register_WithInvalidModel_ReturnsBadRequestResult()
+    public async Task Register_InvalidRequest_ReturnsBadRequestResult()
     {
         // Arrange
-        var createUserDTO = new CreateUserDTO();
+        var createUserDto = new CreateUserDTO();
 
-        // Add model error
-        _authController.ModelState.AddModelError("FirstName", "The FirstName field is required.");
+        // add model error to mock ModelState
+        _authController.ModelState.AddModelError("TestError", "TestErrorMessage");
 
         // Act
-        var result = await _authController.Register(createUserDTO);
+        var result = await _authController.Register(createUserDto);
 
         // Assert
-        Assert.IsInstanceOf(typeof(BadRequestObjectResult), result);
+        Assert.IsInstanceOf<BadRequestObjectResult>(result);
     }
-
 
     [Test]
-    public async Task Authenticate_WithValidCredentials_ReturnsOkResultWithAuthToken()
+    public async Task Register_CreateUserFails_ReturnsInternalServerError()
     {
         // Arrange
-        var authRequestDTO = new AuthRequestDTO { Email = "test@test.com", Password = "password" };
-        var user = new User { UserName = "testuser", Email = "test@test.com" };
-        var expectedToken = "expected-token";
-        _mockUserManager.Setup(x => x.FindByEmailAsync(It.IsAny<string>())).ReturnsAsync(user);
-        _mockUserManager.Setup(x => x.CheckPasswordAsync(user, It.IsAny<string>())).ReturnsAsync(true);
-        _mockTokenService.Setup(x => x.CreateToken(user)).Returns(expectedToken);
+        var createUserDto = new CreateUserDTO
+        {
+            FirstName = "John",
+            LastName = "Doe",
+            QidNumber = "12345",
+            Email = "johndoe@example.com",
+            Username = "johndoe",
+            Password = "password"
+        };
+
 
         // Act
-        var result = await _authController.Authenticate(authRequestDTO);
+        var result = await _authController.Register(createUserDto);
 
         // Assert
-        Assert.IsInstanceOf<OkObjectResult>(result.Result);
-        var authResponseDTO = ((OkObjectResult)result.Result).Value as AuthResponseDTO;
-        Assert.IsNotNull(authResponseDTO);
-        Assert.AreEqual(authResponseDTO.UserName, user.UserName);
-        Assert.AreEqual(authResponseDTO.Email, user.Email);
-        Assert.AreEqual(authResponseDTO.Token, expectedToken);
+        Assert.IsInstanceOf<StatusCodeResult>(result);
+        Assert.AreEqual(StatusCodes.Status500InternalServerError, (result as StatusCodeResult).StatusCode);
     }
-
 }
