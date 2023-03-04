@@ -36,7 +36,7 @@ public class SearchController : ControllerBase
     {
         var movies = TmdbService.SearchMovies(searchQuery, pagingParameters, sortingParameters);
 
-        if (movies is null)
+        if (movies is null || movies.Count == 0)
         {
             return NotFound($"No movies with {searchQuery} in their title were found");
         }
@@ -60,7 +60,7 @@ public class SearchController : ControllerBase
     {
         var series = TmdbService.SearchTvSeason(searchQuery, pagingParameters, sortingParameters);
 
-        if (series is null)
+        if (series is null || series.Count == 0)
         {
             return NotFound($"No series with {searchQuery} in their title were found");
         }
@@ -83,7 +83,7 @@ public class SearchController : ControllerBase
         [FromQuery] SortingParameters sortingParameters)
     {
         var celebrities = TmdbService.SearchCelebrity(searchQuery, pagingParameters, sortingParameters);
-        if (celebrities is null)
+        if (celebrities is null || celebrities.Count == 0)
         {
             return NotFound($"No celebrity with {searchQuery} in their title were found");
         }
