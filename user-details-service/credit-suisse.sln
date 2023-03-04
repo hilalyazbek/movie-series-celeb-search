@@ -50,4 +50,10 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{29B4D651-E0C2-4F39-99B3-A4F3AB9F7A08} = {BE226C90-3C84-4A5D-8060-59B8C0CC5E5E}
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		BaseDirectory = ..
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+	EndGlobalSection
 EndGlobal
