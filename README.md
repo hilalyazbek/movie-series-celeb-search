@@ -12,9 +12,9 @@ JWT
 AutoMapper
 
 #### Logging
-http://[hostname]/watchdog
-username: admin
-password: admin
+-       http://[hostname]/watchdog
+-       username: admin
+-       password: admin
 
 #### Run the Solution
 Pull the latest Postgres Image, run the below command
