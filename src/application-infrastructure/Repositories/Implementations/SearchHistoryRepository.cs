@@ -31,12 +31,12 @@ public class SearchHistoryRepository : GenericRepository<SearchHistory>, ISearch
 
     public IEnumerable<SearchHistory> Save(SearchHistory search)
     {
-        var created = Create(search);
+        Create(search);
 
         return FindAll();
     }
 
-    private void ApplySort(ref IQueryable<SearchHistory> history, string orderByQueryString)
+    private static void ApplySort(ref IQueryable<SearchHistory> history, string orderByQueryString)
     {
         if (!history.Any())
             return;

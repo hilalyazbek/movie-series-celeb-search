@@ -66,7 +66,7 @@ public class UserPreferencesController : ControllerBase
                 return NotFound("User does not exist");
             }
 
-            var watchList = _watchLaterRepository.GetWatchListByUserId(userId);
+            var watchList = await _watchLaterRepository.GetWatchListByUserIdAsync(userId);
 
             var result = _mapper.Map<IEnumerable<CreateWatchLaterDTO>>(watchList);
 
@@ -143,14 +143,14 @@ public class UserPreferencesController : ControllerBase
                 return NotFound("User not found");
             }
 
-            var userHasWatchList = _watchLaterRepository.UserHasWatchList(request.UserId);
+            var userHasWatchList = await _watchLaterRepository.UserHasWatchListAsync(request.UserId);
             if (!userHasWatchList)
             {
                 _logger.LogError($"user {request.UserId} does not have a watch list");
                 return NotFound("User does not have a watch list");
             }
 
-            var itemToBeDeleted = _watchLaterRepository.FindItemInWatchList(request.UserId, request.ProgramId);
+            var itemToBeDeleted = await _watchLaterRepository.FindItemInWatchListAsync(request.UserId, request.ProgramId);
             if(itemToBeDeleted is null)
             {
                 _logger.LogError($"program with id {request.ProgramId} does not exist in user {request.UserId} watch list");
@@ -174,7 +174,7 @@ public class UserPreferencesController : ControllerBase
     }
 
     [HttpPost("/ratings/")]
-    public async Task<ActionResult<ViewRatingDTO>> RateProgram([FromBody] UpdateRatingDTO request)
+    public ActionResult<ViewRatingDTO> RateProgram([FromBody] UpdateRatingDTO request)
     {
         try
         {
@@ -203,7 +203,7 @@ public class UserPreferencesController : ControllerBase
     }
 
     [HttpGet("/ratings/")]
-    public ActionResult<IEnumerable<ViewRatingDTO>> GetRatings()
+    public async Task<ActionResult<IEnumerable<ViewRatingDTO>>> GetRatings()
     {
         try
         {
@@ -213,7 +213,7 @@ public class UserPreferencesController : ControllerBase
                 return BadRequest(ModelState);
             }
 
-            var ratings = _ratingRepository.GetRatings();
+            var ratings = await _ratingRepository.GetRatingsAsync();
             if (ratings is null)
             {
                 _logger.LogError($"This program is not rated yet");
@@ -232,7 +232,7 @@ public class UserPreferencesController : ControllerBase
     }
 
     [HttpGet("/ratings/{programId}")]
-    public ActionResult<ViewRatingDTO> GetRatings(int programId)
+    public async  Task<ActionResult<ViewRatingDTO>> GetRatings(int programId)
     {
         try
         {
@@ -242,7 +242,7 @@ public class UserPreferencesController : ControllerBase
                 return BadRequest(ModelState);
             }
 
-            var rating = _ratingRepository.GetRatingByProgramID(programId);
+            var rating = await _ratingRepository.GetRatingByProgramIDAsync(programId);
             if (rating is null)
             {
                 _logger.LogError($"This program is not rated yet");

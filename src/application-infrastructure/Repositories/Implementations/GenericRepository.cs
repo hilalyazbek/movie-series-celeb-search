@@ -10,15 +10,14 @@ public abstract class GenericRepository<T> : IGenericRepository<T> where T : cla
 {
     protected ApplicationDbContext context { get; set; }
 
-    /* It's a generic repository that implements the IGenericRepository interface */
     public GenericRepository(ApplicationDbContext repositoryContext)
     {
-        this.context = repositoryContext;
+        context = repositoryContext;
     }
 
-    public async Task<IQueryable<T>> FindAll()
+    public IQueryable<T> FindAll()
     {
-        return await this.context.Set<T>()
+        return context.Set<T>()
             .AsNoTracking();
     }
 

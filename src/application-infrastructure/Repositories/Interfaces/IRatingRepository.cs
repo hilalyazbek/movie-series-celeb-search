@@ -4,7 +4,7 @@ namespace application_infrastructure.Repositories.Interfaces;
 
 public interface IRatingRepository : IGenericRepository<Rating>
 {
-    IEnumerable<Rating> GetRatings();
-    Rating? GetRatingByProgramID(int programId);
+    Task<IEnumerable<Rating>> GetRatingsAsync();
+    Task<Rating>? GetRatingByProgramIDAsync(int programId);
     Rating RateMovie(Rating rating);
 }

@@ -17,27 +17,14 @@ public class RatingRepository : GenericRepository<Rating>, IRatingRepository
     {
     }
 
-    /// <summary>
-    /// This function returns the rating that matches the program ID
-    /// </summary>
-    /// <param name="programId">The id of the program that the rating is for</param>
-    /// <returns>
-    /// A Rating object
-    /// </returns>
-    public Rating? GetRatingByProgramID(int programId)
+    public async Task<Rating>? GetRatingByProgramIDAsync(int programId)
     {
-        return FindByCondition(itm => itm.ProgramId == programId).FirstOrDefault();
+        return await FindByCondition(itm => itm.ProgramId == programId).FirstOrDefaultAsync();
     }
 
-    /// <summary>
-    /// It returns all the ratings in the database
-    /// </summary>
-    /// <returns>
-    /// A list of all the ratings in the database.
-    /// </returns>
-    public IEnumerable<Rating> GetRatings()
+    public async Task<IEnumerable<Rating>> GetRatingsAsync()
     {
-        return FindAll();
+        return await FindAll().ToListAsync();
     }
 
     /// <summary>

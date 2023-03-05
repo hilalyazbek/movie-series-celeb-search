@@ -88,7 +88,7 @@ public class UserPreferencesControllerTests
         var expected = new List<CreateWatchLaterDTO> { new CreateWatchLaterDTO { ProgramId = 1 } };
 
         _userRepositoryMock.Setup(repo => repo.GetUserByIdAsync(userId)).ReturnsAsync(user);
-        _watchLaterRepositoryMock.Setup(repo => repo.GetWatchListByUserId(userId)).Returns(watchList);
+        _watchLaterRepositoryMock.Setup(repo => repo.GetWatchListByUserIdAsync(userId)).ReturnsAsync(watchList);
 
         // Act
         var result = await _controller.GetWatchList(userId);
@@ -133,7 +133,7 @@ public class UserPreferencesControllerTests
         var result = await _controller.AddToWatchLater(request);
 
         // Assert
-        Assert.IsInstanceOf<OkObjectResult>(result);
+        Assert.That(result, Is.InstanceOf<OkObjectResult>());
         _watchLaterRepositoryMock.Verify(repo => repo.AddToWatchLater(It.IsAny<WatchLater>()), Times.Once);
     }
 }

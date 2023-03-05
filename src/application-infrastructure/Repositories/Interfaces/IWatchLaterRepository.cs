@@ -5,9 +5,9 @@ namespace application_infrastructure.Repositories.Interfaces;
 
 public interface IWatchLaterRepository : IGenericRepository<WatchLater>
 {
-    IEnumerable<WatchLater> GetWatchListByUserId(string userId);
+    Task<IEnumerable<WatchLater>> GetWatchListByUserIdAsync(string userId);
     WatchLater AddToWatchLater(WatchLater watchLater);
     bool DeleteFromWatchLater(WatchLater watchLater);
-    bool UserHasWatchList(string userId);
-    WatchLater? FindItemInWatchList(string userId, int programId);
+    Task<bool> UserHasWatchListAsync(string userId);
+    Task<WatchLater>? FindItemInWatchListAsync(string userId, int programId);
 }

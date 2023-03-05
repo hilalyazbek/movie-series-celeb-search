@@ -58,6 +58,7 @@ public class SearchController : ControllerBase
             Query = searchQuery,
             Results = result.Select(itm => itm.Title).ToList()
         };
+        _logger.LogInfo($"the search for {searchQuery} returned {result.Count()} results");
 
         _ = _searchHistoryRepository.Save(searchHistoryToBeAdded);
 
@@ -92,6 +93,7 @@ public class SearchController : ControllerBase
             Query = searchQuery,
             Results = result.Select(itm => itm.Name).ToList()
         };
+        _logger.LogInfo($"the search for {searchQuery} returned {result.Count()} results");
 
         _ = _searchHistoryRepository.Save(searchHistoryToBeAdded);
 
@@ -125,6 +127,8 @@ public class SearchController : ControllerBase
             Query = searchQuery,
             Results = result.Select(itm => itm.Name).ToList()
         };
+
+        _logger.LogInfo($"the search for {searchQuery} returned {result.Count()} results");
 
         _ = _searchHistoryRepository.Save(searchHistoryToBeAdded);
 

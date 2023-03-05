@@ -29,20 +29,20 @@ public class WatchLaterRepository : GenericRepository<WatchLater>, IWatchLaterRe
         return true;
     }
 
-    public IEnumerable<WatchLater> GetWatchListByUserId(string userId)
+    public async Task<IEnumerable<WatchLater>> GetWatchListByUserIdAsync(string userId)
     {
-        return FindByCondition(itm => itm.UserId == userId);
+        return await FindByCondition(itm => itm.UserId == userId).ToListAsync();
     }
 
-    public WatchLater? FindItemInWatchList(string userId, int programId)
+    public async Task<WatchLater>? FindItemInWatchListAsync(string userId, int programId)
     {
-        return FindByCondition(itm => itm.UserId == userId && itm.ProgramId == programId).FirstOrDefault();
+        return await FindByCondition(itm => itm.UserId == userId && itm.ProgramId == programId).FirstOrDefaultAsync();
     }
 
-    public bool UserHasWatchList(string userId)
+    public async Task<bool> UserHasWatchListAsync(string userId)
     {
-        var result = FindByCondition(itm => itm.UserId == userId).FirstOrDefault();
+        var result = await FindByCondition(itm => itm.UserId == userId).FirstOrDefaultAsync();
 
-        return result is not null ? true : false;
+        return result is not null;
     }
 }
