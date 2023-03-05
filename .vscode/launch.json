@@ -23,7 +23,7 @@
             "request": "launch",
             "preLaunchTask": "docker-run: debug",
             "netCore": {
-                "appProject": "${workspaceFolder}/src/user-details-service/user-details-service.csproj"
+                "appProject": "${workspaceFolder}/src/movie-service/movie-service.csproj"
             }
         }
     ]

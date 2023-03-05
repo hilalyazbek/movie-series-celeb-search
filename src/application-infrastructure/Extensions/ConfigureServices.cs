@@ -113,7 +113,7 @@ public static class ConfigureServices
         services.AddWatchDogServices(settings =>
         {
             settings.DbDriverOption = WatchDogDbDriverEnum.PostgreSql;
-            settings.SetExternalDbConnString = "Host=localhost;port=5432;Database=user-details-db;Username=postgres;Password=P@ssw0rd";
+            settings.SetExternalDbConnString = "Host=PostgresDb;port=5432;Database=user-details-db;Username=postgres;Password=P@ssw0rd";
         });
     }
 }

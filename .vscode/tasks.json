@@ -46,12 +46,12 @@
             "dockerBuild": {
                 "tag": "creditsuisse:dev",
                 "target": "base",
-                "dockerfile": "${workspaceFolder}/src/user-details-service/Dockerfile",
+                "dockerfile": "${workspaceFolder}/src/movie-service/Dockerfile",
                 "context": "${workspaceFolder}",
                 "pull": true
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/src/user-details-service/user-details-service.csproj"
+                "appProject": "${workspaceFolder}/src/movie-service/movie-service.csproj"
             }
         },
         {
@@ -62,12 +62,12 @@
             ],
             "dockerBuild": {
                 "tag": "creditsuisse:latest",
-                "dockerfile": "${workspaceFolder}/src/user-details-service/Dockerfile",
+                "dockerfile": "${workspaceFolder}/src/movie-service/Dockerfile",
                 "context": "${workspaceFolder}",
                 "pull": true
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/src/user-details-service/user-details-service.csproj"
+                "appProject": "${workspaceFolder}/src/movie-service/movie-service.csproj"
             }
         },
         {
@@ -78,7 +78,7 @@
             ],
             "dockerRun": {},
             "netCore": {
-                "appProject": "${workspaceFolder}/src/user-details-service/user-details-service.csproj",
+                "appProject": "${workspaceFolder}/src/movie-service/movie-service.csproj",
                 "enableDebugging": true
             }
         },
@@ -90,7 +90,7 @@
             ],
             "dockerRun": {},
             "netCore": {
-                "appProject": "${workspaceFolder}/src/user-details-service/user-details-service.csproj"
+                "appProject": "${workspaceFolder}/src/movie-service/movie-service.csproj"
             }
         }
     ]

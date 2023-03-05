@@ -16,8 +16,22 @@ services:
       context: .
       dockerfile: src/user-details-service/Dockerfile
     ports:
-      - 80:80
-      - 443:443
+      - 8088:80
+    networks:
+      - dev
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+
+  movie-service-image:
+    image: movieservice
+    container_name: movie-service
+    depends_on:
+      - postgres-image
+    build:
+      context: .
+      dockerfile: src/movie-service/Dockerfile
+    ports:
+      - 8080:80
     networks:
       - dev
     environment:
