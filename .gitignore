@@ -369,3 +369,8 @@ MigrationBackup/
 /tests/user-details-service.tests/obj/user-details-service.tests.csproj.nuget.g.props
 /tests/user-details-service.tests/obj/user-details-service.tests.csproj.nuget.dgspec.json
 /tests/user-details-service.tests/obj/project.assets.json
+
+*[Bb]in/
+*[Oo]bj/
+*[Ll]og/
+*[Ll]ogs/
