@@ -348,3 +348,24 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/src/application-infrastructure/.DS_Store
+/src/movie-service/obj/project.assets.json
+/src/movie-service/obj/movie-service.csproj.nuget.g.targets
+/src/movie-service/obj/movie-service.csproj.nuget.g.props
+/src/movie-service/obj/movie-service.csproj.nuget.dgspec.json
+/src/user-details-service/bin/Debug/net7.0/user-details-service.pdb
+/src/user-details-service/bin/Debug/net7.0/user-details-service.dll
+/src/user-details-service/obj/Debug/net7.0/ref/user-details-service.dll
+/src/user-details-service/obj/Debug/net7.0/refint/user-details-service.dll
+/src/user-details-service/obj/Debug/net7.0/staticwebassets/msbuild.buildTransitive.user-details-service.props
+/src/user-details-service/obj/Debug/net7.0/staticwebassets/msbuild.buildMultiTargeting.user-details-service.props
+/src/user-details-service/obj/user-details-service.csproj.nuget.g.targets
+/src/user-details-service/obj/user-details-service.csproj.nuget.g.props
+/src/user-details-service/obj/user-details-service.csproj.nuget.dgspec.json
+/src/user-details-service/obj/project.assets.json
+/tests/user-details-service.tests/obj/Debug/net7.0/refint/user-details-service.tests.dll
+/tests/user-details-service.tests/obj/Debug/net7.0/ref/user-details-service.tests.dll
+/tests/user-details-service.tests/obj/user-details-service.tests.csproj.nuget.g.targets
+/tests/user-details-service.tests/obj/user-details-service.tests.csproj.nuget.g.props
+/tests/user-details-service.tests/obj/user-details-service.tests.csproj.nuget.dgspec.json
+/tests/user-details-service.tests/obj/project.assets.json
