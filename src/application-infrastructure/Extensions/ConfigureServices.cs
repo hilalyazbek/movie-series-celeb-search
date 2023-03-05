@@ -19,6 +19,15 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ConfigureServices
 {
+    /// <summary>
+    /// It adds the Postgres DB Context, Identity Core, and the repositories to the service collection
+    /// </summary>
+    /// <param name="IServiceCollection">The service collection to add the services to.</param>
+    /// <param name="IConfiguration">This is the configuration object that is created in the program.cs
+    /// file.</param>
+    /// <returns>
+    /// The services collection.
+    /// </returns>
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
         var conn = configuration.GetConnectionString("DefaultConnection");
@@ -48,6 +57,16 @@ public static class ConfigureServices
         return services;
     }
 
+    /// <summary>
+    /// It adds the JWT authentication service to the DI container
+    /// </summary>
+    /// <param name="IServiceCollection">This is the collection of services that will be used by the
+    /// application.</param>
+    /// <param name="IConfiguration">This is the configuration object that is injected into the program.cs
+    /// class.</param>
+    /// <returns>
+    /// The services collection.
+    /// </returns>
     public static IServiceCollection AddJWTService(this IServiceCollection services, IConfiguration configuration)
     {
         var validIssuer = configuration.GetSection("JWT").GetValue<string>("ValidIssuer");
@@ -76,6 +95,11 @@ public static class ConfigureServices
         return services;
     }
 
+    /// <summary>
+    /// It loads the NLog configuration file and adds the LoggerManager class to the service collection
+    /// </summary>
+    /// <param name="IServiceCollection">This is the interface that represents a collection of service
+    /// descriptors.</param>
     public static void ConfigureLoggerService(this IServiceCollection services)
     {
         // Setup NLog

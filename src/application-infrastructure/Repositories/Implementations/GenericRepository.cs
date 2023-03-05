@@ -5,18 +5,20 @@ using System.Linq.Expressions;
 
 namespace application_infrastructure.Repositories.Implementations;
 
+/* It's a generic repository that implements the IGenericRepository interface */
 public abstract class GenericRepository<T> : IGenericRepository<T> where T : class
 {
     protected ApplicationDbContext context { get; set; }
 
+    /* It's a generic repository that implements the IGenericRepository interface */
     public GenericRepository(ApplicationDbContext repositoryContext)
     {
         this.context = repositoryContext;
     }
 
-    public IQueryable<T> FindAll()
+    public async Task<IQueryable<T>> FindAll()
     {
-        return this.context.Set<T>()
+        return await this.context.Set<T>()
             .AsNoTracking();
     }
 
