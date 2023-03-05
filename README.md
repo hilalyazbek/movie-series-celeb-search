@@ -1,5 +1,7 @@
 # credit-suisse
 
+### Docker
+https://hub.docker.com/r/hyazbek/creditsuisse
 
 #### Technology used
 dotnet core 7.0
@@ -8,6 +10,11 @@ postgres
 docker
 JWT
 AutoMapper
+
+#### Logging
+http://[hostname]/watchdog
+username: admin
+password: admin
 
 #### Run the Solution
 Pull the latest Postgres Image, run the below command

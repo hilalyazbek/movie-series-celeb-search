@@ -92,23 +92,16 @@ public static class ConfigureServices
         return services;
     }
 
+
     /// <summary>
-    /// It loads the NLog configuration file and adds the LoggerManager class to the service collection
+    /// It adds the WatchDog services to the DI container and configures the WatchDog services to use
+    /// PostgreSQL as the database driver and sets the connection string to the external database
     /// </summary>
-    /// <param name="IServiceCollection">This is the interface that represents a collection of service
-    /// descriptors.</param>
+    /// <param name="IServiceCollection">This is the service collection that you get from the
+    /// ConfigureServices method in the Startup.cs file.</param>
     public static void ConfigureLoggerService(this IServiceCollection services)
     {
-        // Setup NLog
-        //LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
         services.AddSingleton<ILoggerManager, LoggerManager>();
-
-        //services.AddWatchDogServices(settings =>
-        //{
-        //    settings.SqlDriverOption = WatchDogSqlDriverEnum.PostgreSql;
-        //    settings.IsAutoClear = true;
-        //    settings.ClearTimeSchedule = WatchDogAutoClearScheduleEnum.Weekly;
-        //});
 
         services.AddWatchDogServices(settings =>
         {
