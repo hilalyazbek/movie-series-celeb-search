@@ -1,18 +1,16 @@
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
 EXPOSE 80
+EXPOSE 443
 
 ENV ASPNETCORE_URLS=http://+:80
-
-# Creates a non-root user with an explicit UID and adds permission to access the /app folder
-# For more info, please refer to https://aka.ms/vscode-docker-dotnet-configure-containers
-RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
-USER appuser
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["src/user-details-service/user-details-service.csproj", "src/user-details-service/"]
 RUN dotnet restore "src/user-details-service/user-details-service.csproj"
+COPY ["src/application-infrastructure/application-infrastructure.csproj", "src/application-infrastructure/"]
+RUN dotnet restore "src/application-infrastructure/application-infrastructure.csproj"
 COPY . .
 WORKDIR "/src/src/user-details-service"
 RUN dotnet build "user-details-service.csproj" -c Release -o /app/build

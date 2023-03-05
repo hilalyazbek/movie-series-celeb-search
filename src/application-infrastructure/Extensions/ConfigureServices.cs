@@ -103,7 +103,7 @@ public static class ConfigureServices
     public static void ConfigureLoggerService(this IServiceCollection services)
     {
         // Setup NLog
-        LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
+        LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "nlog.config"));
         services.AddSingleton<ILoggerManager, LoggerManager>();
     }
 }

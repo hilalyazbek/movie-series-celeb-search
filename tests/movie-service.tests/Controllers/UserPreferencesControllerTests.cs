@@ -1,5 +1,6 @@
 ﻿using System;
 using application_infrastructure.Entities;
+/* A namespace. */
 using application_infrastructure.Logging;
 using application_infrastructure.PagingAndSorting;
 using application_infrastructure.Repositories.Interfaces;
