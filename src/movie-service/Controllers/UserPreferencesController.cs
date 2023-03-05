@@ -122,7 +122,7 @@ public class UserPreferencesController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError($"An error occured {ex.Message}");
-            return StatusCode(StatusCodes.Status500InternalServerError);
+            return BadRequest(StatusCodes.Status500InternalServerError);
         }
     }
 
