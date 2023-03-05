@@ -42,6 +42,13 @@ public class UserPreferencesController : ControllerBase
         _mapper = mapper;
     }
 
+    /// <summary>
+    /// It gets the watch list of a user by user id
+    /// </summary>
+    /// <param name="userId">The userId of the user whose watch list is to be retrieved</param>
+    /// <returns>
+    /// A list of watch later items
+    /// </returns>
     [HttpGet("/watchlater/{userId}")]
     public async Task<IActionResult> GetWatchList(string userId)
     {
@@ -72,6 +79,14 @@ public class UserPreferencesController : ControllerBase
         }
     }
 
+    /// <summary>
+    /// It takes a request from the client, checks if the user exists, if the user exists, it adds the
+    /// program to the user's watch later list
+    /// </summary>
+    /// <param name="CreateWatchLaterDTO"></param>
+    /// <returns>
+    /// The method returns a Task<ActionResult<CreateWatchLaterDTO>>.
+    /// </returns>
     [HttpPost("/watchlater/")]
     public async Task<ActionResult<CreateWatchLaterDTO>> AddToWatchLater([FromBody] CreateWatchLaterDTO request)
     {
