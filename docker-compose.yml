@@ -1,8 +1,0 @@
-version: '3.4'
-
-services:
-  user-details-service:
-    image: ${DOCKER_REGISTRY-}userdetailsservice
-    build:
-      context: .
-      dockerfile: src/user-details-service/Dockerfile
