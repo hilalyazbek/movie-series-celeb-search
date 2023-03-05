@@ -17,11 +17,24 @@ public class RatingRepository : GenericRepository<Rating>, IRatingRepository
     {
     }
 
+    /// <summary>
+    /// > Get the first rating that matches the program ID
+    /// </summary>
+    /// <param name="programId">The id of the program that the rating is for</param>
+    /// <returns>
+    /// A Rating object.
+    /// </returns>
     public async Task<Rating>? GetRatingByProgramIDAsync(int programId)
     {
         return await FindByCondition(itm => itm.ProgramId == programId).FirstOrDefaultAsync();
     }
 
+    /// <summary>
+    /// > This function returns a list of all the ratings in the database
+    /// </summary>
+    /// <returns>
+    /// A list of ratings
+    /// </returns>
     public async Task<IEnumerable<Rating>> GetRatingsAsync()
     {
         return await FindAll().ToListAsync();

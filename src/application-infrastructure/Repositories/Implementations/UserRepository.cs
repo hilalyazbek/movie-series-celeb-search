@@ -17,11 +17,26 @@ public class UserRepository : GenericRepository<User>, IUserRepository
     {
     }
 
+    /// <summary>
+    /// > Get the first user from the database that has an Id that matches the Id passed in
+    /// </summary>
+    /// <param name="id">The id of the user to retrieve</param>
+    /// <returns>
+    /// A user object
+    /// </returns>
     public async Task<User> GetUserByIdAsync(string id)
     {
         return await FindByCondition(itm => itm.Id == id).FirstOrDefaultAsync();
     }
 
+    /// <summary>
+    /// > Get all users, sort them, and then return a page of them
+    /// </summary>
+    /// <param name="PagingParameters"></param>
+    /// <param name="SortingParameters"></param>
+    /// <returns>
+    /// A list of users.
+    /// </returns>
     public async Task<IEnumerable<User>> GetUsersAsync(PagingParameters pagingParameters,
          SortingParameters sortingParameters)
     {
@@ -35,6 +50,15 @@ public class UserRepository : GenericRepository<User>, IUserRepository
             .ToListAsync();
     }
 
+    /// <summary>
+    /// It takes a queryable collection of users and an orderByQueryString, and returns the same
+    /// queryable collection of users, but sorted according to the orderByQueryString
+    /// </summary>
+    /// <param name="users">IQueryable<User></param>
+    /// <param name="orderByQueryString">This is the string that is passed in the query string.</param>
+    /// <returns>
+    /// A list of users.
+    /// </returns>
     private void ApplySort(ref IQueryable<User> users, string orderByQueryString)
     {
         if (!users.Any())

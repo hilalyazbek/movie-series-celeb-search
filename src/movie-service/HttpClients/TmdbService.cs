@@ -13,6 +13,15 @@ namespace movie_service.HttpClients;
 public static class TmdbService
 {
 
+    /// <summary>
+    /// It takes a query, a page number, and a sorting parameter, and returns a list of movies
+    /// </summary>
+    /// <param name="query">The search query</param>
+    /// <param name="PagingParameters"></param>
+    /// <param name="SortingParameters"></param>
+    /// <returns>
+    /// A list of movies that match the search query.
+    /// </returns>
     public static List<Movie> SearchMovies(string query, PagingParameters pagingParameters, SortingParameters sortingParameters)
     {
         var result = new List<Movie>();
@@ -27,6 +36,15 @@ public static class TmdbService
         return result;
     }
 
+    /// <summary>
+    /// It searches for a TV show, then gets the details of each TV show that was found
+    /// </summary>
+    /// <param name="query">The search query.</param>
+    /// <param name="PagingParameters"></param>
+    /// <param name="SortingParameters"></param>
+    /// <returns>
+    /// A list of TvShow objects.
+    /// </returns>
     public static List<TvShow> SearchTvSeason(string query, PagingParameters pagingParameters, SortingParameters sortingParameters)
     {
         var result = new List<TvShow>();
@@ -41,6 +59,15 @@ public static class TmdbService
         return result;
     }
 
+    /// <summary>
+    /// It takes a query, a page number, and a sorting parameter, and returns a list of people
+    /// </summary>
+    /// <param name="query">The search query.</param>
+    /// <param name="PagingParameters"></param>
+    /// <param name="SortingParameters"></param>
+    /// <returns>
+    /// A list of Person objects.
+    /// </returns>
     public static List<Person> SearchCelebrity(string query, PagingParameters pagingParameters, SortingParameters sortingParameters)
     {
         var result = new List<Person>();

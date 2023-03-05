@@ -17,6 +17,14 @@ public class SearchHistoryRepository : GenericRepository<SearchHistory>, ISearch
     {
     }
 
+    /// <summary>
+    /// Get all the search history, sort it, and then return the page of results.
+    /// </summary>
+    /// <param name="PagingParameters"></param>
+    /// <param name="SortingParameters"></param>
+    /// <returns>
+    /// A list of SearchHistory objects.
+    /// </returns>
     public async Task<IEnumerable<SearchHistory>> GetAllAsync(PagingParameters pagingParameters, SortingParameters sortingParameters)
     {
         var history = FindAll();
@@ -29,6 +37,13 @@ public class SearchHistoryRepository : GenericRepository<SearchHistory>, ISearch
             .ToListAsync();
     }
 
+    /// <summary>
+    /// It creates a new search history record and returns all search history records
+    /// </summary>
+    /// <param name="SearchHistory">This is the model that I'm using to save the data.</param>
+    /// <returns>
+    /// IEnumerable<SearchHistory>
+    /// </returns>
     public IEnumerable<SearchHistory> Save(SearchHistory search)
     {
         Create(search);
@@ -36,6 +51,16 @@ public class SearchHistoryRepository : GenericRepository<SearchHistory>, ISearch
         return FindAll();
     }
 
+    /// <summary>
+    /// It takes a queryable collection of SearchHistory objects and an orderByQueryString parameter,
+    /// and returns the same queryable collection of SearchHistory objects, but sorted according to the
+    /// orderByQueryString parameter
+    /// </summary>
+    /// <param name="history">IQueryable<SearchHistory></param>
+    /// <param name="orderByQueryString">"Query desc"</param>
+    /// <returns>
+    /// IQueryable<SearchHistory>
+    /// </returns>
     private static void ApplySort(ref IQueryable<SearchHistory> history, string orderByQueryString)
     {
         if (!history.Any())

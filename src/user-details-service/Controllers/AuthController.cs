@@ -27,6 +27,15 @@ public class AuthController : Controller
         _logger = logger;
     }
 
+    /// <summary>
+    /// It takes a CreateUserDTO object, creates a new user object, and then creates a new user in the
+    /// database
+    /// </summary>
+    /// <param name="CreateUserDTO">This is a class that contains the properties of the user that we
+    /// want to create.</param>
+    /// <returns>
+    /// The user object is being returned.
+    /// </returns>
     [HttpPost]
     [Route("register")]
     public async Task<IActionResult> Register(CreateUserDTO request)
@@ -76,6 +85,15 @@ public class AuthController : Controller
         }
     }
 
+    /// <summary>
+    /// It takes in a request object, checks if the user exists, checks if the password is valid,
+    /// creates a token, and returns the token
+    /// </summary>
+    /// <param name="AuthRequestDTO">This is the request object that contains the email and password of
+    /// the user.</param>
+    /// <returns>
+    /// A token
+    /// </returns>
     [HttpPost]
     [Route("login")]
     public async Task<ActionResult<AuthResponseDTO>> Authenticate([FromBody] AuthRequestDTO request)

@@ -42,6 +42,15 @@ public class UsersController : Controller
         _logger = logger;
     }
 
+    /// <summary>
+    /// It gets a list of users from the database, maps them to a ViewUserDTO object, and returns them
+    /// to the client
+    /// </summary>
+    /// <param name="PagingParameters"></param>
+    /// <param name="SortingParameters"></param>
+    /// <returns>
+    /// A list of users.
+    /// </returns>
     [HttpGet]
     public async Task<IActionResult> GetUsers([FromQuery] PagingParameters pagingParameters,
         [FromQuery] SortingParameters sortingParameters)
@@ -60,6 +69,13 @@ public class UsersController : Controller
         }
     }
 
+    /// <summary>
+    /// It gets a user by id and returns a ViewUserDTO object
+    /// </summary>
+    /// <param name="id">the id of the user you want to get</param>
+    /// <returns>
+    /// A user object with the id of the user.
+    /// </returns>
     [HttpGet]
     [Route("/users/{id}")]
     public async Task<IActionResult> UserDetails(string id)
@@ -83,6 +99,13 @@ public class UsersController : Controller
         }
     }
 
+    /// <summary>
+    /// It deletes a user from the database
+    /// </summary>
+    /// <param name="id">The id of the user to be deleted</param>
+    /// <returns>
+    /// The user with the specified id is being deleted.
+    /// </returns>
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> DeleteUser(string id)
     {
@@ -106,6 +129,15 @@ public class UsersController : Controller
         }
     }
 
+    /// <summary>
+    /// It updates a user's details in the database
+    /// </summary>
+    /// <param name="id">the id of the user to be updated</param>
+    /// <param name="UpdateUserDTO">This is a class that contains the properties that I want to
+    /// update.</param>
+    /// <returns>
+    /// The result of the update operation is being returned.
+    /// </returns>
     [HttpPut("{id:guid}")]
     public async Task<IActionResult> UpdateUser(string id, UpdateUserDTO user)
     {

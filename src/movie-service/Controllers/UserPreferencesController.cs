@@ -42,14 +42,15 @@ public class UserPreferencesController : ControllerBase
         _mapper = mapper;
     }
 
-    /// <summary>
-    /// It gets the watch list of a user by user id
-    /// </summary>
-    /// <param name="userId">The userId of the user whose watch list is to be retrieved</param>
-    /// <returns>
-    /// A list of watch later items
-    /// </returns>
+
     [HttpGet("/watchlater/{userId}")]
+    /// <summary>
+    /// It gets a user's watch list by their user id
+    /// </summary>
+    /// <param name="userId">The userId of the user who's watch list we want to retrieve</param>
+    /// <returns>
+    /// A list of videos that the user has added to their watch later list.
+    /// </returns>
     public async Task<IActionResult> GetWatchList(string userId)
     {
         try
@@ -125,6 +126,14 @@ public class UserPreferencesController : ControllerBase
         }
     }
 
+    
+    /// <summary>
+    /// It deletes a program from a user's watch later list
+    /// </summary>
+    /// <param name="DeleteWatchLaterDTO"></param>
+    /// <returns>
+    /// The method returns a boolean value.
+    /// </returns>
     [HttpDelete("/watchlater/")]
     public async Task<ActionResult<CreateWatchLaterDTO>> DeleteFromWatchLater([FromBody] DeleteWatchLaterDTO request)
     {
@@ -173,6 +182,14 @@ public class UserPreferencesController : ControllerBase
         }
     }
 
+    /// <summary>
+    /// It takes a request body, maps it to a Rating object, and then calls the RateMovie function in
+    /// the repository
+    /// </summary>
+    /// <param name="UpdateRatingDTO"></param>
+    /// <returns>
+    /// The rating of the program
+    /// </returns>
     [HttpPost("/ratings/")]
     public ActionResult<ViewRatingDTO> RateProgram([FromBody] UpdateRatingDTO request)
     {
@@ -202,6 +219,12 @@ public class UserPreferencesController : ControllerBase
         }
     }
 
+    /// <summary>
+    /// It gets all the ratings from the database and returns them as a list of ViewRatingDTO objects
+    /// </summary>
+    /// <returns>
+    /// A list of ratings
+    /// </returns>
     [HttpGet("/ratings/")]
     public async Task<ActionResult<IEnumerable<ViewRatingDTO>>> GetRatings()
     {
@@ -231,6 +254,13 @@ public class UserPreferencesController : ControllerBase
         }
     }
 
+    /// <summary>
+    /// It gets the rating of a program by its programId
+    /// </summary>
+    /// <param name="programId">The id of the program that is being rated</param>
+    /// <returns>
+    /// A ViewRatingDTO object
+    /// </returns>
     [HttpGet("/ratings/{programId}")]
     public async  Task<ActionResult<ViewRatingDTO>> GetRatings(int programId)
     {
@@ -260,6 +290,14 @@ public class UserPreferencesController : ControllerBase
         }
     }
 
+    /// <summary>
+    /// It returns a list of search history objects from the database
+    /// </summary>
+    /// <param name="PagingParameters"></param>
+    /// <param name="SortingParameters"></param>
+    /// <returns>
+    /// A list of SearchHistoryDTO objects
+    /// </returns>
     [HttpGet("/searchhistory")]
     public async Task<ActionResult<SearchHistoryDTO>> GetSearchHistory([FromQuery] PagingParameters pagingParameters,
         [FromQuery] SortingParameters sortingParameters)
