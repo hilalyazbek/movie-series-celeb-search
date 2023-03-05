@@ -64,7 +64,7 @@ this project contains the controllers, DTOs, and Mapping profiles
 
 -   SearchCelebrities([FromQuery] string searchQuery, [FromQuery] PagingParameters pagingParameters, [FromQuery] SortingParameters sortingParameters)
 
-####1.2.1   UserPreferencesController
+#### 1.2.1   UserPreferencesController
 -   GetWatchList(string userId)
 -   AddToWatchLater([FromBody] CreateWatchLaterDTO request)
 -   DeleteFromWatchLater([FromBody] DeleteWatchLaterDTO request)
