@@ -30,6 +30,16 @@ public class SearchController : ControllerBase
         _mapper = mapper;
     }
 
+    /// <summary>
+    /// It searches for movies with a given title, and if it finds any, it saves the search query and
+    /// the results to the database
+    /// </summary>
+    /// <param name="searchQuery">The query to search for.</param>
+    /// <param name="PagingParameters"></param>
+    /// <param name="SortingParameters"></param>
+    /// <returns>
+    /// A list of movies that match the search query.
+    /// </returns>
     [HttpGet("/movies")]
     public ActionResult SearchMovies([FromQuery] string searchQuery, [FromQuery] PagingParameters pagingParameters,
         [FromQuery] SortingParameters sortingParameters)
@@ -54,6 +64,16 @@ public class SearchController : ControllerBase
         return Ok(result);
     }
 
+    /// <summary>
+    /// It searches for a TV show, and if it finds it, it saves the search query and the results to the
+    /// database
+    /// </summary>
+    /// <param name="searchQuery">The query to search for</param>
+    /// <param name="PagingParameters"></param>
+    /// <param name="SortingParameters"></param>
+    /// <returns>
+    /// A list of TV shows that match the search query.
+    /// </returns>
     [HttpGet("/series")]
     public ActionResult SearchSeries([FromQuery] string searchQuery, [FromQuery] PagingParameters pagingParameters,
         [FromQuery] SortingParameters sortingParameters)
@@ -78,6 +98,16 @@ public class SearchController : ControllerBase
         return Ok(result);
     }
 
+    /// <summary>
+    /// It searches for celebrities in the TMDB database, and if it finds any, it saves the search query
+    /// and the results in the database
+    /// </summary>
+    /// <param name="searchQuery">The query to search for</param>
+    /// <param name="PagingParameters"></param>
+    /// <param name="SortingParameters"></param>
+    /// <returns>
+    /// A list of celebrities that match the search query.
+    /// </returns>
     [HttpGet("/celebrities")]
     public ActionResult SearchCelebrities([FromQuery] string searchQuery, [FromQuery] PagingParameters pagingParameters,
         [FromQuery] SortingParameters sortingParameters)
