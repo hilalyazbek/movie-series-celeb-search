@@ -16,7 +16,7 @@ namespace movie_service.Controllers;
 
 [ApiController]
 [Route("userpref")]
-//[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 public class UserPreferencesController : ControllerBase
 {
     private readonly IWatchLaterRepository _watchLaterRepository;

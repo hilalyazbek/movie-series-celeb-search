@@ -16,7 +16,7 @@ namespace movie_service.Controllers;
 
 [ApiController]
 [Route("search")]
-//[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 public class SearchController : ControllerBase
 {
     private readonly ISearchHistoryRepository _searchHistoryRepository;
