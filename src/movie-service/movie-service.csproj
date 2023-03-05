@@ -17,6 +17,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.3" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
     <PackageReference Include="TMDbLib" Version="2.0.0" />
+    <PackageReference Include="WatchDog.NET" Version="1.4.6" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,12 +25,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="HttpClients\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Remove="nlog.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="nlog.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\application-infrastructure\application-infrastructure.csproj">

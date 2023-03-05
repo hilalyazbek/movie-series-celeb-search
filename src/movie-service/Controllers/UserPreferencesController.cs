@@ -319,6 +319,8 @@ public class UserPreferencesController : ControllerBase
 
             var result = _mapper.Map<List<SearchHistoryDTO>>(searchHistory);
 
+            _logger.LogError($"Search history returned {searchHistory.Count()}");
+
             return Ok(result);
         }
         catch (Exception ex)

@@ -30,5 +30,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.AddWatchDog();
+
 app.Run();
 

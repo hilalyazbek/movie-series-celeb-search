@@ -1,19 +1,16 @@
-﻿using System;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using application_infrastructure.DBContexts;
-using application_infrastructure.Repositories;
 using application_infrastructure.Entities;
 using application_infrastructure.TokenService;
 using application_infrastructure.Logging;
-using NLog;
 using application_infrastructure.Repositories.Interfaces;
 using application_infrastructure.Repositories.Implementations;
+using WatchDog;
+using WatchDog.src.Enums;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -103,8 +100,21 @@ public static class ConfigureServices
     public static void ConfigureLoggerService(this IServiceCollection services)
     {
         // Setup NLog
-        LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "nlog.config"));
+        //LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
         services.AddSingleton<ILoggerManager, LoggerManager>();
+
+        //services.AddWatchDogServices(settings =>
+        //{
+        //    settings.SqlDriverOption = WatchDogSqlDriverEnum.PostgreSql;
+        //    settings.IsAutoClear = true;
+        //    settings.ClearTimeSchedule = WatchDogAutoClearScheduleEnum.Weekly;
+        //});
+
+        services.AddWatchDogServices(settings =>
+        {
+            settings.DbDriverOption = WatchDogDbDriverEnum.PostgreSql;
+            settings.SetExternalDbConnString = "Host=localhost;port=5432;Database=user-details-db;Username=postgres;Password=P@ssw0rd";
+        });
     }
 }
 

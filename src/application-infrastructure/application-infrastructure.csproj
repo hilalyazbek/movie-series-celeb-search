@@ -19,7 +19,6 @@
     <None Remove="Repositories\Implementations\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entities\" />
     <Folder Include="DBContexts\" />
     <Folder Include="Repositories\" />
     <Folder Include="Migrations\" />
@@ -37,10 +36,10 @@
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.3.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.27.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.3" />
-    <PackageReference Include="NLog.Extensions.Logging" Version="5.2.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.3">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="WatchDog.NET" Version="1.4.6" />
   </ItemGroup>
 </Project>

@@ -1,13 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using AutoMapper;
-using System;
-using NLog;
-using System.IO;
-
-var builder = WebApplication.CreateBuilder(args);
+﻿var builder = WebApplication.CreateBuilder(args);
 
 {
     // Add services to the container.
@@ -38,6 +29,8 @@ var app = builder.Build();
     app.UseAuthorization();
 
     app.MapControllers();
+
+    app.AddWatchDog();
 
     app.Run();
 }

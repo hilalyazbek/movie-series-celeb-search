@@ -184,7 +184,7 @@ namespace application_infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Ratings");
+                    b.ToTable("Ratings", (string)null);
                 });
 
             modelBuilder.Entity("application_infrastructure.Entities.SearchHistory", b =>
@@ -207,7 +207,7 @@ namespace application_infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SearchHistory");
+                    b.ToTable("SearchHistory", (string)null);
                 });
 
             modelBuilder.Entity("application_infrastructure.Entities.WatchLater", b =>
@@ -233,7 +233,7 @@ namespace application_infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WatchLaters");
+                    b.ToTable("WatchLaters", (string)null);
 
                     b.HasData(
                         new
