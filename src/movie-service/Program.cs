@@ -9,7 +9,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddMoviesApiServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
-builder.Services.ConfigureLoggerService();
+builder.Services.ConfigureLoggerService(builder.Configuration);
 builder.Services.AddJWTService(builder.Configuration);
 
 builder.Services.AddHttpClient();

@@ -99,14 +99,16 @@ public static class ConfigureServices
     /// </summary>
     /// <param name="IServiceCollection">This is the service collection that you get from the
     /// ConfigureServices method in the Startup.cs file.</param>
-    public static void ConfigureLoggerService(this IServiceCollection services)
+    public static void ConfigureLoggerService(this IServiceCollection services, IConfiguration configuration)
     {
+        var conn = configuration.GetConnectionString("DefaultConnection");
+
         services.AddSingleton<ILoggerManager, LoggerManager>();
 
         services.AddWatchDogServices(settings =>
         {
             settings.DbDriverOption = WatchDogDbDriverEnum.PostgreSql;
-            settings.SetExternalDbConnString = "Host=PostgresDb;port=5432;Database=user-details-db;Username=postgres;Password=P@ssw0rd";
+            settings.SetExternalDbConnString = conn;
         });
     }
 }

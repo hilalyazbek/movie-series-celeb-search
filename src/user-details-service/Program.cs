@@ -10,7 +10,7 @@
 
     builder.Services.AddUsersApiServices();
     builder.Services.AddInfrastructureServices(builder.Configuration);
-    builder.Services.ConfigureLoggerService();
+    builder.Services.ConfigureLoggerService(builder.Configuration);
     builder.Services.AddJWTService(builder.Configuration);
 }
 
