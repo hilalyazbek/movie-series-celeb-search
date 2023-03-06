@@ -73,7 +73,7 @@ public class SearchHistoryRepository : GenericRepository<SearchHistory>, ISearch
         }
 
         var orderParams = orderByQueryString.Trim().Split(',');
-        var propertyInfos = typeof(User).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+        var propertyInfos = typeof(SearchHistory).GetProperties(BindingFlags.Public | BindingFlags.Instance);
         var orderQueryBuilder = new StringBuilder();
         foreach (var param in orderParams)
         {
