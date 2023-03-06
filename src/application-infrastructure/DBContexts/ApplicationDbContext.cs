@@ -45,7 +45,7 @@ public class ApplicationDbContext : IdentityUserContext<IdentityUser>
         if (!optionsBuilder.IsConfigured)
         {
             optionsBuilder.UseNpgsql(
-            "Database=user-details-db; Host=dbcreditsuisse.postgres.database.azure.com; User Id=postgres@dbcreditsuisse; Password=P@ssw0rd");
+            "Host=localhost;port=5432;Database=user-details-db;Username=postgres;Password=P@ssw0rd");
         }
     }
 
