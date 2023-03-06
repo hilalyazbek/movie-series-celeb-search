@@ -1,0 +1,617 @@
+{
+	"info": {
+		"_postman_id": "630b0815-4bec-4a27-9cbe-9dbad4562bb6",
+		"name": "Credit-Suisse Azure",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"qidNumber\": \"78901234568\",\n  \"firstName\": \"Jacob\",\n  \"lastName\": \"Mitchell\",\n  \"email\": \"jacob.mitchell@example.com\",\n  \"username\": \"jacobb\",\n  \"password\": \"9Kq#3sLh\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://csuserdetails.azurewebsites.net/auth/register",
+					"protocol": "https",
+					"host": [
+						"csuserdetails",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"admin@test.com\",\n  \"password\": \"P@ssw0rd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://csuserdetails.azurewebsites.net/auth/login",
+					"protocol": "https",
+					"host": [
+						"csuserdetails",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUb2tlbkZvclRoZUNyZWRpdFN3aXNzZUF1dGgiLCJqdGkiOiI3YjZkNDg5OC0wZmQ5LTRhZTEtODVmMy0yMmUxMzJhZDE2Y2MiLCJpYXQiOiIwMy8wNi8yMDIzIDA5OjAyOjM4IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIyYzMyY2M2OC0wZDM0LTQzYTktYTg5NS1lYjVlNjAzNjM5MTgiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW5AdGVzdC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkB0ZXN0LmNvbSIsImV4cCI6MTY3ODA5NTE1OCwiaXNzIjoiY3JlZGl0U3dpc3NlQXV0aCIsImF1ZCI6ImNyZWRpdFN3aXNzZUF1dGgifQ.sNrECH3GMW_iSRH1BGe6R6l0cDizdldicpLrF8fi-ns",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"test@test.com\",\n  \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://csuserdetails.azurewebsites.net/users?PageNumber=1&PageSize=100&SortBy=username",
+					"protocol": "https",
+					"host": [
+						"csuserdetails",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": "PageNumber",
+							"value": "1"
+						},
+						{
+							"key": "PageSize",
+							"value": "100"
+						},
+						{
+							"key": "SortBy",
+							"value": "username"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Details",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUb2tlbkZvclRoZUNyZWRpdFN3aXNzZUF1dGgiLCJqdGkiOiI3YjZkNDg5OC0wZmQ5LTRhZTEtODVmMy0yMmUxMzJhZDE2Y2MiLCJpYXQiOiIwMy8wNi8yMDIzIDA5OjAyOjM4IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIyYzMyY2M2OC0wZDM0LTQzYTktYTg5NS1lYjVlNjAzNjM5MTgiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW5AdGVzdC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkB0ZXN0LmNvbSIsImV4cCI6MTY3ODA5NTE1OCwiaXNzIjoiY3JlZGl0U3dpc3NlQXV0aCIsImF1ZCI6ImNyZWRpdFN3aXNzZUF1dGgifQ.sNrECH3GMW_iSRH1BGe6R6l0cDizdldicpLrF8fi-ns",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"test@test.com\",\n  \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://csuserdetails.azurewebsites.net/users/667ed7d9-8ba8-40bd-8323-476451910f04",
+					"protocol": "https",
+					"host": [
+						"csuserdetails",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"users",
+						"667ed7d9-8ba8-40bd-8323-476451910f04"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search movies",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUb2tlbkZvclRoZUNyZWRpdFN3aXNzZUF1dGgiLCJqdGkiOiIyNTM5NGFkYy00YTZkLTQzODgtYjE2Ni01NzllNDZmM2E3YWQiLCJpYXQiOiIwMy8wNi8yMDIzIDA5OjQ4OjI4IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIyYzMyY2M2OC0wZDM0LTQzYTktYTg5NS1lYjVlNjAzNjM5MTgiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW5AdGVzdC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkB0ZXN0LmNvbSIsImV4cCI6MTY3ODA5NzkwOCwiaXNzIjoiY3JlZGl0U3dpc3NlQXV0aCIsImF1ZCI6ImNyZWRpdFN3aXNzZUF1dGgifQ.TLO5P-_CR5JE91E_9JmsehymlooAinccowO_9FSeCUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://csmovies.azurewebsites.net/movies?searchQuery=RRR",
+					"protocol": "https",
+					"host": [
+						"csmovies",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"movies"
+					],
+					"query": [
+						{
+							"key": "searchQuery",
+							"value": "RRR"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search series",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUb2tlbkZvclRoZUNyZWRpdFN3aXNzZUF1dGgiLCJqdGkiOiIyNTM5NGFkYy00YTZkLTQzODgtYjE2Ni01NzllNDZmM2E3YWQiLCJpYXQiOiIwMy8wNi8yMDIzIDA5OjQ4OjI4IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIyYzMyY2M2OC0wZDM0LTQzYTktYTg5NS1lYjVlNjAzNjM5MTgiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW5AdGVzdC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkB0ZXN0LmNvbSIsImV4cCI6MTY3ODA5NzkwOCwiaXNzIjoiY3JlZGl0U3dpc3NlQXV0aCIsImF1ZCI6ImNyZWRpdFN3aXNzZUF1dGgifQ.TLO5P-_CR5JE91E_9JmsehymlooAinccowO_9FSeCUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"test@test.com\",\n  \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://csmovies.azurewebsites.net/series?searchQuery=you&PageNumber=1",
+					"protocol": "https",
+					"host": [
+						"csmovies",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"series"
+					],
+					"query": [
+						{
+							"key": "searchQuery",
+							"value": "you"
+						},
+						{
+							"key": "PageNumber",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search celebrities",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUb2tlbkZvclRoZUNyZWRpdFN3aXNzZUF1dGgiLCJqdGkiOiIyNTM5NGFkYy00YTZkLTQzODgtYjE2Ni01NzllNDZmM2E3YWQiLCJpYXQiOiIwMy8wNi8yMDIzIDA5OjQ4OjI4IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIyYzMyY2M2OC0wZDM0LTQzYTktYTg5NS1lYjVlNjAzNjM5MTgiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW5AdGVzdC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkB0ZXN0LmNvbSIsImV4cCI6MTY3ODA5NzkwOCwiaXNzIjoiY3JlZGl0U3dpc3NlQXV0aCIsImF1ZCI6ImNyZWRpdFN3aXNzZUF1dGgifQ.TLO5P-_CR5JE91E_9JmsehymlooAinccowO_9FSeCUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"test@test.com\",\n  \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://csmovies.azurewebsites.net/celebrities?searchQuery=tom hardy",
+					"protocol": "https",
+					"host": [
+						"csmovies",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"celebrities"
+					],
+					"query": [
+						{
+							"key": "searchQuery",
+							"value": "tom hardy"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add item to watch list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUb2tlbkZvclRoZUNyZWRpdFN3aXNzZUF1dGgiLCJqdGkiOiIyNTM5NGFkYy00YTZkLTQzODgtYjE2Ni01NzllNDZmM2E3YWQiLCJpYXQiOiIwMy8wNi8yMDIzIDA5OjQ4OjI4IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIyYzMyY2M2OC0wZDM0LTQzYTktYTg5NS1lYjVlNjAzNjM5MTgiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW5AdGVzdC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkB0ZXN0LmNvbSIsImV4cCI6MTY3ODA5NzkwOCwiaXNzIjoiY3JlZGl0U3dpc3NlQXV0aCIsImF1ZCI6ImNyZWRpdFN3aXNzZUF1dGgifQ.TLO5P-_CR5JE91E_9JmsehymlooAinccowO_9FSeCUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": \"ed58c587-d934-4037-8954-563a5a491376\",\n  \"programId\": 34453,\n  \"programName\": \"Interstellar\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://csmovies.azurewebsites.net/watchlater",
+					"protocol": "https",
+					"host": [
+						"csmovies",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"watchlater"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get watch list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUb2tlbkZvclRoZUNyZWRpdFN3aXNzZUF1dGgiLCJqdGkiOiIyNTM5NGFkYy00YTZkLTQzODgtYjE2Ni01NzllNDZmM2E3YWQiLCJpYXQiOiIwMy8wNi8yMDIzIDA5OjQ4OjI4IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIyYzMyY2M2OC0wZDM0LTQzYTktYTg5NS1lYjVlNjAzNjM5MTgiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW5AdGVzdC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkB0ZXN0LmNvbSIsImV4cCI6MTY3ODA5NzkwOCwiaXNzIjoiY3JlZGl0U3dpc3NlQXV0aCIsImF1ZCI6ImNyZWRpdFN3aXNzZUF1dGgifQ.TLO5P-_CR5JE91E_9JmsehymlooAinccowO_9FSeCUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://csmovies.azurewebsites.net/watchlater/ed58c587-d934-4037-8954-563a5a491376",
+					"protocol": "https",
+					"host": [
+						"csmovies",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"watchlater",
+						"ed58c587-d934-4037-8954-563a5a491376"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete item from watch list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUb2tlbkZvclRoZUNyZWRpdFN3aXNzZUF1dGgiLCJqdGkiOiIyNTM5NGFkYy00YTZkLTQzODgtYjE2Ni01NzllNDZmM2E3YWQiLCJpYXQiOiIwMy8wNi8yMDIzIDA5OjQ4OjI4IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIyYzMyY2M2OC0wZDM0LTQzYTktYTg5NS1lYjVlNjAzNjM5MTgiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW5AdGVzdC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkB0ZXN0LmNvbSIsImV4cCI6MTY3ODA5NzkwOCwiaXNzIjoiY3JlZGl0U3dpc3NlQXV0aCIsImF1ZCI6ImNyZWRpdFN3aXNzZUF1dGgifQ.TLO5P-_CR5JE91E_9JmsehymlooAinccowO_9FSeCUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": \"ed58c587-d934-4037-8954-563a5a491376\",\n  \"programId\": 543\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://csmovies.azurewebsites.net/watchlater",
+					"protocol": "https",
+					"host": [
+						"csmovies",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"watchlater"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rate movie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUb2tlbkZvclRoZUNyZWRpdFN3aXNzZUF1dGgiLCJqdGkiOiIyNTM5NGFkYy00YTZkLTQzODgtYjE2Ni01NzllNDZmM2E3YWQiLCJpYXQiOiIwMy8wNi8yMDIzIDA5OjQ4OjI4IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIyYzMyY2M2OC0wZDM0LTQzYTktYTg5NS1lYjVlNjAzNjM5MTgiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW5AdGVzdC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkB0ZXN0LmNvbSIsImV4cCI6MTY3ODA5NzkwOCwiaXNzIjoiY3JlZGl0U3dpc3NlQXV0aCIsImF1ZCI6ImNyZWRpdFN3aXNzZUF1dGgifQ.TLO5P-_CR5JE91E_9JmsehymlooAinccowO_9FSeCUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"programId\": 1232,\n  \"ratingValue\": 3.5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://csmovies.azurewebsites.net/ratings",
+					"protocol": "https",
+					"host": [
+						"csmovies",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"ratings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get  All Ratings",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUb2tlbkZvclRoZUNyZWRpdFN3aXNzZUF1dGgiLCJqdGkiOiIyNTM5NGFkYy00YTZkLTQzODgtYjE2Ni01NzllNDZmM2E3YWQiLCJpYXQiOiIwMy8wNi8yMDIzIDA5OjQ4OjI4IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIyYzMyY2M2OC0wZDM0LTQzYTktYTg5NS1lYjVlNjAzNjM5MTgiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW5AdGVzdC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkB0ZXN0LmNvbSIsImV4cCI6MTY3ODA5NzkwOCwiaXNzIjoiY3JlZGl0U3dpc3NlQXV0aCIsImF1ZCI6ImNyZWRpdFN3aXNzZUF1dGgifQ.TLO5P-_CR5JE91E_9JmsehymlooAinccowO_9FSeCUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://csmovies.azurewebsites.net/ratings",
+					"protocol": "https",
+					"host": [
+						"csmovies",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"ratings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get rating by program id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUb2tlbkZvclRoZUNyZWRpdFN3aXNzZUF1dGgiLCJqdGkiOiIyNTM5NGFkYy00YTZkLTQzODgtYjE2Ni01NzllNDZmM2E3YWQiLCJpYXQiOiIwMy8wNi8yMDIzIDA5OjQ4OjI4IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIyYzMyY2M2OC0wZDM0LTQzYTktYTg5NS1lYjVlNjAzNjM5MTgiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW5AdGVzdC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkB0ZXN0LmNvbSIsImV4cCI6MTY3ODA5NzkwOCwiaXNzIjoiY3JlZGl0U3dpc3NlQXV0aCIsImF1ZCI6ImNyZWRpdFN3aXNzZUF1dGgifQ.TLO5P-_CR5JE91E_9JmsehymlooAinccowO_9FSeCUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://csmovies.azurewebsites.net/ratings/1232",
+					"protocol": "https",
+					"host": [
+						"csmovies",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"ratings",
+						"1232"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Search History",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUb2tlbkZvclRoZUNyZWRpdFN3aXNzZUF1dGgiLCJqdGkiOiIyNTM5NGFkYy00YTZkLTQzODgtYjE2Ni01NzllNDZmM2E3YWQiLCJpYXQiOiIwMy8wNi8yMDIzIDA5OjQ4OjI4IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIyYzMyY2M2OC0wZDM0LTQzYTktYTg5NS1lYjVlNjAzNjM5MTgiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW5AdGVzdC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkB0ZXN0LmNvbSIsImV4cCI6MTY3ODA5NzkwOCwiaXNzIjoiY3JlZGl0U3dpc3NlQXV0aCIsImF1ZCI6ImNyZWRpdFN3aXNzZUF1dGgifQ.TLO5P-_CR5JE91E_9JmsehymlooAinccowO_9FSeCUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://csmovies.azurewebsites.net/searchhistory?PageNumber=1&PageSize=100&SortBy=query",
+					"protocol": "https",
+					"host": [
+						"csmovies",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"searchhistory"
+					],
+					"query": [
+						{
+							"key": "PageNumber",
+							"value": "1"
+						},
+						{
+							"key": "PageSize",
+							"value": "100"
+						},
+						{
+							"key": "SortBy",
+							"value": "query"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
