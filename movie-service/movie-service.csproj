@@ -28,6 +28,9 @@
     <None Remove="HttpClients\" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="HttpClients\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Remove="nlog.config" />
   </ItemGroup>
   <ItemGroup>

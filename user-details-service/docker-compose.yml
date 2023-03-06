@@ -8,28 +8,16 @@ services:
   user-details-service:
     image: ${DOCKER_REGISTRY-}userdetailsservice
     depends_on:
-      - "application-infrastructure"
+      - "postgres-image"
     container_name: user-details-service
     ports:
       - "8088:80"
     build:
       context: .
-      dockerfile: user-details-service/user-details-service/Dockerfile
-    environment:
-      - ASPNETCORE_URLS:http://+:80
-    networks:
-      - dev
-
-  application-infrastructure:
-    image: ${DOCKER_REGISTRY-}applicationinfrastructure
-    depends_on:
-      - "postgres-image"
-    container_name: application-infrastructure
-    build:
-      context: .
-      dockerfile: application-infrastructure/Dockerfile
+      dockerfile: Dockerfile
     environment:
       - DB_CONNECTION_STRING:host=postgres-image;Port=5432;User ID=postgres;Password=P@ssw0rd;Database=user-details-db;
+      - ASPNETCORE_URLS:http://+:80
     networks:
       - dev
 

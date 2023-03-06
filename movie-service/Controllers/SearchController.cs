@@ -27,9 +27,10 @@ public class SearchController : ControllerBase
     }
 
     [HttpGet("/movies")]
-    public ActionResult SearchMovies([FromQuery] string searchQuery, [FromQuery] PagingParameters pagingParameters)
+    public ActionResult SearchMovies([FromQuery] string searchQuery, [FromQuery] PagingParameters pagingParameters,
+        [FromQuery] SortingParameters sortingParameters)
     {
-        var movies = TmdbService.SearchMovies(searchQuery, pagingParameters);
+        var movies = TmdbService.SearchMovies(searchQuery, pagingParameters, sortingParameters);
 
         if (movies is null)
         {
@@ -42,9 +43,10 @@ public class SearchController : ControllerBase
     }
 
     [HttpGet("/series")]
-    public ActionResult SearchSeries([FromQuery] string searchQuery, [FromQuery] PagingParameters pagingParameters)
+    public ActionResult SearchSeries([FromQuery] string searchQuery, [FromQuery] PagingParameters pagingParameters,
+        [FromQuery] SortingParameters sortingParameters)
     {
-        var series = TmdbService.SearchTvSeason(searchQuery, pagingParameters);
+        var series = TmdbService.SearchTvSeason(searchQuery, pagingParameters, sortingParameters);
 
         if (series is null)
         {
@@ -57,9 +59,10 @@ public class SearchController : ControllerBase
     }
 
     [HttpGet("/celebrities")]
-    public ActionResult SearchCelebrities([FromQuery] string searchQuery, [FromQuery] PagingParameters pagingParameters)
+    public ActionResult SearchCelebrities([FromQuery] string searchQuery, [FromQuery] PagingParameters pagingParameters,
+        [FromQuery] SortingParameters sortingParameters)
     {
-        var celebrities = TmdbService.SearchCelebrity(searchQuery, pagingParameters);
+        var celebrities = TmdbService.SearchCelebrity(searchQuery, pagingParameters, sortingParameters);
         if (celebrities is null)
         {
             return NotFound($"No celebrity with {searchQuery} in their title were found");
