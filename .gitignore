@@ -374,3 +374,5 @@ MigrationBackup/
 *[Oo]bj/
 *[Ll]og/
 *[Ll]ogs/
+src/.DS_Store
+tests/.DS_Store
