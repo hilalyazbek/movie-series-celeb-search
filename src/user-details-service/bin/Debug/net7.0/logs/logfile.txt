@@ -1,0 +1,3 @@
+2023-03-04 16:34:46.7243 application_infrastructure.Logging.LoggerManager An error occured Can't cast database type text to Int32
+2023-03-04 16:53:33.3095 application_infrastructure.Logging.LoggerManager Creating a new user with username string
+2023-03-04 16:53:34.3101 application_infrastructure.Logging.LoggerManager Error while creating the user string, error details: DuplicateUserName|Username 'string' is already taken.

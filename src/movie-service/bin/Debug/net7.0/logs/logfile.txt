@@ -1,0 +1,9 @@
+2023-03-03 13:49:23.1145 application_infrastructure.Logging.LoggerManager An error occured Missing type map configuration or unsupported mapping.
+
+Mapping types:
+List`1 -> SearchHistoryDTO
+System.Collections.Generic.List`1[[application_infrastructure.Entities.SearchHistory, application-infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> movie_service.DTOs.SearchHistoryDTO
+2023-03-04 15:48:09.0103 application_infrastructure.Logging.LoggerManager cannot remove program with id 1000 from the user 4146a38c-9f4e-4cf9-acff-175d745f0e54 watch list
+2023-03-04 15:58:44.9578 application_infrastructure.Logging.LoggerManager user 4146a38c-9f4e-4cf9-acff-175d745f0e54 does not have a watch list
+2023-03-04 15:59:03.2585 application_infrastructure.Logging.LoggerManager program with id 1000 does not exist in user 3850ec2e-0fba-44ee-9746-5c5d9fe08053 watch list
+2023-03-05 11:22:23.0469 application_infrastructure.Logging.LoggerManager the search for interstellar returned 20 results
