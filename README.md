@@ -1,7 +1,6 @@
-# credit-suisse
+# Movies, Series, and Actors Search Engine
 
-### Docker
-https://hub.docker.com/r/hyazbek/creditsuisse
+#### 
 
 #### Technology used
 dotnet core 7.0
@@ -11,9 +10,7 @@ docker
 JWT
 AutoMapper
 
-#### Azure
-The services are deployed to Azure on:
--       https://csuserdetails.azurewebsites.net/auth/login
+-       https://[localhost]/auth/login
 
         {
         "email": "admin@test.com",
@@ -21,32 +18,32 @@ The services are deployed to Azure on:
         }
 
 -       Send Token with every request
--       GetUsers: https://csuserdetails.azurewebsites.net/users?PageNumber=1&PageSize=100&SortBy=username
--       GetUserDetails: https://csuserdetails.azurewebsites.net/users/667ed7d9-8ba8-40bd-8323-476451910f04
--       SearchMovies: https://csmovies.azurewebsites.net/movies?searchQuery=RRR
--       SearchSeries: https://csmovies.azurewebsites.net/series?searchQuery=friends&PageNumber=1
--       SearchCelebrities: https://csmovies.azurewebsites.net/celebrities?searchQuery=tom hardy
--       AddToWatchList: https://csmovies.azurewebsites.net/watchlater
+-       GetUsers: https://[localhost]/users?PageNumber=1&PageSize=100&SortBy=username
+-       GetUserDetails: https://[localhost]/users/667ed7d9-8ba8-40bd-8323-476451910f04
+-       SearchMovies: https://[localhost]/movies?searchQuery=RRR
+-       SearchSeries: https://[localhost]/series?searchQuery=friends&PageNumber=1
+-       SearchCelebrities: https://[localhost]/celebrities?searchQuery=tom hardy
+-       AddToWatchList: https://[localhost]/watchlater
         
         {
         "userId": "ed58c587-d934-4037-8954-563a5a491376",
         "programId": 34453,
         "programName": "Interstellar"
         }
--       GetWatchList: https://csmovies.azurewebsites.net/watchlater/ed58c587-d934-4037-8954-563a5a491376
--       DeleteFromWatchList: https://csmovies.azurewebsites.net/watchlater
+-       GetWatchList: https://[localhost]/watchlater/ed58c587-d934-4037-8954-563a5a491376
+-       DeleteFromWatchList: https://[localhost]/watchlater
         {
         "userId": "ed58c587-d934-4037-8954-563a5a491376",
         "programId": 543
         }
--       RateMovie: https://csmovies.azurewebsites.net/ratings
+-       RateMovie: https://[localhost]/ratings
         {
         "programId": 1232,
         "ratingValue": 3.5
         }
--       GetAllRatings: https://csmovies.azurewebsites.net/ratings
--       GetRatingByProgramId: https://csmovies.azurewebsites.net/ratings/1232
--       GetSearchHistory: https://csmovies.azurewebsites.net/searchhistory?PageNumber=1&PageSize=100&SortBy=query
+-       GetAllRatings: https://[localhost]/ratings
+-       GetRatingByProgramId: https://[localhost]/ratings/1232
+-       GetSearchHistory: https://[localhost]/searchhistory?PageNumber=1&PageSize=100&SortBy=query
 
 ##### Download the Postman Collection from the Repo
 creditsuisse.postman_collection.json
